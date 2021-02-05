@@ -3,6 +3,6 @@ var router = express.Router();
 
 /* GET newRout listing. */
 router.get('/', function(req, res, next) {
-res.send('New route Hello World');
+res.send('Liquidate the Uzbeks?');
 });
 module.exports = router;

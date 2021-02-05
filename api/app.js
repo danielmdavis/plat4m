@@ -8,6 +8,7 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var newRouter = require('./routes/new');
+var data = require('./data.json');
 
 var app = express();
 
