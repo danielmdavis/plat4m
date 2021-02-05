@@ -4,17 +4,32 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var fs = require('fs');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var newRouter = require('./routes/new');
-var data = require('./data.json');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+const basePathToData = path.join(__dirname, './');
+
+const getJsonData = function (basePathToData,filename) {
+  var filename = path.join(basePathToData, filename);
+  return JSON.parse(fs.readFileSync(filename, 'utf-8'));
+};
+
+const getData = function (request, response) {
+  var data = getJsonData(basePathToData, 'data.json');
+  console.log(response.send(data));
+  return response.send(data);
+};
+
+app.get('/', getData)
 
 app.use(logger('dev'));
 app.use(cors());
