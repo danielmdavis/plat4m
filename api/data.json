@@ -1,16 +1,41 @@
 [
   {
-    "id": 1,
-    "proposition": "Liquidate the Uzbeks",
+    "id": 0,
+    "text": "Liquidate the Uzbeks",
     "ups": 0,
     "downs": 0,
-    "addenda": []
+    "addenda":
+    [
+      {
+        "id": 0,
+        "text": "Spare the children",
+        "ups": 0,
+        "downs": 0,
+        "predicate": true
+      },
+      {
+        "id": 1,
+        "text": "Do it, kill them all post haste",
+        "ups": 0,
+        "downs": 0,
+        "predicate": false
+      }
+    ]
   },
   {
-    "id": 2,
-    "proposition": "Socialism in Two Countries",
+    "id": 1,
+    "text": "Socialism in Two Countries",
     "ups": 0,
     "downs": 0,
-    "addenda": []
+    "addenda":
+    [
+      {
+        "id": 0,
+        "text": "Three would be even better, four better still, five would improve the situation yet more, and by now it's probably clear I'm just testing box autosizing",
+        "ups": 0,
+        "downs": 0,
+        "predicate": false
+      }
+    ]
   }
 ]
