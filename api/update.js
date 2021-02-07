@@ -11,7 +11,15 @@ const client = new MongoClient(url);
          console.log("Connected correctly to server");
          const db = client.db("cluster0");
 
-         // const p = await db.collection("test").insert(payload);
+         const payload = {
+           "id": 2,
+           "text": "Reformist reforms",
+           "ups": 2,
+           "downs": 3,
+           "addenda": []
+         }
+
+         const p = await db.collection("test").insertOne(payload);
          const returns = await db.collection("test").find();
 
          let data = []
@@ -36,4 +44,5 @@ const client = new MongoClient(url);
         await client.close();
     }
 }
-run().catch(console.dir);
+// run().catch(console.dir);
+exports.run = run

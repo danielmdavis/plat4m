@@ -13,6 +13,10 @@ var newRouter = require('./routes/new');
 
 var app = express();
 
+var update = require('./update');
+update.run().catch(console.dir);
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -35,6 +39,7 @@ const getData = function (request, response) {
   // data = JSON.parse(data)
   return response.send(data);
 };
+
 
 app.get('/', getData)
 
