@@ -5,22 +5,17 @@ var fs = require('fs');
 const url = "mongodb+srv://admin:Eternity1%21%21@cluster0.kehb2.mongodb.net/plat4m?retryWrites=true&w=majority";
 const client = new MongoClient(url);
 
- async function run() {
+ async function run(payload) {
     try {
          await client.connect();
          console.log("Connected correctly to server");
          const db = client.db("cluster0");
 
-         // const payload = {
-         //   "id": 2,
-         //   "text": "Reformist reforms",
-         //   "ups": 2,
-         //   "downs": 3,
-         //   "addenda": []
-         // }
-         //
-         // const p = await db.collection("test").insertOne(payload);
-         
+         payload = JSON.parse(payload)
+         console.log(payload);
+
+         const p = await db.collection("test").insertOne(payload);
+
          const returns = await db.collection("test").find();
 
          let data = []
