@@ -3,20 +3,21 @@ var fs = require('fs');
 
 
 const url = "mongodb+srv://admin:Eternity1%21%21@cluster0.kehb2.mongodb.net/plat4m?retryWrites=true&w=majority";
-const client = new MongoClient(url);
+// const options = { useUnifiedTopology: true }, { useNewUrlParser: true }, { connectTimeoutMS: 30000 }, { keepAlive: 1}
+const client = new MongoClient(url, { useUnifiedTopology: true }, { useNewUrlParser: true }, { connectTimeoutMS: 30000 }, { keepAlive: 1});
 
  async function run(payload) {
     try {
-         await client.connect();
-         console.log("Connected correctly to server");
-         const db = client.db("cluster0");
+         await client.connect()
+         console.log("Connected correctly to server")
+         const db = client.db("cluster0")
 
          payload = JSON.parse(payload)
-         console.log(payload);
+         console.log(payload)
 
-         const p = await db.collection("test").insertOne(payload);
+         const p = await db.collection("test").insertOne(payload)
 
-         const returns = await db.collection("test").find();
+         const returns = await db.collection("test").find()
 
          let data = []
 
