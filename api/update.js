@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-let payload = require('./data.json');
+var fs = require('fs');
 
 
 const url = "mongodb+srv://admin:Eternity1%21%21@cluster0.kehb2.mongodb.net/plat4m?retryWrites=true&w=majority";
@@ -18,9 +18,15 @@ const client = new MongoClient(url);
 
          //this may be losing inner addendum objs
          await returns.forEach(each => data.push(each))
+         data = JSON.stringify(data)
 
-         console.log(data);
-         console.log(typeof data);
+         fs.writeFile('./data.json', data, err => {
+           if (err) {
+             console.log('Error writing file', err)
+           } else {
+             console.log('Successfully wrote file')
+           }
+         })
 
         } catch (err) {
          console.log(err.stack);

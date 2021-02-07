@@ -31,7 +31,8 @@ const getJsonData = function (basePathToData,filename) {
 };
 
 const getData = function (request, response) {
-  var data = getJsonData(basePathToData, 'data.json');
+  let data = getJsonData(basePathToData, 'data.json');
+  data = JSON.parse(data)
   console.log(response.send(data));
   return response.send(data);
 };
