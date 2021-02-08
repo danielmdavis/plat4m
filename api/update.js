@@ -38,7 +38,7 @@ const client = new MongoClient(url, { useUnifiedTopology: true }, { useNewUrlPar
      }
 
      finally {
-        await client.close();
+        // await client.close();
     }
 }
 // run().catch(console.dir);
