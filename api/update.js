@@ -12,11 +12,11 @@ const client = new MongoClient(url, { useUnifiedTopology: true }, { useNewUrlPar
          console.log("Connected correctly to server")
          const db = client.db("cluster0")
 
-         payload = JSON.parse(payload)
          console.log(payload)
+         payload = JSON.parse(payload)
 
          const p = await db.collection("test").insertOne(payload)
-
+         console.log(p);
          const returns = await db.collection("test").find()
 
          let data = []
