@@ -43,6 +43,7 @@ const client = new MongoClient(url, { useUnifiedTopology: true }, { useNewUrlPar
            }
          })
 
+         return (data)
         } catch (err) {
          console.log(err.stack);
      }

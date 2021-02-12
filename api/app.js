@@ -15,6 +15,7 @@ var app = express();
 
 var update = require('./update');
 update.run().catch(console.dir);
+console.log(update.run().catch(console.dir))
 
 
 // view engine setup
@@ -30,13 +31,13 @@ app.use(function(req, res, next) {
 const basePathToData = path.join(__dirname, './');
 
 const getJsonData = function (basePathToData,filename) {
+  update.run()
   var filename = path.join(basePathToData, filename);
   return JSON.parse(fs.readFileSync(filename, 'utf-8'));
 };
 
 const getData = function (request, response) {
   let data = getJsonData(basePathToData, 'data.json');
-  // data = JSON.parse(data)
   return response.send(data);
 };
 
