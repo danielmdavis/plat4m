@@ -7,35 +7,35 @@ const client = new MongoClient(url, { useUnifiedTopology: true }, { useNewUrlPar
 
  async function run(payload) {
     try {
-         await client.connect()
-         console.log("Connected correctly to server")
-         const db = client.db("cluster0")
+       await client.connect()
+       console.log("Connected correctly to server")
+       const db = client.db("cluster0")
 
 
 
-         const returns = await db.collection("test").find()
 
-         let data = []
+       payload = JSON.parse(payload)
+       if (!('update' in payload)) {
+         const p = await db.collection("test").insertOne(payload)
+       } else {
+         const id = (Object.values(payload)[0])
+         console.log(id);
+         await db.collection("test").update(
+           { "id": id },
+           { $inc: {  "ups": 1 } }
+         )
+       }
 
-         //this may be losing inner addendum objs
-         await returns.forEach(each => data.push(each))
+       const returns = await db.collection("test").find()
 
+       let data = []
 
-         payload = JSON.parse(payload)
-         if (!('update' in payload)) {
-           const p = await db.collection("test").insertOne(payload)
-         } else {
-           const id = (Object.values(payload)[0])
-           console.log(id);
-           await db.collection("test").update(
-             { "id": id },
-             { $inc: {  "ups": 1 } }
-           )
-         }
+       //this may be losing inner addendum objs
+       await returns.forEach(each => data.push(each))
 
-         data = JSON.stringify(data)
+        data = await JSON.stringify(data)
 
-         fs.writeFile('./data.json', data, err => {
+         await fs.writeFile('./data.json', data, err => {
            if (err) {
              console.log('Error writing file', err)
            } else {
