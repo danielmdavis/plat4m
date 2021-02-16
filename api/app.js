@@ -14,8 +14,8 @@ var newRouter = require('./routes/new');
 var app = express();
 
 var update = require('./update');
-update.run().catch(console.dir);
-console.log(update.run().catch(console.dir))
+// update.run().catch(console.dir);
+// console.log(update.run().catch(console.dir))
 
 
 // view engine setup
@@ -36,8 +36,9 @@ const getJsonData = function (basePathToData,filename) {
   return JSON.parse(fs.readFileSync(filename, 'utf-8'));
 };
 
-const getData = function (request, response) {
-  let data = getJsonData(basePathToData, 'data.json');
+const getData = async function (request, response) {
+  // let data = getJsonData(basePathToData, 'data.json');
+  const data = await update.fetch()
   return response.send(data);
 };
 
