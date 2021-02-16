@@ -7,69 +7,67 @@ const client = new MongoClient(url, { useUnifiedTopology: true }, { useNewUrlPar
 
 async function fetch() {
   try {
-     await client.connect()
-     console.log("Connected correctly to server")
-     const db = client.db("cluster0")
+   await client.connect()
+   console.log("Connected correctly to server")
+   const db = client.db("cluster0")
 
-     const returns = await db.collection("test").find()
-     console.log(returns);
-     let data = []
-     await returns.forEach(each => data.push(each))
-     data = JSON.stringify(data)
-     return data
+   const returns = await db.collection("test").find()
+   console.log(returns);
+   let data = []
+   await returns.forEach(each => data.push(each))
+   data = JSON.stringify(data)
+   return data
 
   } catch (err) {
-       console.log(err.stack);
+   console.log(err.stack);
   }
 }
 
  async function run(payload) {
-    try {
-       await client.connect()
-       console.log("Connected correctly to server")
-       const db = client.db("cluster0")
+  try {
+   await client.connect()
+   console.log("Connected correctly to server")
+   const db = client.db("cluster0")
 
 
 
 
-       payload = JSON.parse(payload)
-       if (!('update' in payload)) {
-         const p = await db.collection("test").insertOne(payload)
+   payload = JSON.parse(payload)
+   if (!('update' in payload)) {
+     const p = await db.collection("test").insertOne(payload)
+   } else {
+     const id = Object.values(payload)[0]
+     console.log(id);
+     await db.collection("test").update(
+       { "id": id },
+       { $inc: {  "ups": 1 } }
+     )
+   }
+
+   const returns = await db.collection("test").find()
+
+   let data = []
+
+   await returns.forEach(each => data.push(each))
+
+    data = await JSON.stringify(data)
+
+     await fs.writeFile('./data.json', data, err => {
+       if (err) {
+         console.log('Error writing file', err)
        } else {
-         const id = Object.values(payload)[0]
-         console.log(id);
-         await db.collection("test").update(
-           { "id": id },
-           { $inc: {  "ups": 1 } }
-         )
+         console.log('Successfully wrote file')
        }
+     })
 
-       const returns = await db.collection("test").find()
+     return (data)
+    } catch (err) {
+     console.log(err.stack);
+   }
 
-       let data = []
-
-       //this may be losing inner addendum objs
-       await returns.forEach(each => data.push(each))
-
-        data = await JSON.stringify(data)
-
-         await fs.writeFile('./data.json', data, err => {
-           if (err) {
-             console.log('Error writing file', err)
-           } else {
-             console.log('Successfully wrote file')
-           }
-         })
-
-         return (data)
-        } catch (err) {
-         console.log(err.stack);
-     }
-
-     finally {
-        // await client.close();
-    }
+   finally {
+    // await client.close();
+  }
 }
-// run().catch(console.dir);
 exports.run = run
 exports.fetch = fetch
