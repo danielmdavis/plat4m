@@ -23,6 +23,41 @@ async function fetch() {
   }
 }
 
+async function post(payload) {
+  try {
+   await client.connect()
+   console.log("Connected correctly to server")
+   const db = client.db("cluster0")
+
+   payload = JSON.parse(payload)
+
+   const id = Object.values(payload)[0]
+   await db.collection("test").update(
+     { "id": id },
+     { $inc: {  "ups": 1 } }
+   )
+
+  } catch (err) {
+   console.log(err.stack);
+  }
+}
+
+async function upVote(payload) {
+  try {
+   await client.connect()
+   console.log("Connected correctly to server")
+   const db = client.db("cluster0")
+
+   payload = JSON.parse(payload)
+
+   const id = Object.values(payload)[0]
+   await db.collection("test").insertOne(payload)
+
+  } catch (err) {
+   console.log(err.stack);
+  }
+}
+
  async function run(payload) {
   try {
    await client.connect()
@@ -71,3 +106,4 @@ async function fetch() {
 }
 exports.run = run
 exports.fetch = fetch
+exports.post = post
