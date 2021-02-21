@@ -22,6 +22,20 @@ async function fetch() {
    console.log(err.stack);
   }
 }
+async function fetchOne(id) {
+  try {
+   await client.connect()
+   console.log("Connected correctly to server")
+   const db = client.db("cluster0")
+   let data = await db.collection("test").findOne({ "id": id })
+   console.log(data);
+   data = JSON.stringify(data)
+   return data
+
+  } catch (err) {
+   console.log(err.stack);
+  }
+}
 
 async function post(payload) {
   try {
@@ -106,4 +120,5 @@ async function upVote(payload) {
 }
 exports.run = run
 exports.fetch = fetch
+exports.fetchOne = fetchOne
 exports.post = post
