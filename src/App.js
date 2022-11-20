@@ -7,10 +7,11 @@ import Proposition from './Proposition';
 
 function App() {
 
-  let [data, setGet] = useState([])
+  // let [data, setGet] = useState([])
+  let [quorum] = useState(9)
   let [dummyData, setDummy] = useState(new Array())
   let [inputText, setInputText] = useState('')
-  let [newOne, setNewOne] = useState('')
+  // let [newOne, setNewOne] = useState('')
 
   function handleClick() {
     if (inputText) {
@@ -23,7 +24,6 @@ function App() {
       }
       // postAPI(post)
       setDummy(dummyData => [...dummyData, post])
-      // console.log(post)
       console.log(dummyData)
 
       // setNewOne(() =>  {
@@ -35,6 +35,7 @@ function App() {
       //       downs={0}
       //       />
       // )})
+
       setInputText('')
       window.scrollTo(0,document.body.scrollHeight)
       setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
@@ -47,6 +48,7 @@ function App() {
         key={item.id}
         id={item.id}
         type='proposition'
+        majority={quorum / 2}
         claim={item.text}
         sub={item.addenda}
         ups={item.ups}
@@ -96,7 +98,7 @@ function App() {
         <br/>
       </Card>
         {propositions} 
-        {newOne}
+        {/* {newOne} */}
         <Card className='proposition'>
           Propose a principle
           <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'GhostWhite', margin: '20px' }} label="Propose a Tenet" variant="outlined" />

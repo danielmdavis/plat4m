@@ -47,12 +47,22 @@ export default function Proposition(props) {
     const pred1 = true
     const pred2 = false
 
+    let status
+    if (yesMock > props.majority) {
+        status = "passed"
+    } else if (noMock > props.majority) {
+        status = "failed"
+    } else {
+        status = "open"
+    }
+
+
     return (
-        <Card className="proposition">
+        <Card className={`proposition ${status}`}>
             <VotesAndTitle
                 claim={props.claim}
-                // ups={props.ups + yesMock}
-                // downs={props.downs + noMock}
+                // ups={props.ups}
+                // downs={props.downs}
                 ups={yesMock}
                 downs={noMock}
                 />
