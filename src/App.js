@@ -1,11 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Card from '@material-ui/core/Card';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import Proposition from './Proposition';
 
 function App() {
 
-  const data = ['foo', 'bar']
+  let [data, setGet] = useState([])
+  let [inputText, setInputText] = useState('')
+  let [newOne, setNewOne] = useState('')
+
+  function handleClick() {
+    if (inputText) {
+      const post = {
+        "id": propositions.length+1,
+        "text": inputText,
+        "ups": 1,
+        "downs": 0,
+        "addenda": []
+      }
+      // postAPI(post)
+      setNewOne(() =>  {
+        return(
+          <Proposition
+            type='new-one'
+            claim={inputText}
+            ups={1}
+            downs={0}
+            />
+      )})
+      setInputText('')
+      window.scrollTo(0,document.body.scrollHeight)
+      setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
+    }
+  }
 
   const propositions = data.map((item) => {
     return(
@@ -13,13 +42,14 @@ function App() {
         // key={item.id}
         // id={item.id}
         // type='proposition'
-        // claim={item.text}
+        claim={item.text}
         // sub={item.addenda}
         // ups={item.ups}
         // downs={item.downs}
         text={item}
         />
     )})
+
 
 
   return (
@@ -61,7 +91,14 @@ function App() {
         </div>
         <br/>
       </Card>
-        {propositions}
+        {propositions} 
+        {newOne}
+        <Card className='proposition'>
+          Propose a principle
+          <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'GhostWhite', margin: '20px' }} label="Propose a Tenet" variant="outlined" />
+          <Button onClick={handleClick} variant="contained" color="primary" > Submit </ Button>
+
+        </ Card>
 
      
 

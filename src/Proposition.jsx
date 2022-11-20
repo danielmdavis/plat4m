@@ -48,12 +48,11 @@ export default function Proposition(props) {
     const pred2 = false
 
     return (
-        <Card className="Proposition">
+        <Card className="proposition">
             <VotesAndTitle
-                // claim={props.claim}
+                claim={props.claim}
                 // ups={props.ups + yesMock}
                 // downs={props.downs + noMock}
-                claim={props.text}
                 ups={yesMock}
                 downs={noMock}
                 />
@@ -85,7 +84,7 @@ export default function Proposition(props) {
             predicate={pred2}
             />
             <Addendum 
-            claim="foo"
+            claim="bar"
             predicate={pred1}
             />
         </Card>
