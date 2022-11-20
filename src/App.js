@@ -8,6 +8,7 @@ import Proposition from './Proposition';
 function App() {
 
   let [data, setGet] = useState([])
+  let [dummyData, setDummy] = useState(new Array())
   let [inputText, setInputText] = useState('')
   let [newOne, setNewOne] = useState('')
 
@@ -21,35 +22,38 @@ function App() {
         "addenda": []
       }
       // postAPI(post)
-      setNewOne(() =>  {
-        return(
-          <Proposition
-            type='new-one'
-            claim={inputText}
-            ups={1}
-            downs={0}
-            />
-      )})
+      setDummy(dummyData => [...dummyData, post])
+      // console.log(post)
+      console.log(dummyData)
+
+      // setNewOne(() =>  {
+      //   return(
+      //     <Proposition
+      //       type='new-one'
+      //       claim={inputText}
+      //       ups={1}
+      //       downs={0}
+      //       />
+      // )})
       setInputText('')
       window.scrollTo(0,document.body.scrollHeight)
       setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
     }
   }
 
-  const propositions = data.map((item) => {
+  const propositions = dummyData.map((item) => {
     return(
       <Proposition
-        // key={item.id}
-        // id={item.id}
-        // type='proposition'
+        key={item.id}
+        id={item.id}
+        type='proposition'
         claim={item.text}
-        // sub={item.addenda}
-        // ups={item.ups}
-        // downs={item.downs}
-        text={item}
+        sub={item.addenda}
+        ups={item.ups}
+        downs={item.downs}
+
         />
     )})
-
 
 
   return (
