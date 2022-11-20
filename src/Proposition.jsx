@@ -12,21 +12,20 @@ export default function Proposition(props) {
     let [addenEntry, setAddenEntry] = useState()
 
     async function handleClickYes() {
-        setYesMock(1)
+        setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
       }
       async function handleClickYesAnd() {
-        setYesMock(1)
+        setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
         // setAddenEntry(<NewAdd />)
       }
     
       async function handleClickNo() {
-        setNoMock(1)
+        setNoMock(noMock + 1)
         // postAPI({"update": props.id})
       }
       async function handleClickNoBut() {
-        setYesMock(1)
         // postAPI({"update": props.id})
         // setAddenEntry(<NewAdd predicate='yes' />)
       }
