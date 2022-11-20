@@ -1,11 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import VotesAndTitle from './VotesAndTitle';
+import Addendum from './Addendum';
 
 export default function Proposition(props) {
 
+    let [yesMock, setYesMock] = useState(0)
+    let [noMock, setNoMock] = useState(0)
+    let [addenEntry, setAddenEntry] = useState()
+
+    async function handleClickYes() {
+        setYesMock(1)
+        // postAPI({"update": props.id})
+      }
+      async function handleClickYesAnd() {
+        setYesMock(1)
+        // postAPI({"update": props.id})
+        // setAddenEntry(<NewAdd />)
+      }
+    
+      async function handleClickNo() {
+        setNoMock(1)
+        // postAPI({"update": props.id})
+      }
+      async function handleClickNoBut() {
+        setYesMock(1)
+        // postAPI({"update": props.id})
+        // setAddenEntry(<NewAdd predicate='yes' />)
+      }
+
+    //   let id = 0
+    //   let addenda
+    //   if (props.sub) {
+    //     addenda = props.sub.map((addendum) => {
+    //       id += 1
+    //       return(
+    //         <Addendum
+    //           key={addendum.id}
+    //           claim={addendum.text}
+    //           predicate={addendum.predicate}
+    //         />
+    //     )})
+    //   }
+
+    const pred1 = true
+    const pred2 = false
 
     return (
         <Card className="Proposition">
@@ -14,8 +55,8 @@ export default function Proposition(props) {
                 // ups={props.ups + yesMock}
                 // downs={props.downs + noMock}
                 claim={props.text}
-                ups="5"
-                downs="2"
+                ups={yesMock}
+                downs={noMock}
                 />
             <div style={{ flexDirection: 'row' }}>
                 <ButtonGroup
@@ -25,10 +66,8 @@ export default function Proposition(props) {
                 color="secondary"
                 aria-label="vertical button group"
                 >
-                {/* <Button onClick={handleClickNo}>No</Button>
-                <Button onClick={handleClickNoBut}>No But</Button> */}
-                <Button>Yes</Button>
-                <Button>No But</Button>
+                    <Button onClick={handleClickNo}>No</Button>
+                    <Button onClick={handleClickNoBut}>No But</Button>
                 </ButtonGroup>
 
                 <ButtonGroup
@@ -38,12 +77,14 @@ export default function Proposition(props) {
                 color="primary"
                 aria-label="vertical primary button group"
                 >
-                {/* <Button onClick={handleClickYes}>Yes</Button>
-                <Button onClick={handleClickYesAnd}>Yes And</Button> */}
-                <Button>Yes</Button>
-                <Button>Yes And</Button>
+                    <Button onClick={handleClickYes}>Yes</Button>
+                    <Button onClick={handleClickYesAnd}>Yes And</Button>
                 </ButtonGroup>
             </div>
+            <Addendum 
+            claim="foo"
+            predicate={pred1}
+            />
         </Card>
     )
 }
