@@ -61,6 +61,7 @@ export default function Proposition(props) {
         <Card className={`proposition ${status}`}>
             <VotesAndTitle
                 claim={props.claim}
+                
                 // ups={props.ups}
                 // downs={props.downs}
                 ups={yesMock}
