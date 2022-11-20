@@ -61,13 +61,12 @@ export default function Proposition(props) {
         <Card className={`proposition ${status}`}>
             <VotesAndTitle
                 claim={props.claim}
-                
                 // ups={props.ups}
                 // downs={props.downs}
                 ups={yesMock}
                 downs={noMock}
                 />
-            <div style={{ flexDirection: 'row' }}>
+            <div className={status} style={{ flexDirection: 'row' }}>
                 <ButtonGroup
                 style={{ margin: '5px' }}
                 orientation="vertical"

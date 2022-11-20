@@ -47,3 +47,7 @@ html {
   background-color: rgb(235, 135, 135) !important;
 }
 
+.passed > div, .failed > div {
+  display: none;
+}
+
