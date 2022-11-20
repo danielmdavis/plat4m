@@ -83,6 +83,10 @@ export default function Proposition(props) {
             </div>
             <Addendum 
             claim="foo"
+            predicate={pred2}
+            />
+            <Addendum 
+            claim="foo"
             predicate={pred1}
             />
         </Card>

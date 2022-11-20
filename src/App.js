@@ -24,13 +24,13 @@ function App() {
 
   return (
     <div className="App"> 
-        <br />
-        <br />
-        <Card className='app-title'>
+      <br />
+      <br />
+      <Card className='app-title'>
         <h2>plat4m</h2>
         <h4><i>The Platform for Platforms</i></h4>
         <div style={{ textAlign: 'left', padding: '8px' }}>
-          <span>Plat4m is a tool for
+          <span>Plat4m is a tool for communities of thought like 
             political parties and advocacy groups to democratically develop
             their formal program.</span>
           <br/><br/>
