@@ -56,11 +56,12 @@ export default function Proposition(props) {
         status = "open"
     }
 
-
+  
     return (
         <Card className={`proposition ${status}`}>
             <VotesAndTitle
                 claim={props.claim}
+                
                 // ups={props.ups}
                 // downs={props.downs}
                 ups={yesMock}
