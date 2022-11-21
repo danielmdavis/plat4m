@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import VotesAndTitle from './VotesAndTitle';
 import Addendum from './Addendum';
+import NewAdd from './NewAdd.jsx';
 
 export default function Proposition(props) {
 
@@ -18,7 +19,7 @@ export default function Proposition(props) {
       async function handleClickYesAnd() {
         setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
-        // setAddenEntry(<NewAdd />)
+        setAddenEntry(<NewAdd />)
       }
     
       async function handleClickNo() {
@@ -26,23 +27,24 @@ export default function Proposition(props) {
         // postAPI({"update": props.id})
       }
       async function handleClickNoBut() {
+        // setNoMock(noMock + 1)
         // postAPI({"update": props.id})
-        // setAddenEntry(<NewAdd predicate='yes' />)
+        setAddenEntry(<NewAdd predicate='yes' />)
       }
 
-    //   let id = 0
-    //   let addenda
-    //   if (props.sub) {
-    //     addenda = props.sub.map((addendum) => {
-    //       id += 1
-    //       return(
-    //         <Addendum
-    //           key={addendum.id}
-    //           claim={addendum.text}
-    //           predicate={addendum.predicate}
-    //         />
-    //     )})
-    //   }
+      let id = 0
+      let addenda
+      if (props.sub) {
+        addenda = props.sub.map((addendum) => {
+          id += 1
+          return(
+            <Addendum
+              key={addendum.id}
+              claim={addendum.text}
+              predicate={addendum.predicate}
+            />
+        )})
+      }
 
     const pred1 = true
     const pred2 = false
@@ -89,14 +91,8 @@ export default function Proposition(props) {
                     <Button onClick={handleClickYesAnd}>Yes And</Button>
                 </ButtonGroup>
             </div>
-            <Addendum 
-            claim="foo"
-            predicate={pred2}
-            />
-            <Addendum 
-            claim="bar"
-            predicate={pred1}
-            />
+            {addenda}
+            {addenEntry}
         </Card>
     )
 }
