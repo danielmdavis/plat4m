@@ -63,7 +63,7 @@ function App() {
       <br />
       <br />
       <Card className='app-title'>
-        <h2>plat4m</h2>
+        <h2>plat4m <span style={{ color: 'red' }}> [v2] </span> </h2> 
         <h4><i>The Platform for Platforms</i></h4>
         <div style={{ textAlign: 'left', padding: '8px' }}>
           <span>Plat4m is a tool for communities of thought like 
