@@ -7,6 +7,9 @@ export default function newAdd(props) {
 
   let [inputText, setInputText] = useState('')
 
+  function handleClick() {
+    props.handleSubmit(props.propId, inputText)
+  }
   return (
     <div
       style={{
@@ -46,7 +49,7 @@ export default function newAdd(props) {
         style={{}}
         variant="contained"
         color="primary"
-        onClick={props.handleSubmit(props.propId, inputText)}
+        onClick={handleClick}
         >
         ✓
       </Button>
