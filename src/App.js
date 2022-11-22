@@ -50,7 +50,7 @@ function App() {
         type='proposition'
         majority={quorum / 2}
         claim={item.text}
-        sub={item.addenda}
+        addenda={item.addenda}
         ups={item.ups}
         downs={item.downs}
 

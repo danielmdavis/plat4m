@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import VotesAndTitle from './VotesAndTitle';
 import Addendum from './Addendum';
-import NewAdd from './NewAdd.jsx';
+import NewAdd from './NewAdd';
 
 export default function Proposition(props) {
 
@@ -37,8 +37,8 @@ export default function Proposition(props) {
 
       let id = 0
       let addenda
-      if (props.sub) {
-        addenda = props.sub.map((addendum) => {
+      if (props.addenda) {
+        addenda = props.addenda.map((addendum) => {
           id += 1
           return(
             <Addendum
@@ -48,9 +48,6 @@ export default function Proposition(props) {
             />
         )})
       }
-
-    const pred1 = true
-    const pred2 = false
 
     let status
     if (yesMock > props.majority) {
