@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 
 export default function newAdd(props) {
 
+  let [inputText, setInputText] = useState('')
 
   return (
     <div
@@ -28,6 +29,8 @@ export default function newAdd(props) {
         ✕
       </Button>
       <TextField
+        onChange={(e) => {setInputText(e.target.value)}} 
+        value={inputText}
         style={{
           backgroundColor: props.predicate ? '#F5C4D5' : 'GhostWhite',
           margin: '0px 5px',
@@ -43,6 +46,7 @@ export default function newAdd(props) {
         style={{}}
         variant="contained"
         color="primary"
+        onClick={props.handleSubmit(props.propId, inputText)}
         >
         ✓
       </Button>

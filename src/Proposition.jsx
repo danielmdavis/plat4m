@@ -19,7 +19,13 @@ export default function Proposition(props) {
       async function handleClickYesAnd() {
         setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
-        setAddenEntry(<NewAdd handleCancel={handleCancel} />)
+        setAddenEntry(
+          <NewAdd 
+            handleCancel={handleCancel} 
+            handleSubmit={props.handleAddendum}
+            propId={props.id}
+          />
+        )
       }
       async function handleClickNo() {
         setNoMock(noMock + 1)
@@ -28,7 +34,14 @@ export default function Proposition(props) {
       async function handleClickNoBut() {
         // setNoMock(noMock + 1)
         // postAPI({"update": props.id})
-        setAddenEntry(<NewAdd predicate='yes' handleCancel={handleCancel} />)
+        setAddenEntry(
+          <NewAdd 
+            predicate='yes' 
+            handleCancel={handleCancel} 
+            handleSubmit={props.handleAddendum} 
+            propId={props.id}
+          />
+        )
       }
 
       const handleCancel = () => {

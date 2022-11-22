@@ -13,7 +13,7 @@ function App() {
   let [inputText, setInputText] = useState('')
   // let [newOne, setNewOne] = useState('')
 
-  function handleClick() {
+  function handleSubmit() {
     if (inputText) {
       const post = {
         "id": propositions.length+1,
@@ -24,7 +24,6 @@ function App() {
       }
       // postAPI(post)
       setDummy(dummyData => [...dummyData, post])
-      console.log(dummyData)
 
       // setNewOne(() =>  {
       //   return(
@@ -42,6 +41,11 @@ function App() {
     }
   }
 
+  function handleAddendum(id, text) {
+    console.log(id)
+    console.log(text)
+  }
+
   const propositions = dummyData.map((item) => {
     return(
       <Proposition
@@ -53,6 +57,7 @@ function App() {
         addenda={item.addenda}
         ups={item.ups}
         downs={item.downs}
+        handleAddendum={handleAddendum}
 
         />
     )})
@@ -102,7 +107,7 @@ function App() {
         <Card className='proposition' style={{ minHeight: '250px' }}>
           Propose a principle
           <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'GhostWhite', margin: '20px' }} label="Propose a Tenet" variant="outlined" />
-          <Button onClick={handleClick} variant="contained" color="primary" > Submit </ Button>
+          <Button onClick={handleSubmit} variant="contained" color="primary" > Submit </ Button>
 
         </ Card>
 
