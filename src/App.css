@@ -23,7 +23,7 @@ html {
   margin: 10px;
   padding: 10px;
   width: 80%;
-  min-height: 250px;
+  /* min-height: 250px; */
 }
 
 .proposition {
@@ -34,14 +34,18 @@ html {
   margin: 10px;
   padding: 10px;
   width: 60%;
-  min-height: 250px;
+  /* min-height: 250px; */
   font-size: 28px;
 }
 .open {
   background-color: skyblue !important;
+  min-height: 120px;
+  padding-top: 10px;
+  padding-bottom: 0px;
 }
 .passed {
   background-color: rgb(137, 235, 135) !important;
+
 }
 .failed {
   background-color: rgb(235, 135, 135) !important;
@@ -54,15 +58,15 @@ html {
 .proposition {
   animation: fadein .666s;
   /* background-color: Linen !important; */
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 10px;
-  padding: 10px;
-  width: 60%;
-  min-height: 250px;
-  font-size: 28px;
+  justify-content: center; */
+  /* margin: 10px;
+  padding: 10px; */
+  /* width: 60%; */
+  /* min-height: 250px; */
+  /* font-size: 28px; */
 }
 
 @keyframes fadein {

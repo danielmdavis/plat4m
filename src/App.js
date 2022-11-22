@@ -99,7 +99,7 @@ function App() {
       </Card>
         {propositions} 
         {/* {newOne} */}
-        <Card className='proposition'>
+        <Card className='proposition' style={{ minHeight: '250px' }}>
           Propose a principle
           <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'GhostWhite', margin: '20px' }} label="Propose a Tenet" variant="outlined" />
           <Button onClick={handleClick} variant="contained" color="primary" > Submit </ Button>
