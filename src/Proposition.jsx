@@ -12,6 +12,13 @@ export default function Proposition(props) {
     let [noMock, setNoMock] = useState(0)
     let [addenEntry, setAddenEntry] = useState()
 
+    const handleCancel = () => {
+      setAddenEntry()
+    }
+    function update() {
+      props.cheesyUpdate()
+    }
+
     async function handleClickYes() {
         setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
@@ -22,6 +29,7 @@ export default function Proposition(props) {
         setAddenEntry(
           <NewAdd 
             handleCancel={handleCancel} 
+            handleRerender={update}
             handleSubmit={props.handleAddendum}
             propId={props.id}
           />
@@ -38,14 +46,11 @@ export default function Proposition(props) {
           <NewAdd 
             predicate='yes' 
             handleCancel={handleCancel} 
+            handleRerender={update}
             handleSubmit={props.handleAddendum} 
             propId={props.id}
           />
         )
-      }
-
-      const handleCancel = () => {
-        setAddenEntry()
       }
 
       let id = 0
@@ -55,11 +60,12 @@ export default function Proposition(props) {
           id += 1
           return(
             <Addendum
-              key={addendum.id}
-              claim={addendum.text}
-              predicate={addendum.predicate}
+              key={addendum.key}
+              claim={addendum.claim}
+              // predicate={addendum.predicate}
             />
         )})
+
       }
 
     let status
@@ -70,6 +76,7 @@ export default function Proposition(props) {
     } else {
         status = "open"
     }
+
 
   
     return (

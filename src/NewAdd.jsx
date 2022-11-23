@@ -3,13 +3,15 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 
-export default function newAdd(props) {
+export default function NewAdd(props) {
 
   let [inputText, setInputText] = useState('')
 
   function handleClick() {
     props.handleSubmit(props.propId, inputText)
+    props.handleRerender()
   }
+
   return (
     <div
       style={{
@@ -50,6 +52,7 @@ export default function newAdd(props) {
         variant="contained"
         color="primary"
         onClick={handleClick}
+        
         >
         ✓
       </Button>

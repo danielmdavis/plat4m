@@ -12,6 +12,11 @@ function App() {
   let [dummyData, setDummy] = useState(new Array())
   let [inputText, setInputText] = useState('')
   // let [newOne, setNewOne] = useState('')
+  let [cheesyUpdate, setCheesyUpdate] = useState()
+
+  function rerender() {
+    setCheesyUpdate(true)
+  }
 
   function handleSubmit() {
     if (inputText) {
@@ -42,9 +47,23 @@ function App() {
   }
 
   function handleAddendum(id, text) {
-    console.log(id)
-    console.log(text)
+    let update = dummyData.find((item, i) => {
+      if (item.id === id) {
+          dummyData[i] = { 
+            id: dummyData[i].id, 
+            text: dummyData[i].text,
+            ups: dummyData[i].ups,
+            downs: dummyData[i].downs,
+            addenda: [{ "claim": text, "key": dummyData[i].addenda.length }]
+          }
+          setDummy(dummyData)
+          return true
+      }
+    })
+    
   }
+
+  
 
   const propositions = dummyData.map((item) => {
     return(
@@ -58,6 +77,7 @@ function App() {
         ups={item.ups}
         downs={item.downs}
         handleAddendum={handleAddendum}
+        cheesyUpdate={rerender}
 
         />
     )})
