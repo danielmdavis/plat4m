@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 
-export default function NewAdd(props) {
+export default function NewAddendum(props) {
 
   let [inputText, setInputText] = useState('')
 

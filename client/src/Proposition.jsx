@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import VotesAndTitle from './VotesAndTitle';
 import Addendum from './Addendum';
-import NewAdd from './NewAdd';
+import NewAddendum from './NewAddendum';
 
 export default function Proposition(props) {
 
@@ -15,6 +15,10 @@ export default function Proposition(props) {
     const handleCancel = () => {
       setAddenEntry()
     }
+    // function handleSubmit() {
+    //   props.handleAddendum
+    //   // setAddenEntry()
+    // }
     function update() {
       props.cheesyUpdate()
     }
@@ -27,7 +31,7 @@ export default function Proposition(props) {
         setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
         setAddenEntry(
-          <NewAdd 
+          <NewAddendum 
             handleCancel={handleCancel} 
             handleRerender={update}
             handleSubmit={props.handleAddendum}
@@ -43,7 +47,7 @@ export default function Proposition(props) {
         // setNoMock(noMock + 1)
         // postAPI({"update": props.id})
         setAddenEntry(
-          <NewAdd 
+          <NewAddendum 
             predicate='yes' 
             handleCancel={handleCancel} 
             handleRerender={update}

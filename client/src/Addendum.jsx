@@ -11,6 +11,7 @@ export default function Addendum(props) {
       justifyContent: 'center',
       alignItems: 'flex-start',
       margin: '8px',
+      marginBottom: '25px',
       width: '100%',
       minHeight: '50px'}}>
       <Button
