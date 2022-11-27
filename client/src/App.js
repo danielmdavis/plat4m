@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
@@ -7,15 +7,51 @@ import Proposition from './Proposition';
 
 function App() {
 
-  // let [data, setGet] = useState([])
+  let [data, setGet] = useState([])
   let [quorum] = useState(9)
   let [dummyData, setDummy] = useState(new Array())
   let [inputText, setInputText] = useState('')
   // let [newOne, setNewOne] = useState('')
   let [cheesyUpdate, setCheesyUpdate] = useState()
 
+    
+
+  const callAPI = () => {
+    fetch('http://localhost:3001/', {
+      mode: 'cors',
+      headers: { 'Access-Control-Allow-Origin': '*' }
+    })
+      .then(req => req.json())
+      .then(resp => {
+        setGet(resp)
+      })
+  }
+
+  // const postAPI = (post) => {
+  //   fetch('http://localhost:9000/props/', {
+  //     method: 'POST',
+  //     mode: 'cors',
+  //     headers: {
+  //       'Access-Control-Allow-Origin': '*',
+  //       'Content-Type': 'application/json'
+  //      },
+  //     body: JSON.stringify(post),
+  //     json: true
+  //   })
+  // }
+
+  useEffect(() => {
+    callAPI()
+    // console.log(data)
+  }, [])
+
+
+
+
+
   function rerender() {
     setCheesyUpdate(true)
+    console.log(data)
   }
 
   function handleSubmit() {
