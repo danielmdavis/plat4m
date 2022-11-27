@@ -42,7 +42,6 @@ function App() {
 
   useEffect(() => {
     callAPI()
-    // console.log(data)
   }, [])
 
 
@@ -51,7 +50,6 @@ function App() {
 
   function rerender() {
     setCheesyUpdate(true)
-    console.log(data)
   }
 
   function handleSubmit() {
@@ -82,26 +80,26 @@ function App() {
     }
   }
 
-  function handleAddendum(id, text) {
-    let update = dummyData.find((item, i) => {
-      if (item.id === id) {
-          dummyData[i] = { 
-            id: dummyData[i].id, 
-            text: dummyData[i].text,
-            ups: dummyData[i].ups,
-            downs: dummyData[i].downs,
-            addenda: [{ "claim": text, "key": dummyData[i].addenda.length }]
-          }
-          setDummy(dummyData)
-          return true
-      }
-    })
+  // function handleAddendum(id, text) {
+  //   let update = data.find((item, i) => {
+  //     if (item.id === id) {
+  //         data[i] = { 
+  //           id: data[i].id, 
+  //           text: data[i].text,
+  //           ups: data[i].ups,
+  //           downs: data[i].downs,
+  //           addenda: [{ "claim": text, "key": data[i].addenda.length }]
+  //         }
+  //         setDummy(dummyData)
+  //         return true
+  //     }
+  //   })
     
-  }
+  // }
 
   
 
-  const propositions = dummyData.map((item) => {
+  const propositions = data.map((item) => {
     return(
       <Proposition
         key={item.id}
@@ -112,8 +110,8 @@ function App() {
         addenda={item.addenda}
         ups={item.ups}
         downs={item.downs}
-        handleAddendum={handleAddendum}
-        cheesyUpdate={rerender}
+        // handleAddendum={handleAddendum}
+        // cheesyUpdate={rerender}
 
         />
     )})

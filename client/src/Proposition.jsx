@@ -65,7 +65,7 @@ export default function Proposition(props) {
           return(
             <Addendum
               key={addendum.key}
-              claim={addendum.claim}
+              claim={addendum.text}
               // predicate={addendum.predicate}
             />
         )})
