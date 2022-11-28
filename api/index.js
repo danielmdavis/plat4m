@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const update = require('./update');
 const data = require('./data');
 
 app.use(function(req, res, next) {
@@ -10,10 +11,16 @@ app.use(function(req, res, next) {
   })
 app.use(cors());
 
+
+console.log(update.getter())
+
 app.get('/', (req, res) => {
-    res.send(data)
+    res.send(update.getter())
 })
+
 
 app.listen(3001, () => {
 
 })
+
+
