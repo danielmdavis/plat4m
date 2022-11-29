@@ -13,18 +13,7 @@ export default function NewAddendum(props) {
   }
 
   return (
-    <div
-      style={{
-        animation: 'fadein .666s !important',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        margin: '28px 8px',
-        width: '100%',
-        minHeight: '50px'
-      }}
-    >
+    <div className='new-addendum'>
       <Button
         style={{}}
         variant="contained"
@@ -36,14 +25,8 @@ export default function NewAddendum(props) {
       <TextField
         onChange={(e) => {setInputText(e.target.value)}} 
         value={inputText}
-        style={{
-          backgroundColor: props.predicate ? '#F5C4D5' : 'GhostWhite',
-          margin: '0px 5px',
-          width: '55%',
-          minHeight: '45px',
-          textAlign: 'left',
-          fontSize: '16px'
-        }}
+        className='new-addendum-box'
+        style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'GhostWhite' }}
         variant='outlined'
         label='Propose an Addendum'
       />

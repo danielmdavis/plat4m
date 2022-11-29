@@ -7,16 +7,17 @@ export default function HeaderCard(props) {
 
     return (
         <Card className='app-title'>
-            <h2>plat4m <span style={{ color: 'red' }}> [v2] </span> </h2> 
-                    <h4><i>The Platform for Platforms</i></h4>
+            <h1 className='title-header'>plat4m <span style={{ color: 'rgb(246,0,87)' }}> [v2] </span> </h1> 
+                    <b>The Platform for Platforms</b>
+                    <br/>
                     <div style={{ textAlign: 'left', padding: '8px' }}>
-                    <span>Plat4m is a tool for communities of thought like 
+                    <span>Plat4m is a tool for communities of thought such as 
                         political parties and advocacy groups to democratically develop
                         their formal program.</span>
                     <br/><br/>
                     <span>Propose a point of shared
                         belief or purpose. The default threshhold for adoption is a
-                        simple majority of seven voters. YES and NO votes indicate
+                        simple majority of seven voters. <b>YES</b> and <b>NO</b> votes indicate
                         unqualitied support or rejection of a measure respectively.</span>
                     <br/><br/>
                     <span>Modify a proposition with an addendum. These too are subject to vote. 
@@ -25,14 +26,14 @@ export default function HeaderCard(props) {
                         support for the motion as a whole, there are
                         mechanisms for both. </span>
                     <br/><br/>
-                    <span>A vote of YES AND gives unqualified support for the
+                    <span>A vote of <b>YES AND</b> gives unqualified support for the
                         measure while giving the opportunity to attach an addendum
                         that substantially interprets or expands the proposition.</span>
                     <br/><br/>
-                    <span>NO BUT is the vote-contingent addendum option.
+                    <span><b>NO BUT</b> is the vote-contingent addendum option.
                         It indicates that, the proposition being what it is, the voter
                         must reject it; but given the acceptance of the proposed
-                        modification, they will support it. NO BUT addenda are more
+                        modification, they will support it. <b>NO BUT</b> addenda are more
                         likely to attach crucial distinctions or reinterpretations. No
                         vote is cast at the time of the attachment of a predicated
                         addendum, as the outcome of the vote in question overall is

@@ -37,13 +37,8 @@ export default function EnterProposal(props) {
   // }
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center'}}
-      >
-      <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'GhostWhite', margin: '20px' }} label="Propose a Tenet" variant="outlined" />
+    <div className='proposal'>
+      <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} className='proposal-box' label="Propose a Tenet" variant="outlined" />
       <Button onClick={props.handleClick} variant="contained" color="primary" > Submit </ Button>
     </div>
   );

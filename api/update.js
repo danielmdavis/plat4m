@@ -12,7 +12,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
     async function getter() {
         await client.connect()
         const db = client.db("db")
-        console.log('foo')
         const returns = await db.collection("propositions").find()
         let data = []
         await returns.forEach(each => data.push(each))

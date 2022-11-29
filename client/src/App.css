@@ -1,10 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+:root {
+ --offw: rgb(245, 245, 245);
+ --offw2: rgb(225, 225, 225);
+ --red: rgb(246,0,87);
+ --blue: rgb(64,80,181);
+}
+
 html {
-  background-color: DarkGray;
+  background-color: var(--offw2);
 }
 
 .App {
   text-align: center;
-  background-color: DarkGray;
+  background-color: var(--offw2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,9 +24,9 @@ html {
 }
 
 .app-title {
-  font-family: garamond;
+  font-family: 'Lora';
   font-size: 20px;
-  background-color: GhostWhite;
+  background-color: rgb(255, 255, 255) !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,8 +36,13 @@ html {
   width: 80%;
   /* min-height: 250px; */
 }
+.title-header {
+  font-family: 'Raleway' !important;
+  font-weight: 700 !important;
+}
 
 .proposition {
+  font-family: 'Lora';
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,39 +52,85 @@ html {
   width: 60%;
   /* min-height: 250px; */
   font-size: 28px;
+  animation: fadein .666s;
 }
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .open {
-  background-color: linen !important;
+  background-color: rgb(255, 255, 255) !important;
   min-height: 120px;
   padding-top: 10px;
   padding-bottom: 0px;
 }
 .passed {
-  background-color: rgb(137, 235, 135) !important;
+  background-color: var(--offw) !important;
+  border: solid 1.7px var(--blue);
 }
 .failed {
-  background-color: rgb(235, 135, 135) !important;
+  background-color: var(--offw) !important;
+  border: solid 1.7px var(--red);
 }
-
 .passed > div, .failed > div {
   display: none;
 }
 
-.proposition {
-  animation: fadein .666s;
-  /* background-color: Linen !important; */
-  /* display: flex;
+.addendum {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 8px;
+  margin-bottom: 25px;
+  width: 100%;
+  min-height: 50px;
+}
+.addendum-inner {
+  margin: 0px 5px;
+  padding: 7px 10px;
+  width: 55%;
+  min-height: 45px;
+  text-align: left;
+  font-family: 'Roboto' !important;
+  font-size: 16px;
+}
+.proposal {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; */
-  /* margin: 10px;
-  padding: 10px; */
-  /* width: 60%; */
-  /* min-height: 250px; */
-  /* font-size: 28px; */
+  justify-content: center;
+}
+.proposal-box {
+  background-color: rgb(248, 248, 248);
+  font-family: 'Roboto' !important; 
+  margin: 20px;
 }
 
-@keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+.new-addendum {
+  animation: fadein .666s !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 28px 8px;
+  width: 105%;
+  min-height: 50px;
+}
+.new-addendum-box {
+  margin: 0px 5px !important;
+  width: 55%;
+  min-height: 45px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.blue {
+  color: var(--blue);
+  font-weight: bold;
+}
+.red {
+  color: var(--red);
+  font-weight: bold;
 }

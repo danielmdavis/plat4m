@@ -11,7 +11,6 @@ function App() {
   let [data, setGet] = useState([])
   let [quorum] = useState(9)
   let [inputText, setInputText] = useState('')
-  // let [newOne, setNewOne] = useState('')
 
   const callAPI = () => {
     fetch('http://localhost:3001/', {
@@ -52,16 +51,6 @@ function App() {
       }
       postNew(post)
 
-      // setNewOne(() =>  {
-      //   return(
-      //     <Proposition
-      //       type='new-one'
-      //       claim={inputText}
-      //       ups={1}
-      //       downs={0}
-      //       />
-      // )})
-    
       setInputText('')
       window.scrollTo(0,document.body.scrollHeight)
       setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
@@ -86,8 +75,6 @@ function App() {
     
   // }
 
-  
-
   const propositions = data.map((item) => {
     return(
       <Proposition
@@ -103,17 +90,15 @@ function App() {
         />
     )})
 
-
   return (
     <div className="App"> 
-      <br />
       <br />
       <HeaderCard />
       {propositions} 
       {/* {newOne} */}
       <Card className='proposition' style={{ minHeight: '250px' }}>
         Propose a principle
-        <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'GhostWhite', margin: '20px' }} label="Propose a Tenet" variant="outlined" />
+        <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'rgb(245, 245, 245)', margin: '20px' }} label="Propose a Tenet" variant="outlined" />
         <Button onClick={handleSubmit} variant="contained" color="primary" > Submit </ Button>
       </ Card>
     </div>
