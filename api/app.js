@@ -18,9 +18,7 @@ app.use(cors());
 
 let payload = []
 const dbdata = async function () {
-    const data = await update.getter()
-    payload = data
-    // return response.send(payload)
+    payload = await update.getter()
 }
 dbdata()
 console.log(payload)

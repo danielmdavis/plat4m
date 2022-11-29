@@ -9,12 +9,8 @@ function App() {
 
   let [data, setGet] = useState([])
   let [quorum] = useState(9)
-  let [dummyData, setDummy] = useState(new Array())
   let [inputText, setInputText] = useState('')
   // let [newOne, setNewOne] = useState('')
-  let [cheesyUpdate, setCheesyUpdate] = useState()
-
-    
 
   const callAPI = () => {
     fetch('http://localhost:3001/', {
@@ -44,14 +40,6 @@ function App() {
     callAPI()
   }, [])
 
-
-
-
-
-  function rerender() {
-    setCheesyUpdate(true)
-  }
-
   function handleSubmit() {
     if (inputText) {
       const post = {
@@ -62,7 +50,6 @@ function App() {
         "addenda": []
       }
       // postAPI(post)
-      setDummy(dummyData => [...dummyData, post])
 
       // setNewOne(() =>  {
       //   return(
@@ -111,8 +98,6 @@ function App() {
         ups={item.ups}
         downs={item.downs}
         // handleAddendum={handleAddendum}
-        // cheesyUpdate={rerender}
-
         />
     )})
 

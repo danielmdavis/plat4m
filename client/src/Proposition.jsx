@@ -24,11 +24,11 @@ export default function Proposition(props) {
     }
 
     async function handleClickYes() {
-        setYesMock(yesMock + 1)
+        // setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
       }
       async function handleClickYesAnd() {
-        setYesMock(yesMock + 1)
+        // setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
         setAddenEntry(
           <NewAddendum 
@@ -40,7 +40,7 @@ export default function Proposition(props) {
         )
       }
       async function handleClickNo() {
-        setNoMock(noMock + 1)
+        // setNoMock(noMock + 1)
         // postAPI({"update": props.id})
       }
       async function handleClickNoBut() {
@@ -73,9 +73,9 @@ export default function Proposition(props) {
       }
 
     let status
-    if (yesMock > props.majority) {
+    if (props.ups > props.majority) {
         status = "passed"
-    } else if (noMock > props.majority) {
+    } else if (props.downs > props.majority) {
         status = "failed"
     } else {
         status = "open"
@@ -89,8 +89,8 @@ export default function Proposition(props) {
                 claim={props.claim}
                 // ups={props.ups}
                 // downs={props.downs}
-                ups={yesMock}
-                downs={noMock}
+                ups={props.ups}
+                downs={props.downs}
                 />
             <div className={status} style={{ flexDirection: 'row' }}>
                 <ButtonGroup
