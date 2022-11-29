@@ -23,18 +23,18 @@ function App() {
       })
   }
 
-  // const postAPI = (post) => {
-  //   fetch('http://localhost:9000/props/', {
-  //     method: 'POST',
-  //     mode: 'cors',
-  //     headers: {
-  //       'Access-Control-Allow-Origin': '*',
-  //       'Content-Type': 'application/json'
-  //      },
-  //     body: JSON.stringify(post),
-  //     json: true
-  //   })
-  // }
+  const postNew = (post) => {
+    fetch('http://localhost:3001/', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+       },
+      body: JSON.stringify(post),
+      json: true
+    })
+  }
 
   useEffect(() => {
     callAPI()
@@ -49,7 +49,7 @@ function App() {
         "downs": 0,
         "addenda": []
       }
-      // postAPI(post)
+      postNew(post)
 
       // setNewOne(() =>  {
       //   return(
