@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./index.js",
+    entry: "./app.js",
     resolve: {
       fallback: {
         "url": require.resolve("url/"),
