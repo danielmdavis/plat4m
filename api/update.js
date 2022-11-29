@@ -19,7 +19,21 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
         data = JSON.stringify(data)
         return data
     }
-    
+
+    async function poster(payload) {
+         await client.connect()
+         console.log("Connected correctly to server")
+         const db = client.db("db")
+      
+         payload = JSON.parse(payload)
+      
+         const id = Object.values(payload)[0]
+         await db.collection("propositions").update(
+           { "id": id },
+           { $inc: {  "ups": 1 } }
+         )
+      }
 
 exports.getter = getter
+exports.poster = poster
 

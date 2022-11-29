@@ -17,15 +17,24 @@ app.use(function(req, res, next) {
 app.use(cors());
 
 let payload = []
-const dbdata = async function () {
+const getData = async function () {
     payload = await update.getter()
 }
-dbdata()
-console.log(payload)
+getData()
+// console.log(payload)
+
+// move to router (index.js)
+app.use(express.json())
 
 app.get('/', (req, res) => {
-        res.send(payload) 
+    res.send(payload) 
 })
+
+app.post('/', function(req, res) {
+    console.log(req.body);
+    update.poster(JSON.stringify(req.body))
+    res.end();
+  })
 
 // const getData = async function (request, response) {
 //     // let data = getJsonData(basePathToData, 'data.json');
