@@ -21,7 +21,6 @@ const getData = async function () {
     payload = await update.getter()
 }
 getData()
-// console.log(payload)
 
 // move to router (index.js)
 app.use(express.json())
@@ -31,8 +30,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', function(req, res) {
-    console.log(req.body);
-    update.poster(JSON.stringify(req.body))
+    update.poster(req.body)
     res.end();
   })
 
