@@ -11,8 +11,8 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
     async function getter() {
         await client.connect()
-        console.log("Connected correctly to server")
         const db = client.db("db")
+        console.log('foo')
         const returns = await db.collection("propositions").find()
         let data = []
         await returns.forEach(each => data.push(each))
@@ -22,7 +22,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
     async function poster(payload) {
         await client.connect()
-        console.log("Connected correctly to server")
+        console.log(payload)
         const db = client.db("db")
         db.collection("propositions").insertOne(payload)
       }

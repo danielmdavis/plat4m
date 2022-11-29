@@ -7,7 +7,7 @@ const app = express();
 
 const update = require('./update');
 const data = require('./data');
-const router = require('./routes/index');
+const router = require('./routes/router');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -31,7 +31,8 @@ app.get('/', (req, res) => {
 
 app.post('/', function(req, res) {
     update.poster(req.body)
-    res.end();
+    res.end()
+    getData()
   })
 
 // const getData = async function (request, response) {
