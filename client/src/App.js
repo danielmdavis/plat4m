@@ -61,11 +61,12 @@ function App() {
       //       downs={0}
       //       />
       // )})
-
+    
       setInputText('')
       window.scrollTo(0,document.body.scrollHeight)
       setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
     }
+    setTimeout(() => { callAPI() }, 0.05)
   }
 
   // function handleAddendum(id, text) {

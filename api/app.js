@@ -24,11 +24,9 @@ getData()
 
 // move to router (index.js)
 app.use(express.json())
-
 app.get('/', (req, res) => {
     res.send(payload) 
 })
-
 app.post('/', function(req, res) {
     update.poster(req.body)
     res.end()
