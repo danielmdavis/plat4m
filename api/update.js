@@ -23,10 +23,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
     async function poster(payload) {
         await client.connect()
         console.log("Connected correctly to server")
-        console.log(payload)
         const db = client.db("db")
-    
-    //  const id = Object.values(payload)[0]
         db.collection("propositions").insertOne(payload)
       }
 
