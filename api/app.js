@@ -20,14 +20,14 @@ const getData = async function (req, res) {
    const payload = await update.getter()
     return res.send(payload)
 }
-// const getOne = async function (req, res) {
-//     // let data = getJsonData(basePathToData, 'data.json');
-//     const data = await update.getOne(id)
-//     return res.send(data)
-//   }
+const getOne = async function (req, res) {
+    const data = await update.getOne(18)
+    return res.send(data)
+  }
 
 app.use(express.json())
-app.get('/', getData) 
+app.get('/', getData)
+// app.get('/:id', getOne)
 app.use('/', router)
 
 

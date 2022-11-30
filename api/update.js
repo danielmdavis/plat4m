@@ -6,22 +6,22 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
     async function getter() {
         await client.connect()
         const db = client.db("db")
-        const returns = await db.collection("propositions").find()
+        let returns = await db.collection("propositions").find()
         let data = []
         await returns.forEach(each => data.push(each))
         data = JSON.stringify(data)
         return data
     }
 
-    async function getOne(id) {
-        await client.connect()
-        const db = client.db("db")
-        const returns = await db.collection("propositions").findOne({ "id": id })
-        let data = []
-        await returns.forEach(each => data.push(each))
-        data = JSON.stringify(data)
-        return data
-    }
+    // async function getOne(id) {
+    //     await client.connect()
+    //     const db = client.db("db")
+    //     const returns = await db.collection("propositions").findOne({ "id": id })
+    //     let data = []
+    //     await returns.forEach(each => data.push(each))
+    //     data = JSON.stringify(data)
+    //     return data
+    // }
 
     async function poster(payload) {
         await client.connect()
@@ -31,5 +31,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
       }
 
 exports.getter = getter
+// exports.getOne = getOne 
 exports.poster = poster
 
