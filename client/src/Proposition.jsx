@@ -12,6 +12,19 @@ export default function Proposition(props) {
     let [noMock, setNoMock] = useState(0)
     let [addenEntry, setAddenEntry] = useState()
 
+    const updateOne = (id) => {
+      fetch('http://localhost:3001/', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json'
+         },
+        body: JSON.stringify(id),
+        json: true
+      })
+    }
+
     const handleCancel = () => {
       setAddenEntry()
     }
@@ -24,11 +37,9 @@ export default function Proposition(props) {
     }
 
     async function handleClickYes() {
-        // setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
       }
       async function handleClickYesAnd() {
-        // setYesMock(yesMock + 1)
         // postAPI({"update": props.id})
         setAddenEntry(
           <NewAddendum 

@@ -12,7 +12,7 @@ function App() {
   let [quorum] = useState(9)
   let [inputText, setInputText] = useState('')
 
-  const callAPI = () => {
+  const getAll = () => {
     fetch('http://localhost:3001/', {
       mode: 'cors',
       headers: { 'Access-Control-Allow-Origin': '*' }
@@ -37,7 +37,7 @@ function App() {
   }
 
   useEffect(() => {
-    callAPI()
+    getAll()
   }, [])
 
   function handleSubmit() {
@@ -55,7 +55,7 @@ function App() {
       window.scrollTo(0,document.body.scrollHeight)
       setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
     }
-    setTimeout(() => { callAPI() }, 0.05)
+    setTimeout(() => { getAll() }, 0.05)
   }
 
   // function handleAddendum(id, text) {
