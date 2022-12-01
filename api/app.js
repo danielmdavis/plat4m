@@ -25,9 +25,12 @@ const getOne = async function (req, res) {
     return res.send(data)
   }
 
+
+
+
 app.use(express.json())
-app.get('/', getData)
-// app.get('/:id', getOne)
+app.use('/:id', getOne)
+app.use('/', getData)
 app.use('/', router)
 
 
