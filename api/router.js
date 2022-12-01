@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var update = require('./update');
+var middleware = require('./middleware');
 
 router.use(express.json())
 
@@ -14,11 +14,17 @@ router.get('/:id', (req, res) => {
         return;
     }
 }
-  res.render('index', { title: 'Express' })
+  res.render('', { title: 'Express' })
 })
 
 router.post('/', function(req, res) {
-    update.poster(req.body)
+    middleware.poster(req.body)
+    res.end()
+  })
+
+router.put('/:id', function(req, res) {
+    console.log('foo')
+    middleware.oneUpvoter(req.body.id)
     res.end()
   })
 
