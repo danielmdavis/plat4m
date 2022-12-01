@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 
-const middleware = require('./middleware');
+const update = require('./update');
 const data = require('./data');
 const router = require('./router');
 
@@ -17,23 +17,21 @@ app.use(function(req, res, next) {
 app.use(cors());
 
 const getData = async function (req, res) {
-    const payload = await middleware.getter()
+   const payload = await update.getter()
     return res.send(payload)
 }
 const getOne = async function (req, res) {
-    const prop = await middleware.oneGetter(parseInt(req.params.id))
-    return res.send(prop) 
-}
-// const upvoteOne = async function (req, res) {
-//     const prop = await middleware.oneUpvoter(parseInt(req.params.id))
-//     return res.send(prop) 
-// }
+    const data = await update.getOne(18)
+    return res.send(data)
+  }
+
+
+
 
 app.use(express.json())
 app.use('/:id', getOne)
-// app.use('/:id', upvoteOne)
 app.use('/', getData)
-// app.use('/', router)
+app.use('/', router)
 
 
 
