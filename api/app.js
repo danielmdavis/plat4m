@@ -21,21 +21,28 @@ const getData = async function (req, res) {
     return res.send(payload)
 }
 const getOne = async function (req, res) {
+    console.log(req.params.id)
     const prop = await middleware.oneGetter(parseInt(req.params.id))
     return res.send(prop) 
 }
-// const upvoteOne = async function (req, res) {
-//     const prop = await middleware.oneUpvoter(parseInt(req.params.id))
-//     return res.send(prop) 
-// }
+const upvoteOne = async function (req, res) {
+    const prop = await middleware.oneUpvoter(parseInt(req.params.id))
+    return res.send(prop) 
+}
 
 app.use(express.json())
-app.use('/:id', getOne)
+
 // app.use('/:id', upvoteOne)
-app.use('/', getData)
+app.use('/:id', getOne)
 // app.use('/', router)
 
+app.post('/', function(req, res) {
+    middleware.poster(req.body)
+    res.end()
+    getData()
+  })
 
+app.use('/', getData)
 
 
 app.listen(3001, () => { })
