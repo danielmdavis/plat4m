@@ -18,7 +18,6 @@ export default function EnterProposal(props) {
   //   setDateRange('')
   //   setSummary('')
   //   setTags([])
-  //   console.log(postLoad);
   //   // this.props.handlePost(postLoad)
   // }
 
