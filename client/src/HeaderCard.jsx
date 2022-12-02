@@ -11,16 +11,17 @@ export default function HeaderCard(props) {
     return (
         <Card className='app-title'>
             
-            <h1 className='title-header'>plat4m <span style={{ color: 'rgb(246,0,87)' }}> [v2] </span> </h1> 
+            <span className='title-header'>plat4m <span style={{ color: 'rgb(246,0,87)' }}> [v2] </span> </span> 
+                    <br />             
                     <span className='subtitle'>“ The Platform for Platforms”</span>
                     <br /><br />
                     <div style={{ textAlign: 'left', padding: '8px' }}>
                     <Accordion style={{ backgroundColor: 'rgb(246, 246, 246)' }}>
                         <AccordionSummary>
-                        <span className='header-col' style={{ fontFamily: 'Raleway' }}>A Guide to Use</span>
+                        <span className='header-col' style={{ fontFamily: 'Raleway' }}>Users Guide <span style={{ color: 'rgb(175, 175, 175)', fontSize: '15px' }}>▼</span></span>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <span className='header-col'>Plat4m is a tool for communities of thought such as 
+                            <span className='header-col'>Plat4m is a tool built for communities of thought such as 
                                 political parties and advocacy groups to democratically develop
                                 their formal program.</span>
                             <span className='header-col'>Propose a point of shared

@@ -40,6 +40,8 @@ html {
 .title-header {
   font-family: 'Raleway' !important;
   font-weight: 700 !important;
+  font-size: 58px !important;
+  margin: 10px;
 }
 .subtitle {
   font-family: 'Parisienne' !important;
