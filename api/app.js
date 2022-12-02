@@ -45,7 +45,11 @@ app.post('/:id', async function(req, res) {
     res.end()
   })
 
-// poc
+app.use('/:id/:id2', async function (req, res) {
+    const addendum = await middleware.oneAddendumGetter(parseInt(req.params.id), parseInt(req.params.id2))
+    return res.send(addendum)
+})
+
 app.use('/:id', getOne)
 
 
