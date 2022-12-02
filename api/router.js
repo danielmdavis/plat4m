@@ -18,13 +18,11 @@ router.get('/', (req, res) => {
 // })
 
 router.post('/', function(req, res) {
-    console.log(req.body)
     middleware.poster(req.body)
     res.end()
   })
 
 // router.put('/', function(req, res) {
-//     console.log('foo')
 //     middleware.oneUpvoter(req.body.id)
 //     res.end()
 //   })

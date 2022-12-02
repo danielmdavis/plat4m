@@ -24,9 +24,9 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
     async function oneUpvoter(id) {
         await client.connect()
         const db = client.db('db')
-        await db.collection("test").updateOne(
-            { "id": id },
-            { $inc: {  "ups": 1 } }
+        await db.collection('test').updateOne(
+            { 'id': id },
+            { $inc: {  'ups': 1 } }
         )
     }
 

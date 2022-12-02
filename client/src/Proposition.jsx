@@ -12,15 +12,15 @@ export default function Proposition(props) {
     let [noMock, setNoMock] = useState(0)
     let [addenEntry, setAddenEntry] = useState()
 
-    const updateOne = (id) => {
-      fetch('http://localhost:3001/', {
+    const incrementYes = (id) => {
+      fetch(`http://localhost:3001/${id}`, {
         method: 'POST',
         mode: 'cors',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
          },
-        body: JSON.stringify(id),
+        body: JSON.stringify({ "vote": "up" }),
         json: true
       })
     }
@@ -37,7 +37,8 @@ export default function Proposition(props) {
     }
 
     async function handleClickYes() {
-        // postAPI({"update": props.id})
+        console.log(props.id)
+        incrementYes(props.id)
       }
       async function handleClickYesAnd() {
         // postAPI({"update": props.id})
