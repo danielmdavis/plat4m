@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Parisienne&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
 :root {
- --offw: rgb(245, 245, 245);
+ --offw: rgb(246, 246, 246);
  --offw2: rgb(225, 225, 225);
  --red: rgb(246,0,87);
  --blue: rgb(64,80,181);
@@ -39,6 +40,14 @@ html {
 .title-header {
   font-family: 'Raleway' !important;
   font-weight: 700 !important;
+}
+.subtitle {
+  font-family: 'Parisienne' !important;
+  font-size: 28px;
+}
+.header-col {
+  margin: 0px 18px;
+  text-align: justify !important;
 }
 
 .proposition {
@@ -95,6 +104,7 @@ html {
   text-align: left;
   font-family: 'Roboto' !important;
   font-size: 16px;
+  background-color: var(--offw) !important;
 }
 .proposal {
   display: flex;
@@ -117,6 +127,7 @@ html {
   margin: 28px 8px;
   width: 105%;
   min-height: 50px;
+  background-color: var(--offw) !important;
 }
 .new-addendum-box {
   margin: 0px 5px !important;
@@ -124,6 +135,7 @@ html {
   min-height: 45px;
   text-align: left;
   font-size: 16px;
+  background-color: var(--offw) !important;
 }
 
 .blue {

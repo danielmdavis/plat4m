@@ -44,7 +44,6 @@ app.post('/', function(req, res) {
 
 app.use('/', getData)
 
-
 app.listen(3001, () => { })
 
 
