@@ -34,8 +34,10 @@ const upvoteOne = async function (req, res) {
 app.use(express.json())
 
 // app.use('/:id', upvoteOne)
-app.post('/:id', function(req, res) {
-    console.log(req.body)
+app.post('/:id', async function(req, res) {
+    if (req.body.vote === 'up') {
+        res.send(await middleware.oneUpvoter(parseInt(req.params.id)))
+    }
     // middleware.poster(req.body)
     res.end()
     // getData()
