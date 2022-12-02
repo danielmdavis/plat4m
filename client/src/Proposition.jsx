@@ -24,6 +24,18 @@ export default function Proposition(props) {
         json: true
       })
     }
+    const incrementNo = (id) => {
+      fetch(`http://localhost:3001/${id}`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json'
+         },
+        body: JSON.stringify({ "vote": "down" }),
+        json: true
+      })
+    }
 
     const handleCancel = () => {
       setAddenEntry()
@@ -36,10 +48,9 @@ export default function Proposition(props) {
       props.cheesyUpdate()
     }
 
-    async function handleClickYes() {
-        console.log(props.id)
-        incrementYes(props.id)
-      }
+    async function handleClickYes() { incrementYes(props.id) }
+    async function handleClickNo() { incrementNo(props.id) }
+
       async function handleClickYesAnd() {
         // postAPI({"update": props.id})
         setAddenEntry(
@@ -50,10 +61,6 @@ export default function Proposition(props) {
             propId={props.id}
           />
         )
-      }
-      async function handleClickNo() {
-        // setNoMock(noMock + 1)
-        // postAPI({"update": props.id})
       }
       async function handleClickNoBut() {
         // setNoMock(noMock + 1)

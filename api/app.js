@@ -16,6 +16,7 @@ app.use(function(req, res, next) {
   })
 app.use(cors());
 
+
 const getData = async function (req, res) {
     const payload = await middleware.getter()
     return res.send(payload)
@@ -24,25 +25,27 @@ const getOne = async function (req, res) {
     const prop = await middleware.oneGetter(parseInt(req.params.id))
     return res.send(prop) 
 }
-const upvoteOne = async function (req, res) {
-    console.log('foo')
-    // console.log(req.params)
-    const prop = await middleware.oneUpvoter(parseInt(req.params.id))
-    return res.send(prop) 
-}
+// const upvoteOne = async function (req, res) {
+//     console.log('foo')
+//     // console.log(req.params)
+//     const prop = await middleware.oneUpvoter(parseInt(req.params.id))
+//     return res.send(prop) 
+// }
 
 app.use(express.json())
 
-// app.use('/:id', upvoteOne)
+// simple YES NO votes
 app.post('/:id', async function(req, res) {
     if (req.body.vote === 'up') {
         res.send(await middleware.oneUpvoter(parseInt(req.params.id)))
+        
+    } else if (req.body.vote === 'down') {
+        res.send(await middleware.oneDownvoter(parseInt(req.params.id)))
     }
-    // middleware.poster(req.body)
     res.end()
-    // getData()
   })
 
+// poc
 app.use('/:id', getOne)
 
 

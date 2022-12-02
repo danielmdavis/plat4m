@@ -25,9 +25,18 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
         console.log(id)
         await client.connect()
         const db = client.db('db')
-        await db.collection('test').updateOne(
+        await db.collection('propositions').updateOne(
             { 'id': id },
             { $inc: {  'ups': 1 } }
+        )
+    }
+    async function oneDownvoter(id) {
+        console.log(id)
+        await client.connect()
+        const db = client.db('db')
+        await db.collection('propositions').updateOne(
+            { 'id': id },
+            { $inc: {  'downs': 1 } }
         )
     }
 
@@ -40,5 +49,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 exports.getter = getter
 exports.oneGetter = oneGetter 
 exports.oneUpvoter = oneUpvoter 
+exports.oneDownvoter = oneDownvoter 
 exports.poster = poster
 
