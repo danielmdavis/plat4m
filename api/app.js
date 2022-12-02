@@ -34,13 +34,15 @@ const getOne = async function (req, res) {
 
 app.use(express.json())
 
-// simple YES NO votes
+// simple YES NO votes ; addendum post
 app.post('/:id', async function(req, res) {
     if (req.body.vote === 'up') {
         res.send(await middleware.oneUpvoter(parseInt(req.params.id)))
         
     } else if (req.body.vote === 'down') {
         res.send(await middleware.oneDownvoter(parseInt(req.params.id)))
+    } else {
+        res.send(await middleware.addendumPoster(req.params.id, req.body))
     }
     res.end()
   })
@@ -56,7 +58,7 @@ app.use('/:id', getOne)
 // app.use('/', router)
 
 app.post('/', function(req, res) {
-    middleware.poster(req.body)
+    middleware.propPoster(req.body)
     res.end()
     // getData()
   })
