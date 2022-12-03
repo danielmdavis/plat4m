@@ -11,6 +11,7 @@ function App() {
   let [data, setGet] = useState([])
   let [quorum] = useState(9)
   let [inputText, setInputText] = useState('')
+  let [showClosed, setShowClosed] = useState(false)
 
   const getAll = () => {
     fetch('http://localhost:3001/', {
@@ -58,22 +59,9 @@ function App() {
     setTimeout(() => { getAll() }, 0.05)
   }
 
-  // function handleAddendum(id, text) {
-  //   let update = data.find((item, i) => {
-  //     if (item.id === id) {
-  //         data[i] = { 
-  //           id: data[i].id, 
-  //           text: data[i].text,
-  //           ups: data[i].ups,
-  //           downs: data[i].downs,
-  //           addenda: [{ "claim": text, "key": data[i].addenda.length }]
-  //         }
-  //         setDummy(dummyData)
-  //         return true
-  //     }
-  //   })
-    
-  // }
+  function handleShowClosed() {
+    setShowClosed(!showClosed)
+  }
 
   const propositions = data.map((item) => {
     return(
@@ -86,6 +74,7 @@ function App() {
         addenda={item.addenda}
         ups={item.ups}
         downs={item.downs}
+        showClosed={showClosed}
         // handleAddendum={handleAddendum}
         />
     )})
@@ -93,7 +82,7 @@ function App() {
   return (
     <div className="App"> 
       <br />
-      <HeaderCard />
+      <HeaderCard handleShowClosed={handleShowClosed} />
       {propositions} 
       {/* {newOne} */}
       <Card className='proposition' style={{ minHeight: '250px' }}>

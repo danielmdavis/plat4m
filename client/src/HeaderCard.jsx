@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
+import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel } from '@material-ui/core';
 
 
 
@@ -18,7 +18,7 @@ export default function HeaderCard(props) {
                     <div style={{ textAlign: 'left', padding: '8px' }}>
                     <Accordion style={{ backgroundColor: 'rgb(246, 246, 246)' }}>
                         <AccordionSummary>
-                        <span className='header-col' style={{ fontFamily: 'Raleway' }}>Users Guide <span style={{ color: 'rgb(175, 175, 175)', fontSize: '15px' }}>▼</span></span>
+                        <span className='header-col' style={{ fontFamily: 'Raleway, sans-serif' }}>Users Guide <span style={{ color: 'rgb(175, 175, 175)', fontSize: '15px' }}>▼</span></span>
                         </AccordionSummary>
                         <AccordionDetails>
                             <span className='header-col'>Plat4m is a tool built for communities of thought such as 
@@ -51,6 +51,10 @@ export default function HeaderCard(props) {
                         </AccordionDetails>
                     </Accordion>
                     </div>
+                    <div className='switches'>
+                        <FormControlLabel onClick={props.handleShowClosed} control={<Switch size='small' />} label="show closed" />
+                    </div>
+                    <span className='byline'>Plat4m was created in 2022 by github.com/danielmdavis</span>
         </Card>
     )
 }

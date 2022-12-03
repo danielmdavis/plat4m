@@ -93,17 +93,25 @@ export default function Proposition(props) {
 
     let status
     if (props.ups > props.majority) {
-        status = "passed"
+        status = 'passed'
     } else if (props.downs > props.majority) {
-        status = "failed"
+        status = 'failed'
     } else {
-        status = "open"
+        status = 'open'
     }
 
-
+    let closedVisibility = 'closed-visible'
+    if (!props.showClosed) {
+      if (status !== 'open') {
+        closedVisibility = 'closed-hidden'
+      }
+    } else {
+      closedVisibility = 'closed-visible'
+    }
+    
   
     return (
-        <Card className={`proposition ${status}`}>
+        <Card className={`proposition ${status} ${closedVisibility}`}>
             <VotesAndTitle
                 claim={props.claim}
                 // ups={props.ups}
