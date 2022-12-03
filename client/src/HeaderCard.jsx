@@ -23,22 +23,20 @@ export default function HeaderCard(props) {
                         <AccordionDetails>
                             <span className='header-col'>Plat4m is a tool built for communities of thought such as 
                                 political parties and advocacy groups to democratically develop
-                                their formal program.</span>
-                            <span className='header-col'>Propose a point of shared
-                                belief or purpose. The default threshhold for adoption is a
-                                simple majority of seven voters. <b>YES</b> and <b>NO</b> votes indicate
+                                their formal program. Propose a point of shared
+                                belief or purpose. <span className='blue'>YES</span> and <span className='red'>NO</span> votes indicate
                                 unqualitied support or rejection of a measure respectively.</span>
                             <span className='header-col'>Modify a proposition with an addendum. These too are subject to vote. 
                                 Because support for a motion may or may not be predicated upon adoption of a 
-                                given addendum, there are mechanisms for both. </span>
-                            <span className='header-col'>A vote of <b>YES AND</b> gives unqualified support for the
+                                given addendum, there are mechanisms for both. A vote of <span className='blue'>YES AND</span> gives 
+                                unqualified support for the
                                 measure while giving the opportunity to attach an addendum
                                 that substantially interprets or expands the proposition.</span>
-                            <span className='header-col'><b>NO BUT</b> is the vote-contingent addendum option.
-                                It indicates that, the proposition being what it is, the voter
+                            <span className='header-col'><span className='red'>NO BUT</span> is 
+                                the vote-contingent addendum option. It indicates that, the proposition being what it is, the voter
                                 must reject it; but given the acceptance of the proposed
-                                modification, they will support it. <b>NO BUT</b> addenda are more
-                                likely to attach crucial distinctions or ammendments. No
+                                modification, they will support it. <span className='red'>NO BUT</span> addenda 
+                                are more likely to attach crucial distinctions or ammendments. No
                                 vote is cast at the time of the attachment of a predicate
                                 addendum, as the outcome of the vote in question overall is
                                 now determined by the outcome of the addendum. This kind is

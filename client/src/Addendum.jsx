@@ -12,7 +12,7 @@ export default function Addendum(props) {
         >
         No
       </Button>
-      <Card className='addendum-inner' style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'GhostWhite' }}>
+      <Card className='addendum-inner' style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'rgb(246, 246, 246)' }}>
         {props.claim}
 
       </Card>

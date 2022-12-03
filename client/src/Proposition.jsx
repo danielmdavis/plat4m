@@ -52,7 +52,6 @@ export default function Proposition(props) {
     async function handleClickNo() { incrementNo(props.id) }
 
       async function handleClickYesAnd() {
-        // postAPI({"update": props.id})
         setAddenEntry(
           <NewAddendum 
             handleCancel={handleCancel} 
@@ -63,8 +62,6 @@ export default function Proposition(props) {
         )
       }
       async function handleClickNoBut() {
-        // setNoMock(noMock + 1)
-        // postAPI({"update": props.id})
         setAddenEntry(
           <NewAddendum 
             predicate='yes' 
@@ -85,7 +82,7 @@ export default function Proposition(props) {
             <Addendum
               key={addendum.key}
               claim={addendum.text}
-              // predicate={addendum.predicate}
+              predicate={addendum.predicate}
             />
         )})
 

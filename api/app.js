@@ -42,6 +42,7 @@ app.post('/:id', async function(req, res) {
     } else if (req.body.vote === 'down') {
         res.send(await middleware.oneDownvoter(parseInt(req.params.id)))
     } else {
+        
         res.send(await middleware.addendumPoster(req.params.id, req.body))
     }
     res.end()

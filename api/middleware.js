@@ -35,7 +35,6 @@ async function oneAddendumGetter(id, id2) {
 }
 
 async function oneUpvoter(id) {
-    console.log(id)
     await client.connect()
     const db = client.db('db')
     await db.collection('propositions').updateOne(
@@ -59,21 +58,12 @@ async function propPoster(payload) {
 }
     
 async function addendumPoster(id, payload) {
-    console.log(id)
-    console.log(payload)
     await client.connect()
     const db = client.db('db')
-    await db.collection('propositions').update(
+    console.log(id)
+    await db.collection('propositions').updateOne(
         { 'id': id },
-        { $push: {  
-            "addenda": {
-                "id": 1,
-                "text": "TEST",
-                "ups": 1,
-                "downs": 0,
-                "predicate": false
-            } 
-        } }
+        { $push: { 'addenda': payload } }
     )
 }
 

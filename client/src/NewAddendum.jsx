@@ -26,7 +26,7 @@ export default function NewAddendum(props) {
         onChange={(e) => {setInputText(e.target.value)}} 
         value={inputText}
         className='new-addendum-box'
-        style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'GhostWhite' }}
+        style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'rgb(246, 246, 246)' }}
         variant='outlined'
         label='Propose an Addendum'
       />
