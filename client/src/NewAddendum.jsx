@@ -13,7 +13,6 @@ export default function NewAddendum(props) {
   // }
 
   const postNew = (post) => {
-    console.log('foo')
     fetch(`http://localhost:3001/${props.propId}`, {
       method: 'POST',
       mode: 'cors',
@@ -27,18 +26,24 @@ export default function NewAddendum(props) {
   }
 
   function handleSubmit() {
-    console.log(props.addenda.length)
+    console.log(props.predicate)
+    let predication
+    if (props.predicate === 'yes') {
+      predication = true
+    } else {
+      predication = false
+    }
     if (inputText) {
       const post = {
         'id': props.addenda.length + 1,
         'text': inputText,
         'ups': 1,
         'downs': 0,
-        'predicate': props.predicate
+        'predicate': predication
       }
-      postNew(post)
-      props.handleCancel
+      postNew(post)  
     }
+    props.handleCancel()
   }
 
 
