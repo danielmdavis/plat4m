@@ -61,6 +61,7 @@ async function addendumPoster(id, payload) {
     await client.connect()
     const db = client.db('db')
     console.log(id)
+    console.log(payload)
     await db.collection('propositions').updateOne(
         { 'id': id },
         { $push: { 'addenda': payload } }

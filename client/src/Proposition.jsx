@@ -40,10 +40,7 @@ export default function Proposition(props) {
     const handleCancel = () => {
       setAddenEntry()
     }
-    // function handleSubmit() {
-    //   props.handleAddendum
-    //   // setAddenEntry()
-    // }
+ 
     function update() {
       props.cheesyUpdate()
     }
@@ -54,10 +51,10 @@ export default function Proposition(props) {
       async function handleClickYesAnd() {
         setAddenEntry(
           <NewAddendum 
-            handleCancel={handleCancel} 
-            handleRerender={update}
-            handleSubmit={props.handleAddendum}
-            propId={props.id}
+          handleCancel={handleCancel} 
+          handleRerender={update}
+          addenda={addenda}
+          propId={props.id}
           />
         )
       }
@@ -67,7 +64,7 @@ export default function Proposition(props) {
             predicate='yes' 
             handleCancel={handleCancel} 
             handleRerender={update}
-            handleSubmit={props.handleAddendum} 
+            addenda={addenda}
             propId={props.id}
           />
         )
