@@ -136,16 +136,17 @@ html {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  margin: 28px 8px;
+  margin: 8px 8px 28px 8px;
   width: 105%;
   min-height: 50px;
 }
 .new-addendum-box {
   margin: 0px 5px !important;
-  width: 55%;
+  width: 54.7%;
   min-height: 45px;
   text-align: left;
   font-size: 16px;
+  animation: fadein .666s;
 }
 
 .blue {
