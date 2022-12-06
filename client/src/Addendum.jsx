@@ -21,7 +21,7 @@ export default function Addendum(props) {
             variant="outlined"
             color="secondary"
           >
-            2
+            {props.downs}
           </Button>
         </span>
       </div>
@@ -30,7 +30,6 @@ export default function Addendum(props) {
       </Card>
       <div style={{ flexDirection: 'column' }}>
         <Button
-          style={{}}
           variant="contained"
           color="primary"
           style={{ marginTop: '-6px' }}
@@ -44,7 +43,7 @@ export default function Addendum(props) {
             variant="outlined"
             color="primary"
           >
-            3
+            {props.ups}
           </Button>
         </span>
       </div>

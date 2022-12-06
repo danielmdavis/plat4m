@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
-    "mongodb": "^4.12.1"
+    "mongodb": "^4.12.1",
+    "pg": "^8.8.0"
   }
 }

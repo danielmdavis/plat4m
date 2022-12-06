@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel } from '@material-ui/core';
+import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel, TextField } from '@material-ui/core';
 
 
 
@@ -23,7 +23,7 @@ export default function HeaderCard(props) {
                         <AccordionDetails>
                             <span className='header-col'>Plat4m is a tool built for communities of thought such as 
                                 political parties and advocacy groups to democratically develop
-                                their formal program. Propose a point of shared
+                                their formal program. Scroll to the bottom to propose a point of shared
                                 belief or purpose. <span className='blue'>YES</span> and <span className='red'>NO</span> votes indicate
                                 unqualitied support or rejection of a measure respectively.</span>
                             <span className='header-col'>Modify a proposition with an addendum. These too are subject to vote. 
@@ -50,7 +50,20 @@ export default function HeaderCard(props) {
                     </Accordion>
                     </div>
                     <div className='switches'>
-                        <FormControlLabel onClick={props.handleShowClosed} control={<Switch size='small' />} label="show closed" />
+                        <FormControlLabel labelPlacement='start' label='Show closed' onClick={props.handleShowClosed} control={<Switch size='small' />}  />
+                        <FormControlLabel labelPlacement='start' label='Quorum:&nbsp;' onChange={(e) => {props.setQuorum(e.target.value)}}
+                            control={
+                                <TextField
+                                style = {{width: 46, marginRight: '25px'}}
+                                inputProps={{ inputMode: 'numeric' }}
+                                hiddenLabel
+                                margin='none'
+                                defaultValue="9"
+                                variant="outlined"
+                                size="small"
+                                />
+                            } 
+                            />
                     </div>
                     <span className='byline'>Plat4m was created in 2022 by github.com/danielmdavis</span>
         </Card>

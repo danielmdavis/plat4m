@@ -9,7 +9,7 @@ import Proposition from './Proposition';
 function App() {
 
   let [data, setGet] = useState([])
-  let [quorum] = useState(9)
+  let [quorum, setQuorum] = useState(9)
   let [inputText, setInputText] = useState('')
   let [showClosed, setShowClosed] = useState(false)
 
@@ -78,18 +78,18 @@ function App() {
         // handleAddendum={handleAddendum}
         />
     )})
-    
+
+  console.log(quorum)
   return (
     <div className="App"> 
       <br />
-      <HeaderCard handleShowClosed={handleShowClosed} />
+      <HeaderCard handleShowClosed={handleShowClosed} setQuorum={setQuorum} />
       {propositions} 
-      {/* {newOne} */}
-      <Card className='proposition' style={{ minHeight: '250px' }}>
-        Propose a principle
+      <Card className='proposition' style={{ minHeight: '200px' }}>
+        <span style={{ }}>What value should we embrace?</span>
         <TextField onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'rgb(245, 245, 245)', margin: '20px' }} label="Propose a Tenet" variant="outlined" />
         <Button onClick={handleSubmit} variant="contained" color="primary" > Submit </ Button>
-      </ Card>
+      </Card>
     </div>
   )
 }

@@ -80,6 +80,8 @@ export default function Proposition(props) {
               key={addendum.key}
               claim={addendum.text}
               predicate={addendum.predicate}
+              ups={addendum.ups}
+              downs={addendum.downs}
             />
         )})
 
