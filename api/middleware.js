@@ -21,19 +21,29 @@ async function getAllProps() {
 async function getOneProp(id) {
   const client = new Client(credentials)
   await client.connect()
-  const now = await client.query('SELECT * FROM propositions WHERE propositions.id =\''+id+'\';')
+  const data = await client.query('SELECT * FROM propositions WHERE propositions.id =\''+id+'\';')
   await client.end()
-  return now
+  return data
+}
+
+async function getOnePropWithChildren(id) {
+  const client = new Client(credentials)
+  await client.connect()
+  const proposition = await client.query('SELECT * FROM propositions WHERE propositions.id =\''+id+'\';')
+  const addenda = await client.query('SELECT * FROM addenda WHERE addenda.prop_id =\''+id+'\';')
+  await client.end()
+  return [proposition, addenda]
 }
 
 async function getAddenda() {
   const client = new Client(credentials)
   await client.connect()
-  const now = await client.query('SELECT * FROM propositions INNER JOIN addenda ON propositions.id = addenda.prop_id;')
+  const data = await client.query('SELECT * FROM propositions INNER JOIN addenda ON propositions.id = addenda.prop_id;')
   await client.end()
-  return now
+  return data
 }
 
 exports.getAllProps = getAllProps
 exports.getOneProp = getOneProp
+exports.getOnePropWithChildren = getOnePropWithChildren
 exports.getAddenda = getAddenda
