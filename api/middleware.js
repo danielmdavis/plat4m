@@ -10,12 +10,20 @@ const credentials = {
     ssl: false
 }
 
+async function getCount() {
+  const client = new Client(credentials)
+  await client.connect()
+  const data = await client.query('SELECT COUNT(*) FROM propositions;')
+  await client.end()
+  return data
+}
+
 async function getAllProps() {
   const client = new Client(credentials)
   await client.connect()
-  const now = await client.query('SELECT * FROM propositions;')
+  const data = await client.query('SELECT * FROM propositions;')
   await client.end()
-  return now
+  return data
 }
 
 async function getOneProp(id) {
@@ -43,6 +51,7 @@ async function getAddenda() {
   return data
 }
 
+exports.getCount = getCount
 exports.getAllProps = getAllProps
 exports.getOneProp = getOneProp
 exports.getOnePropWithChildren = getOnePropWithChildren

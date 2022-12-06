@@ -1,29 +1,56 @@
+// for db
 const { Client } = require("pg");
 require('dotenv').config();
+const middleware = require('./middleware');
 
-const middleware = require('./middleware')
+// for api
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
+const app = express();
 
-const getAllProps = async function () {
-  const clientResult = await middleware.getAllProps()
-  console.log(clientResult.rows)
-}
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    next()
+  })
+app.use(cors())
 
-const getOneProp = async function (id) {
-  const clientResult = await middleware.getOneProp(id)
-  console.log(clientResult.rows)
-}
+
+
+// const getAllProps = async function () {
+//   const clientResult = await middleware.getAllProps()
+//   console.log(clientResult.rows)
+// }
+
+// const getOneProp = async function (id) {
+//   const clientResult = await middleware.getOneProp(id)
+//   console.log(clientResult.rows)
+// }
+
+// const getAddenda = async function () {
+//   const clientResult = await middleware.getAddenda()
+//   console.log(clientResult.rows)
+// }
 
 const getOnePropWithChildren = async function (id) {
   const clientResult = await middleware.getOnePropWithChildren(id)
-//   console.log(clientResult[0].rows)
-//   console.log(clientResult[1].rows)
-  let data = Object.assign(clientResult[0].rows, { 'addenda': clientResult[1].rows })
+  const data = Object.assign(clientResult[0].rows, { 'addenda': clientResult[1].rows })
   console.log(data)
 }
 
-const getAddenda = async function () {
-  const clientResult = await middleware.getAddenda()
-  console.log(clientResult.rows)
+const assembleAll = async function () {
+    let rows = await middleware.getCount()
+    rows = rows.rows[0].count
+    let payload = []
+    for (let i = 1; i <= rows; i++) {
+        payload.push(getOnePropWithChildren(i))
+        if (i == rows) {
+            return payload
+        }
+    }
 }
 
-getOnePropWithChildren(1)
+
+const foo = assembleAll()
+console.log(foo)
