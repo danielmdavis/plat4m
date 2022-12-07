@@ -58,6 +58,7 @@ export default function NewAddendum(props) {
         ✕
       </Button>
       <TextField
+        multiline='true' minRows='2'
         onChange={(e) => {setInputText(e.target.value)}} 
         value={inputText}
         className='new-addendum-box'

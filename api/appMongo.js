@@ -24,24 +24,16 @@ const getOne = async function (req, res) {
     const prop = await middleware.oneGetter(parseInt(req.params.id))
     return res.send(prop) 
 }
-// const upvoteOne = async function (req, res) {
-//     console.log('foo')
-//     // console.log(req.params)
-//     const prop = await middleware.oneUpvoter(parseInt(req.params.id))
-//     return res.send(prop) 
-// }
 
 app.use(express.json())
 
-// simple YES NO votes ; addendum post
+// simple YES NO votes, then addendum post
 app.post('/:id', async function(req, res) {
     if (req.body.vote === 'up') {
         res.send(await middleware.oneUpvoter(parseInt(req.params.id)))
-        
     } else if (req.body.vote === 'down') {
         res.send(await middleware.oneDownvoter(parseInt(req.params.id)))
-    } else {
-        
+    } else {  
         res.send(await middleware.addendumPoster(req.params.id, req.body))
     }
     res.end()

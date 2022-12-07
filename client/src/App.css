@@ -61,6 +61,10 @@ html {
 
 }
 
+.poster {
+  width: 50% !important;
+}
+
 .proposition {
   font-family: 'Lora';
   display: flex;

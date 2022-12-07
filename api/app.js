@@ -35,8 +35,9 @@ app.use(cors())
 
 const getOnePropWithChildren = async function (id) {
   const clientResult = await middleware.getOnePropWithChildren(id)
-  const data = Object.assign(clientResult[0].rows, { 'addenda': clientResult[1].rows })
+  const data = await Object.assign(clientResult[0].rows, { 'addenda': clientResult[1].rows })
   console.log(data)
+  return data
 }
 
 const assembleAll = async function () {
@@ -46,11 +47,15 @@ const assembleAll = async function () {
     for (let i = 1; i <= rows; i++) {
         payload.push(getOnePropWithChildren(i))
         if (i == rows) {
+            console.log('foo')
             return payload
         }
     }
 }
 
+const getData = async function () {
+    const data = await assembleAll()
+    return data
+}
 
-const foo = assembleAll()
-console.log(foo)
+getOnePropWithChildren(1)

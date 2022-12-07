@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./app.js",
+    entry: "./appMongo.js",
     resolve: {
       fallback: {
         "url": require.resolve("url/"),
