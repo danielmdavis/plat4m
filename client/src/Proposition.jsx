@@ -8,8 +8,6 @@ import NewAddendum from './NewAddendum';
 
 export default function Proposition(props) {
 
-    let [yesMock, setYesMock] = useState(0)
-    let [noMock, setNoMock] = useState(0)
     let [addenEntry, setAddenEntry] = useState()
 
     const incrementYes = (id) => {
@@ -78,6 +76,8 @@ export default function Proposition(props) {
           return(
             <Addendum
               key={addendum.key}
+              id={id}
+              propId={props.id}
               claim={addendum.text}
               predicate={addendum.predicate}
               ups={addendum.ups}

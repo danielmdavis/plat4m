@@ -79,15 +79,17 @@ function App() {
         />
     )})
 
-  console.log(quorum)
   return (
     <div className="App"> 
       <br />
       <HeaderCard handleShowClosed={handleShowClosed} setQuorum={setQuorum} />
       {propositions} 
-      <Card className='proposition poster' style={{ minHeight: '200px', width: '50%' }}>
+      <Card className='proposition poster' style={{ minHeight: '200px', width: '45%', padding: '20px' }}>
         <span style={{ }}>What value should we embrace?</span>
-        <TextField multiline='true' minRows='4' onChange={(e) => {setInputText(e.target.value)}} value={inputText} style={{ backgroundColor: 'rgb(245, 245, 245)', margin: '20px', width: '50%' }} variant="outlined" />
+        <TextField 
+          style={{ backgroundColor: 'rgb(245, 245, 245)', margin: '20px', width: '50%' }} variant="outlined"
+          multiline='true' minRows='4' 
+          onChange={(e) => {setInputText(e.target.value)}} value={inputText}  />
         <Button onClick={handleSubmit} variant="contained" color="primary" > Submit </ Button>
       </Card>
     </div>

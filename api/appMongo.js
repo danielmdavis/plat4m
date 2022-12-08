@@ -39,10 +39,22 @@ app.post('/:id', async function(req, res) {
     res.end()
   })
 
+app.post('/:id/:id2', async function(req, res) {
+    if (req.body.vote === 'up') {
+        res.send(await middleware.oneAddendumUpvoter(parseInt(req.params.id), parseInt(req.params.id2)))
+    } else if (req.body.vote === 'down') {
+        res.send(await middleware.oneAddendumDownvoter(parseInt(req.params.id), parseInt(req.params.id2)))
+    }
+    res.end()
+  })
+
 app.use('/:id/:id2', async function (req, res) {
     const addendum = await middleware.oneAddendumGetter(parseInt(req.params.id), parseInt(req.params.id2))
     return res.send(addendum)
 })
+
+
+
 
 app.use('/:id', getOne)
 
