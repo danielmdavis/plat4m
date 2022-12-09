@@ -101,8 +101,30 @@ html {
   display: none;
 
 }
-.closed-visible {
+
+.passed-addendum { 
+  margin: 2px 8px !important;
+
 }
+.failed-addendum { 
+  margin: 2px 8px !important;
+}
+.failed-addendum .addendum-inner {
+  background-color: var(--offw2) !important;
+  border: solid 1.7px var(--red); 
+  min-height: 31px !important;
+}
+.passed-addendum .addendum-inner {
+  background-color: var(--offw2) !important;
+  border: solid 1.7px var(--blue); 
+  min-height: 31px !important;
+}
+.passed-addendum .add-button, .failed-addendum .add-button {
+  display: none !important;
+}
+.add-button { }
+.open-addendum { }
+.closed-visible { }
 .closed-hidden {
   display: none !important;
 }

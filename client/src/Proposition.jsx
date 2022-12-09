@@ -82,6 +82,7 @@ export default function Proposition(props) {
               predicate={addendum.predicate}
               ups={addendum.ups}
               downs={addendum.downs}
+              majority={props.majority}
             />
         )})
 

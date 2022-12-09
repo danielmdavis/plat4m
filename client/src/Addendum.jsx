@@ -32,10 +32,19 @@ export default function Addendum(props) {
   async function handleClickYes() { incrementYes(props.propId, props.id) }
   async function handleClickNo() { incrementNo(props.propId, props.id) }
 
+  let status
+  if (props.ups > props.majority) {
+      status = 'passed-addendum'
+  } else if (props.downs > props.majority) {
+      status = 'failed-addendum'
+  } else {
+      status = 'open-addendum'
+  }
+
   return (
-    <div className='addendum'>
+    <div className={`addendum ${status}`}>
       <div style={{ flexDirection: 'column' }}>
-        <Button
+        <Button className='add-button'
           variant="contained"
           color="secondary"
           style={{ marginTop: '-6px' }}
@@ -45,7 +54,7 @@ export default function Addendum(props) {
         </Button>
         <br />
         <span style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
-          <Button
+          <Button className='add-button'
             style={{ fontSize: '16px', maxHeight: '36.5px', marginTop: '2px' }}
             variant="outlined"
             color="secondary"
@@ -58,7 +67,7 @@ export default function Addendum(props) {
         {props.claim}
       </Card>
       <div style={{ flexDirection: 'column' }}>
-        <Button
+        <Button className='add-button'
           variant="contained"
           color="primary"
           style={{ marginTop: '-6px' }}
@@ -68,7 +77,7 @@ export default function Addendum(props) {
         </Button>
         <br />
         <span style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
-          <Button
+          <Button className='add-button'
             style={{ fontSize: '16px', maxHeight: '36.5px', marginTop: '2px' }}
             variant="outlined"
             color="primary"
