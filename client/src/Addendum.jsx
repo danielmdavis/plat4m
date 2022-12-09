@@ -12,7 +12,7 @@ export default function Addendum(props) {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
        },
-      body: JSON.stringify({ "vote": "up" }),
+      body: JSON.stringify({ 'vote': 'up' }),
       json: true
     })
   }
@@ -24,7 +24,7 @@ export default function Addendum(props) {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
        },
-      body: JSON.stringify({ "vote": "down" }),
+      body: JSON.stringify({ 'vote': 'down' }),
       json: true
     })
   }

@@ -68,7 +68,7 @@ export default function Proposition(props) {
         )
       }
 
-      let id = 0
+      let id = -1
       let addenda
       if (props.addenda) {
         addenda = props.addenda.map((addendum) => {
