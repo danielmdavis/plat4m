@@ -87,10 +87,9 @@ async function addendumPoster(id, payload) {
     const db = client.db('db')
     console.log(id)
     console.log(payload)
-    db.setLogLevel(5)
     await db.collection('propositions').updateOne(
-        { 'id': id },
-        { $addToSet: { 'addenda': [payload] } }
+        { 'id': id }, 
+        { $push: { 'addenda': payload } }
     )
 }
 
