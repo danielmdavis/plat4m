@@ -69,24 +69,37 @@ export default function Proposition(props) {
       }
 
       let id = -1
-      let addenda
-      if (props.addenda) {
-        addenda = props.addenda.map((addendum) => {
-          id += 1
-          return(
-            <Addendum
-              key={addendum.key}
-              id={id}
-              propId={props.id}
-              claim={addendum.text}
-              predicate={addendum.predicate}
-              ups={addendum.ups}
-              downs={addendum.downs}
-              majority={props.majority}
-            />
-        )})
+      // console.log(props.addenda)
+      let addenda = props.addenda
+      let addendaMapped = []
+      let closedAddenda = []
+      let closedAddendaMapped = []
+      // if addenda  downs || ups >= majority, pop to closedAddenda and map - otherwise as is
 
+      addenda.forEach((addendum) => {
+        if ( (addendum != undefined) && ((addendum.ups || addendum.downs) >= props.majority) ) {
+          closedAddenda.push(addendum)
+          addenda.splice(addenda.indexOf(addendum), 1)
       }
+      })
+    
+
+      // if (props.addenda) {
+      //   addenda = props.addenda.map((addendum) => {
+      //     id += 1
+      //     return(
+      //       <Addendum
+      //         key={addendum.key}
+      //         id={addendum.id}
+      //         propId={props.id}
+      //         claim={addendum.text}
+      //         predicate={addendum.predicate}
+      //         ups={addendum.ups}
+      //         downs={addendum.downs}
+      //         majority={props.majority}
+      //       />
+      //   )})
+      // }
 
     let status
     if (props.ups > props.majority) {
@@ -116,7 +129,7 @@ export default function Proposition(props) {
                 ups={props.ups}
                 downs={props.downs}
                 />
-            <div className={status} style={{ flexDirection: 'row' }}>
+            <div className={`prop-hider ${status}`} style={{ flexDirection: 'row' }}>
                 <ButtonGroup
                 style={{ margin: '5px' }}
                 orientation="vertical"
@@ -139,7 +152,7 @@ export default function Proposition(props) {
                     <Button onClick={handleClickYesAnd}>Yes And</Button>
                 </ButtonGroup>
             </div>
-            {addenda}
+            {/* {addenda} */}
             {addenEntry}
         </Card>
     )

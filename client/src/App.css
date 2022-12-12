@@ -97,17 +97,17 @@ html {
   background-color: var(--offw) !important;
   border: solid 1.7px var(--red);
 }
-.passed > div, .failed > div {
+.passed .prop-hider, .failed .prop-hider {
   display: none;
 
 }
 
 .passed-addendum { 
-  margin: 2px 8px !important;
+  margin: 3.5px 8px !important;
 
 }
 .failed-addendum { 
-  margin: 2px 8px !important;
+  margin: 3.5px 8px !important;
 }
 .failed-addendum .addendum-inner {
   background-color: var(--offw2) !important;
