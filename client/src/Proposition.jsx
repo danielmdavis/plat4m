@@ -68,38 +68,50 @@ export default function Proposition(props) {
         )
       }
 
-      let id = -1
-      // console.log(props.addenda)
       let addenda = props.addenda
       let addendaMapped = []
       let closedAddenda = []
       let closedAddendaMapped = []
-      // if addenda  downs || ups >= majority, pop to closedAddenda and map - otherwise as is
 
       addenda.forEach((addendum) => {
-        if ( (addendum != undefined) && ((addendum.ups || addendum.downs) >= props.majority) ) {
+        if ( (addendum != undefined) && ((addendum.ups >= props.majority) || (addendum.downs >= props.majority)) ) {
           closedAddenda.push(addendum)
-          addenda.splice(addenda.indexOf(addendum), 1)
-      }
+          
+          // addenda.splice(addenda.indexOf(addendum), 1)
+        }
       })
-    
+      if (addenda) {
+        addendaMapped = addenda.map((addendum) => {
+          return(
+            <Addendum
+              key={addendum.key}
+              id={addendum.id}
+              propId={props.id}
+              claim={addendum.text}
+              predicate={addendum.predicate}
+              ups={addendum.ups}
+              downs={addendum.downs}
+              majority={props.majority}
+            />
+        )})
+      }
 
-      // if (props.addenda) {
-      //   addenda = props.addenda.map((addendum) => {
-      //     id += 1
-      //     return(
-      //       <Addendum
-      //         key={addendum.key}
-      //         id={addendum.id}
-      //         propId={props.id}
-      //         claim={addendum.text}
-      //         predicate={addendum.predicate}
-      //         ups={addendum.ups}
-      //         downs={addendum.downs}
-      //         majority={props.majority}
-      //       />
-      //   )})
-      // }
+      if (closedAddenda) {
+        closedAddendaMapped = closedAddenda.map((addendum) => {
+          return(
+            <Addendum
+              key={addendum.key}
+              id={addendum.id}
+              propId={props.id}
+              claim={addendum.text}
+              predicate={addendum.predicate}
+              ups={addendum.ups}
+              downs={addendum.downs}
+              majority={props.majority}
+            />
+        )})
+      }
+    console.log(closedAddendaMapped)
 
     let status
     if (props.ups > props.majority) {
@@ -119,13 +131,10 @@ export default function Proposition(props) {
       closedVisibility = 'closed-visible'
     }
     
-  
     return (
         <Card className={`proposition ${status} ${closedVisibility}`}>
             <VotesAndTitle
                 claim={props.claim}
-                // ups={props.ups}
-                // downs={props.downs}
                 ups={props.ups}
                 downs={props.downs}
                 />
@@ -152,7 +161,8 @@ export default function Proposition(props) {
                     <Button onClick={handleClickYesAnd}>Yes And</Button>
                 </ButtonGroup>
             </div>
-            {/* {addenda} */}
+            {/* {addendaMapped} */}
+            {closedAddendaMapped}
             {addenEntry}
         </Card>
     )
