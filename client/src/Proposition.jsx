@@ -69,19 +69,24 @@ export default function Proposition(props) {
       }
 
       let addenda = props.addenda
-      let addendaMapped = []
+      let openAddenda = []
+      let openAddendaMapped = []
       let closedAddenda = []
       let closedAddendaMapped = []
 
       addenda.forEach((addendum) => {
         if ( (addendum != undefined) && ((addendum.ups >= props.majority) || (addendum.downs >= props.majority)) ) {
           closedAddenda.push(addendum)
-          
+          // console.log(addenda)
+          // console.log(addenda.indexOf(addendum))
           // addenda.splice(addenda.indexOf(addendum), 1)
+        } else if (addendum != undefined) {
+          openAddenda.push(addendum)
         }
       })
-      if (addenda) {
-        addendaMapped = addenda.map((addendum) => {
+
+      if (openAddenda) {
+        openAddendaMapped = openAddenda.map((addendum) => {
           return(
             <Addendum
               key={addendum.key}
@@ -111,7 +116,6 @@ export default function Proposition(props) {
             />
         )})
       }
-    console.log(closedAddendaMapped)
 
     let status
     if (props.ups > props.majority) {
@@ -138,6 +142,7 @@ export default function Proposition(props) {
                 ups={props.ups}
                 downs={props.downs}
                 />
+            {closedAddendaMapped}    
             <div className={`prop-hider ${status}`} style={{ flexDirection: 'row' }}>
                 <ButtonGroup
                 style={{ margin: '5px' }}
@@ -161,8 +166,7 @@ export default function Proposition(props) {
                     <Button onClick={handleClickYesAnd}>Yes And</Button>
                 </ButtonGroup>
             </div>
-            {/* {addendaMapped} */}
-            {closedAddendaMapped}
+            {openAddendaMapped}
             {addenEntry}
         </Card>
     )
