@@ -113,6 +113,7 @@ export default function Proposition(props) {
               ups={addendum.ups}
               downs={addendum.downs}
               majority={props.majority}
+              showClosed={props.showClosed}
             />
         )})
       }
@@ -142,6 +143,7 @@ export default function Proposition(props) {
                 ups={props.ups}
                 downs={props.downs}
                 />
+            <span style={{ height: '20px' }} ></span>
             {closedAddendaMapped}    
             <div className={`prop-hider ${status}`} style={{ flexDirection: 'row' }}>
                 <ButtonGroup

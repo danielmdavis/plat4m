@@ -36,7 +36,12 @@ export default function Addendum(props) {
   if (props.ups > props.majority) {
       status = 'passed-addendum'
   } else if (props.downs > props.majority) {
-      status = 'failed-addendum'
+      if (!props.showClosed) {
+        status = 'hidden-failed-addendum'
+      } else {
+        status = 'failed-addendum'
+      }
+      
   } else {
       status = 'open-addendum'
   }
