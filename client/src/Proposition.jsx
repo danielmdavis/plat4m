@@ -55,6 +55,7 @@ export default function Proposition(props) {
           propId={props.id}
           />
         )
+        incrementYes(props.id)
       }
       async function handleClickNoBut() {
         setAddenEntry(
@@ -77,9 +78,6 @@ export default function Proposition(props) {
       addenda.forEach((addendum) => {
         if ( (addendum != undefined) && ((addendum.ups >= props.majority) || (addendum.downs >= props.majority)) ) {
           closedAddenda.push(addendum)
-          // console.log(addenda)
-          // console.log(addenda.indexOf(addendum))
-          // addenda.splice(addenda.indexOf(addendum), 1)
         } else if (addendum != undefined) {
           openAddenda.push(addendum)
         }
@@ -97,6 +95,8 @@ export default function Proposition(props) {
               ups={addendum.ups}
               downs={addendum.downs}
               majority={props.majority}
+              incrementYes={incrementYes}
+              incrementNo={incrementNo}
             />
         )})
       }
@@ -114,6 +114,8 @@ export default function Proposition(props) {
               downs={addendum.downs}
               majority={props.majority}
               showClosed={props.showClosed}
+              incrementYes={incrementYes}
+              incrementNo={incrementNo}
             />
         )})
       }

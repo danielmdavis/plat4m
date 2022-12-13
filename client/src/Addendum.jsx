@@ -29,21 +29,23 @@ export default function Addendum(props) {
     })
   }
 
+
   async function handleClickYes() { incrementYes(props.propId, props.id) }
   async function handleClickNo() { incrementNo(props.propId, props.id) }
 
-  let status
+  let status // assigns styles, and calls api if predicate 🤷
   if (props.ups > props.majority) {
-      status = 'passed-addendum'
+    status = 'passed-addendum'
+    if (props.predicate) { props.incrementYes(props.propId) }
   } else if (props.downs > props.majority) {
-      if (!props.showClosed) {
-        status = 'hidden-failed-addendum'
-      } else {
-        status = 'failed-addendum'
-      }
-      
+    if (!props.showClosed) {
+      status = 'hidden-failed-addendum'
+    } else {
+      status = 'failed-addendum'
+    }
+    if (props.predicate) { props.incrementNo(props.propId) }
   } else {
-      status = 'open-addendum'
+    status = 'open-addendum'
   }
   let statusVariant
   if (props.ups > props.majority || props.downs > props.majority) {
