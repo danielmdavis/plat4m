@@ -118,12 +118,23 @@ html {
   border: solid 1.7px var(--red); 
   min-height: 31px !important;
   font-family: 'Lora' !important;
+  display: list-item;
+  list-style: disc;
+  list-style-position: inside;
+  margin: -50px 0px !important;
+  text-decoration: line-through;
+  width: 53%
 }
 .passed-addendum .addendum-inner {
   background-color: white !important;
-  border: solid 1.7px var(--blue); 
+  border: none;
   min-height: 31px !important;
   font-family: 'Lora' !important;
+  display: list-item;
+  list-style: disc;
+  list-style-position: inside;
+  margin: -50px 0px !important;
+  width: 53%
 }
 .passed-addendum .add-button, .failed-addendum .add-button {
   display: none !important;

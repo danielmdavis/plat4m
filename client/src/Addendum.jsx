@@ -45,6 +45,12 @@ export default function Addendum(props) {
   } else {
       status = 'open-addendum'
   }
+  let statusVariant
+  if (props.ups > props.majority || props.downs > props.majority) {
+    statusVariant = 'outlined'
+  } else {
+    statusVariant = 'contained'
+  }
 
   return (
     <div className={`addendum ${status}`}>
@@ -68,7 +74,7 @@ export default function Addendum(props) {
           </Button>
         </span>
       </div>
-      <Card className='addendum-inner' style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'rgb(246, 246, 246)' }}>
+      <Card className='addendum-inner' variant={statusVariant} style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'rgb(246, 246, 246)' }}>
         {props.claim}
       </Card>
       <div style={{ flexDirection: 'column' }}>

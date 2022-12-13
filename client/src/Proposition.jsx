@@ -143,9 +143,10 @@ export default function Proposition(props) {
                 ups={props.ups}
                 downs={props.downs}
                 />
-            <span style={{ height: '20px' }} ></span>
+            <span style={{ height: '70px' }} ></span>
+            
             {closedAddendaMapped}    
-            <div className={`prop-hider ${status}`} style={{ flexDirection: 'row' }}>
+            <div className={`prop-hider ${status}`} style={{ marginTop: '-50px', flexDirection: 'row' }}>
                 <ButtonGroup
                 style={{ margin: '5px' }}
                 orientation="vertical"
