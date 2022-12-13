@@ -30,20 +30,37 @@ export default function Addendum(props) {
   }
 
 
-  async function handleClickYes() { incrementYes(props.propId, props.id) }
-  async function handleClickNo() { incrementNo(props.propId, props.id) }
+  async function handleClickYes() { 
+    incrementYes(props.propId, props.id) 
+    // if (props.predicate && props.ups > props.majority - 1) { props.incrementYes(props.propId) }
+    console.log(props.ups)
+    console.log(props.majority - 1)
+    if (props.predicate && props.ups > props.majority - 1) {
+    
+     }
+  }
+  async function handleClickNo() { 
+    incrementNo(props.propId, props.id) 
+    // if (props.predicate && props.downs > props.majority - 1) { props.incrementNo(props.propId) }
+    console.log(props.downs)
+    console.log(props.majority - 1)
+    if (props.predicate && props.downs > props.majority - 1) {
+    
+     }
+  }
 
-  let status // assigns styles, and calls api if predicate 🤷
+  
+  
+
+  let status
   if (props.ups > props.majority) {
     status = 'passed-addendum'
-    if (props.predicate) { props.incrementYes(props.propId) }
   } else if (props.downs > props.majority) {
     if (!props.showClosed) {
       status = 'hidden-failed-addendum'
     } else {
       status = 'failed-addendum'
     }
-    if (props.predicate) { props.incrementNo(props.propId) }
   } else {
     status = 'open-addendum'
   }
