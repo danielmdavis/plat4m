@@ -12,6 +12,7 @@ function App() {
   let [quorum, setQuorum] = useState(9)
   let [inputText, setInputText] = useState('')
   let [showClosed, setShowClosed] = useState(false)
+  let [fooState, setFooState] = useState(true)
 
   const getAll = () => {
     fetch('http://localhost:3001/', {
@@ -75,7 +76,7 @@ function App() {
         ups={item.ups}
         downs={item.downs}
         showClosed={showClosed}
-        // handleAddendum={handleAddendum}
+        getAll={getAll}
         />
     )})
 
