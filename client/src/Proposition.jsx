@@ -12,6 +12,7 @@ export default function Proposition(props) {
     props.getAll()
   }, [handleClickYes, handleClickNo, handleClickYesAnd, handleClickNoBut])
 
+
   let [addenEntry, setAddenEntry] = useState()
 
   const incrementYes = (id) => {

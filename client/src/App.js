@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import HeaderCard from './HeaderCard';
 import Proposition from './Proposition';
+import Guide from './Guide';
+import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel } from '@material-ui/core';
 
 function App() {
 
@@ -57,7 +59,6 @@ function App() {
       window.scrollTo(0,document.body.scrollHeight)
       setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
     }
-    setTimeout(() => { getAll() }, 0.05)
   }
 
   function handleShowClosed() {
@@ -82,8 +83,10 @@ function App() {
 
   return (
     <div className="App"> 
+      <span style={{ marginTop: '-25px' }}></span>
+      <HeaderCard handleShowClosed={handleShowClosed} setQuorum={setQuorum} style={{ zIndex: '2' }} />
+      <Guide />
       <br />
-      <HeaderCard handleShowClosed={handleShowClosed} setQuorum={setQuorum} />
       {propositions} 
       <Card className='proposition poster' style={{ minHeight: '200px', width: '45%', padding: '20px' }}>
         <span style={{ }}>What value should we embrace?</span>
