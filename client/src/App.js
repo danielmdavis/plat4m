@@ -42,7 +42,7 @@ function App() {
 
   useEffect(() => {
     getAll()
-  }, [])
+  }, [handleSubmit])
 
   function handleSubmit() {
     if (inputText) {

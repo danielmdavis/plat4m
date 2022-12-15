@@ -33,13 +33,13 @@ export default function Addendum(props) {
     })
   }
 
-  async function handleClickYes() { 
+  function handleClickYes() { 
     incrementYes(props.propId, props.id) 
     if (props.predicate && props.ups > props.majority - 1) { props.incrementYes(props.propId) }
     // console.log(props.ups)
     // console.log(props.majority - 1)
   }
-  async function handleClickNo() { 
+  function handleClickNo() { 
     incrementNo(props.propId, props.id) 
     if (props.predicate && props.downs > props.majority - 1) { props.incrementNo(props.propId) }
   }

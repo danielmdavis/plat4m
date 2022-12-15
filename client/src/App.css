@@ -27,7 +27,7 @@ html {
 .app-title {
   font-family: 'Lora';
   font-size: 20px;
-  background-color: rgb(255, 255, 255) !important;
+  /* background-color: rgb(255, 255, 255) !important; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,8 +38,8 @@ html {
   width: 100%;
   /* min-height: 250px; */
   z-index: 2 !important;
-  /* background-image: linear-gradient(106deg, #5c5c5c 20%, #474747 20%, #474747 50%, #5c5c5c 50%, #5c5c5c 70%, #474747 70%, #474747 100%);
-  background-size: 52.01px 181.40px;   */
+  background-image: linear-gradient(114deg, #ffffff 20%, #fafafa 20%, #fafafa 50%, #ffffff 50%, #ffffff 70%, #fafafa 70%, #fafafa 100%);
+  background-size: 109.46px 245.86px;
 }
 .title-header {
   font-family: 'Raleway', sans-serif !important;
@@ -69,6 +69,8 @@ html {
 
 .poster {
   width: 50% !important;
+  background-image: linear-gradient(114deg, #ffffff 20%, #fafafa 20%, #fafafa 50%, #ffffff 50%, #ffffff 70%, #fafafa 70%, #fafafa 100%) !important;
+  background-size: 109.46px 245.86px !important;
 }
 
 .proposition {

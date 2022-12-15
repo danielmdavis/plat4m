@@ -44,10 +44,10 @@ export default function Proposition(props) {
     setAddenEntry()
   }
 
-  async function handleClickYes() { incrementYes(props.id) }
-  async function handleClickNo() { incrementNo(props.id) }
+  function handleClickYes() { incrementYes(props.id) }
+  function handleClickNo() { incrementNo(props.id) }
 
-    async function handleClickYesAnd() {
+    function handleClickYesAnd() {
       setAddenEntry(
         <NewAddendum 
         handleCancel={handleCancel} 
@@ -58,7 +58,7 @@ export default function Proposition(props) {
       )
       incrementYes(props.id)
     }
-    async function handleClickNoBut() {
+    function handleClickNoBut() {
       setAddenEntry(
         <NewAddendum 
           predicate='yes' 
