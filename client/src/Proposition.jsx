@@ -8,9 +8,9 @@ import NewAddendum from './NewAddendum';
 
 export default function Proposition(props) {
 
-  useEffect(() => {
-    props.getAll()
-  }, [handleClickYes, handleClickNo, handleClickYesAnd, handleClickNoBut])
+  // useEffect(() => {
+  //   props.getAll()
+  // }, [handleClickYes, handleClickNo, handleClickYesAnd, handleClickNoBut])
 
 
   let [addenEntry, setAddenEntry] = useState()
@@ -40,10 +40,7 @@ export default function Proposition(props) {
     })
   }
 
-  const handleCancel = () => {
-    setAddenEntry()
-  }
-
+  function handleCancel() { setAddenEntry() }
   function handleClickYes() { incrementYes(props.id) }
   function handleClickNo() { incrementNo(props.id) }
 

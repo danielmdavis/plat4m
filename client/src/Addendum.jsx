@@ -4,9 +4,9 @@ import Card from '@material-ui/core/Card';
 
 export default function Addendum(props) {
 
-  useEffect(() => {
-    props.getAll()
-  }, [handleClickYes, handleClickNo])
+  // useEffect(() => {
+  //   props.getAll()
+  // }, [handleClickYes, handleClickNo])
 
   const incrementYes = (id, id2) => {
     fetch(`http://localhost:3001/${id}/${id2}`, {
@@ -36,8 +36,6 @@ export default function Addendum(props) {
   function handleClickYes() { 
     incrementYes(props.propId, props.id) 
     if (props.predicate && props.ups > props.majority - 1) { props.incrementYes(props.propId) }
-    // console.log(props.ups)
-    // console.log(props.majority - 1)
   }
   function handleClickNo() { 
     incrementNo(props.propId, props.id) 

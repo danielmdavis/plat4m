@@ -63,12 +63,12 @@ html {
 .low-t {
   z-index: 0 !important;
 }
-.switches {
+/* .switches {
 
-}
+} */
 
 .poster {
-  width: 50% !important;
+  width: 48% !important;
   background-image: linear-gradient(114deg, #ffffff 20%, #fafafa 20%, #fafafa 50%, #ffffff 50%, #ffffff 70%, #fafafa 70%, #fafafa 100%) !important;
   background-size: 109.46px 245.86px !important;
 }
@@ -147,9 +147,6 @@ html {
 .passed-addendum .add-button, .failed-addendum .add-button {
   display: none !important;
 }
-.add-button { }
-.open-addendum { }
-.closed-visible { }
 .closed-hidden {
   display: none !important;
 }

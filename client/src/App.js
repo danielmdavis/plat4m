@@ -42,12 +42,12 @@ function App() {
 
   useEffect(() => {
     getAll()
-  }, [handleSubmit])
+  }, [])
 
   function handleSubmit() {
     if (inputText) {
       const post = {
-        "id": propositions.length+1,
+        "id": Math.max(...data.map(i => i.id)) + 1,
         "text": inputText,
         "ups": 1,
         "downs": 0,
@@ -64,6 +64,8 @@ function App() {
   function handleShowClosed() {
     setShowClosed(!showClosed)
   }
+
+  
 
   const propositions = data.map((item) => {
     return(
