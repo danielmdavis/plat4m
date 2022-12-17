@@ -26,6 +26,13 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "up" }),
       json: true
     })
+
+    // state updater
+    props.allData.forEach((item) => { if (item.id === id) { 
+      item.ups = item.ups + 1 
+    } })
+    let foo = [...props.allData]
+    props.updater(foo)
   }
   const incrementNo = (id) => {
     fetch(`http://localhost:3001/${id}`, {
@@ -39,7 +46,12 @@ export default function Proposition(props) {
       json: true
     })
 
-    // props.setGet()
+    // state updater
+    props.allData.forEach((item) => { if (item.id === id) { 
+      item.downs = item.downs + 1 
+    } })
+    let foo = [...props.allData]
+    props.updater(foo)
   }
 
   function handleCancel() { setAddenEntry() }
@@ -50,7 +62,6 @@ export default function Proposition(props) {
       setAddenEntry(
         <NewAddendum 
         handleCancel={handleCancel} 
-        // handleRerender={update}
         addenda={addenda}
         propId={props.id}
         />

@@ -80,7 +80,7 @@ function App() {
         downs={item.downs}
         showClosed={showClosed}
         updater={setGet}
-        // allData={data}
+        allData={data}
         />
     )})
 
