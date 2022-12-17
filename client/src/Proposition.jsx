@@ -38,6 +38,8 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "down" }),
       json: true
     })
+
+    // props.setGet()
   }
 
   function handleCancel() { setAddenEntry() }
@@ -95,7 +97,6 @@ export default function Proposition(props) {
             majority={props.majority}
             incrementYes={incrementYes}
             incrementNo={incrementNo}
-            getAll={props.getAll}
           />
       )})
     }
@@ -115,7 +116,6 @@ export default function Proposition(props) {
             showClosed={props.showClosed}
             incrementYes={incrementYes}
             incrementNo={incrementNo}
-            getAll={props.getAll}
           />
       )})
     }

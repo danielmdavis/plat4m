@@ -38,6 +38,8 @@ function App() {
       body: JSON.stringify(post),
       json: true
     })
+    data.push(post)
+    setGet(data)
   }
 
   useEffect(() => {
@@ -61,9 +63,7 @@ function App() {
     }
   }
 
-  function handleShowClosed() {
-    setShowClosed(!showClosed)
-  }
+  function handleShowClosed() { setShowClosed(!showClosed) }
 
   
 
@@ -79,7 +79,8 @@ function App() {
         ups={item.ups}
         downs={item.downs}
         showClosed={showClosed}
-        getAll={getAll}
+        updater={setGet}
+        // allData={data}
         />
     )})
 
