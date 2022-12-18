@@ -65,19 +65,63 @@ function App() {
 
   function handleShowClosed() { setShowClosed(!showClosed) }
 
-  
+  let openPropos = []
+  let failedPropos = []
+  let passedPropos = []
 
-  const propositions = data.map((item) => {
+  data.forEach((propo) => {
+    if ( propo.ups >= (quorum / 2) ) {
+      passedPropos.push(propo)
+    } else if (propo.downs >= (quorum / 2)) {
+      failedPropos.push(propo)
+    } else {
+      openPropos.push(propo)
+    }
+  })
+
+  const openProposMapped = openPropos.map((propo) => {
     return(
       <Proposition
-        key={item.id}
-        id={item.id}
+        key={propo.id}
+        id={propo.id}
         type='proposition'
         majority={quorum / 2}
-        claim={item.text}
-        addenda={item.addenda}
-        ups={item.ups}
-        downs={item.downs}
+        claim={propo.text}
+        addenda={propo.addenda}
+        ups={propo.ups}
+        downs={propo.downs}
+        showClosed={showClosed}
+        updater={setGet}
+        allData={data}
+        />
+    )})
+  const failedProposMapped = failedPropos.map((propo) => {
+    return(
+      <Proposition
+        key={propo.id}
+        id={propo.id}
+        type='proposition'
+        majority={quorum / 2}
+        claim={propo.text}
+        addenda={propo.addenda}
+        ups={propo.ups}
+        downs={propo.downs}
+        showClosed={showClosed}
+        updater={setGet}
+        allData={data}
+        />
+    )})
+  const passedProposMapped = passedPropos.map((propo) => {
+    return(
+      <Proposition
+        key={propo.id}
+        id={propo.id}
+        type='proposition'
+        majority={quorum / 2}
+        claim={propo.text}
+        addenda={propo.addenda}
+        ups={propo.ups}
+        downs={propo.downs}
         showClosed={showClosed}
         updater={setGet}
         allData={data}
@@ -90,7 +134,11 @@ function App() {
       <HeaderCard handleShowClosed={handleShowClosed} setQuorum={setQuorum} style={{ zIndex: '2' }} />
       <Guide />
       <br />
-      {propositions} 
+      {openProposMapped} 
+      <span>foo</span>
+      {failedProposMapped}
+      <span>bar</span>
+      {passedProposMapped}
       <Card className='proposition poster' style={{ minHeight: '200px', width: '45%', padding: '20px' }}>
         <span style={{ }}>What value should we embrace?</span>
         <TextField 

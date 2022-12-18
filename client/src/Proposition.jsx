@@ -44,7 +44,6 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "down" }),
       json: true
     })
-
     // state updater
     props.allData.forEach((item) => { if (item.id === id) { 
       item.downs = item.downs + 1 
