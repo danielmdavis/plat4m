@@ -26,13 +26,12 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "up" }),
       json: true
     })
-
     // state updater
     props.allData.forEach((item) => { if (item.id === id) { 
       item.ups = item.ups + 1 
     } })
-    let foo = [...props.allData]
-    props.updater(foo)
+    const newData = [...props.allData]
+    props.updater(newData)
   }
   const incrementNo = (id) => {
     fetch(`http://localhost:3001/${id}`, {
@@ -50,8 +49,8 @@ export default function Proposition(props) {
     props.allData.forEach((item) => { if (item.id === id) { 
       item.downs = item.downs + 1 
     } })
-    let foo = [...props.allData]
-    props.updater(foo)
+    const newData = [...props.allData]
+    props.updater(newData)
   }
 
   function handleCancel() { setAddenEntry() }
@@ -73,7 +72,6 @@ export default function Proposition(props) {
         <NewAddendum 
           predicate='yes' 
           handleCancel={handleCancel} 
-          // handleRerender={update}
           addenda={addenda}
           propId={props.id}
         />
@@ -108,6 +106,8 @@ export default function Proposition(props) {
             majority={props.majority}
             incrementYes={incrementYes}
             incrementNo={incrementNo}
+            updater={props.updater}
+            allData={props.allData}
           />
       )})
     }
@@ -127,6 +127,8 @@ export default function Proposition(props) {
             showClosed={props.showClosed}
             incrementYes={incrementYes}
             incrementNo={incrementNo}
+            updater={props.updater}
+            allData={props.allData}
           />
       )})
     }
