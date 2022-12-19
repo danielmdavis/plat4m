@@ -3,10 +3,10 @@ import './App.css';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Backdrop from '@mui/material/Backdrop';
 import HeaderCard from './HeaderCard';
 import Proposition from './Proposition';
 import Guide from './Guide';
-import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel } from '@material-ui/core';
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
   let [quorum, setQuorum] = useState(9)
   let [inputText, setInputText] = useState('')
   let [showClosed, setShowClosed] = useState(false)
-  let [fooState, setFooState] = useState(true)
+  let [showValues, setShowValues] = useState(false)
 
   const getAll = () => {
     fetch('http://localhost:3001/', {
@@ -64,6 +64,7 @@ function App() {
   }
 
   function handleShowClosed() { setShowClosed(!showClosed) }
+  function handleShowValues() { setShowValues(!showValues) }
 
   let openPropos = []
   let failedPropos = []
@@ -134,11 +135,23 @@ function App() {
       <HeaderCard handleShowClosed={handleShowClosed} setQuorum={setQuorum} style={{ zIndex: '2' }} />
       <Guide />
       <br />
+
+      <Button onClick={handleShowValues}>Show backdrop</Button>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={showValues}
+        onClick={handleShowValues}
+      >
+        <Card style={{ overflow: 'scroll' }} className='proposition'>
+          {passedProposMapped}
+        </Card>
+      </Backdrop>
+
+
       {openProposMapped} 
       <span>foo</span>
       {failedProposMapped}
-      <span>bar</span>
-      {passedProposMapped}
+      
       <Card className='proposition poster' style={{ minHeight: '200px', width: '45%', padding: '20px' }}>
         <span style={{ }}>What value should we embrace?</span>
         <TextField 
