@@ -138,12 +138,16 @@ function App() {
 
       <Button onClick={handleShowValues}>Show backdrop</Button>
       <Backdrop
+        style={{ position: 'absolute' }}
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={showValues}
         onClick={handleShowValues}
       >
-        <Card style={{ overflow: 'scroll' }} className='proposition'>
-          {passedProposMapped}
+        <Card style={{ overflow: 'scroll', width: '700px', height: '600px', alignItems: 'center'}}>
+          <div className='values'>
+            <h2 style={{ fontFamily: 'Lora' }}>What we believe</h2>
+            {passedProposMapped}
+          </div>
         </Card>
       </Backdrop>
 

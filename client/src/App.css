@@ -24,8 +24,10 @@ html {
   font-size: 20px;
 }
 
-.popover {
-  width: 500px !important;
+.values {
+  align-items: center !important;
+  align-content: center !important;
+  justify-content: center !important;
 }
 
 .app-title {
