@@ -56,7 +56,7 @@ export default function Addendum(props) {
     if (props.predicate && props.downs > props.majority - 1) { props.incrementNo(props.propId) }
   }
 
-  let status
+  let status // three style assignment
   if (props.ups > props.majority) {
     status = 'passed-addendum'
   } else if (props.downs > props.majority) {
@@ -68,7 +68,7 @@ export default function Addendum(props) {
   } else {
     status = 'open-addendum'
   }
-  let statusVariant
+  let statusVariant // mui specific assignment
   statusVariant = (props.ups > props.majority || props.downs > props.majority) ? 'outlined' : 'contained'
 
   return (
@@ -96,7 +96,7 @@ export default function Addendum(props) {
       <Card className='addendum-inner' variant={statusVariant} 
         style={{ 
           backgroundColor: 'rgb(190, 190, 190)',
-          border: props.predicate ? 'solid 1.7px rgb(246,0,87)' : 'none'
+          border: (props.predicate && (props.ups < props.majority || props.down < props.majority) ) ? 'solid 1.7px rgb(246,0,87)' : 'none'
         }}>
         {props.claim}
       </Card>

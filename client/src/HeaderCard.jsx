@@ -15,7 +15,7 @@ export default function HeaderCard(props) {
                     <span className='subtitle'>“ The Platform for Platforms”</span>
                     <br /><br />
                     <div className='switches'>
-                        <Button size='large' style={{ color: 'white', border: 'solid 2px white' }} onClick={props.handleShowValues}>Our Values So Far</Button>
+                        <Button size='large' style={{ color: 'white', border: 'solid 2px white' }} onClick={props.handleShowValues}>Our Story So Far</Button>
                     <br /><br />
                         <FormControlLabel labelPlacement='start' label='Show failed' onClick={props.handleShowClosed} control={<Switch size='small' />}  />
                         <FormControlLabel labelPlacement='start' label='Quorum:&nbsp;' onChange={(e) => {props.setQuorum(e.target.value)}}

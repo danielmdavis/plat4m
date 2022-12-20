@@ -21,7 +21,7 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "up" }),
       json: true
     })
-    // state updater
+    // state updater - functionalize
     props.allData.forEach((item) => { if (item.id === id) { 
       item.ups = item.ups + 1 
     } })
@@ -39,7 +39,7 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "down" }),
       json: true
     })
-    // state updater
+    // state updater - functionalize
     props.allData.forEach((item) => { if (item.id === id) { 
       item.downs = item.downs + 1 
     } })
@@ -76,7 +76,7 @@ export default function Proposition(props) {
     let openAddendaMapped = []
     let closedAddenda = []
     let closedAddendaMapped = []
-
+    // unlike propos, addenda must be divvied before mapping
     props.addenda.forEach((addendum) => {
       if ( (addendum != undefined) && ((addendum.ups >= props.majority) || (addendum.downs >= props.majority)) ) {
         closedAddenda.push(addendum)
@@ -135,7 +135,7 @@ export default function Proposition(props) {
   } else {
     status = 'open'
   }
-  // show hide closed propos
+  // show/hide closed propos
   let closedVisibility
   if (!props.showClosed) {
     closedVisibility = status === 'failed' ? 'closed-hidden' : 'closed-visible'
@@ -156,11 +156,7 @@ export default function Proposition(props) {
           {closedAddendaMapped}    
           <div className={`prop-hider ${status}`} style={{ marginTop: '-50px', flexDirection: 'row' }}>
               <ButtonGroup
-              style={{ 
-                margin: '5px',
-                border: 'none',
-                background: 'rgba(150,150,150,0)'
-              }}
+              style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)' }}
               orientation="vertical"
               variant="contained"
               color="secondary"
@@ -171,11 +167,7 @@ export default function Proposition(props) {
               </ButtonGroup>
 
               <ButtonGroup
-              style={{ 
-                margin: '5px',
-                border: 'none',
-                background: 'rgba(150,150,150,0)'
-              }}
+              style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)' }}
               orientation="vertical"
               variant="contained"
               color="primary"
