@@ -15,13 +15,13 @@ export default function HeaderCard(props) {
                     <span className='subtitle'>“ The Platform for Platforms”</span>
                     <br /><br />
                     <div className='switches'>
-                        <Button onClick={props.handleShowValues}>Our Values So Far</Button>
+                        <Button size='large' style={{ color: 'white', border: 'solid 2px white' }} onClick={props.handleShowValues}>Our Values So Far</Button>
                     <br /><br />
-                        <FormControlLabel labelPlacement='start' label='Show closed' onClick={props.handleShowClosed} control={<Switch size='small' />}  />
+                        <FormControlLabel labelPlacement='start' label='Show failed' onClick={props.handleShowClosed} control={<Switch size='small' />}  />
                         <FormControlLabel labelPlacement='start' label='Quorum:&nbsp;' onChange={(e) => {props.setQuorum(e.target.value)}}
                             control={
                                 <TextField
-                                style = {{width: 46, marginRight: '25px'}}
+                                style = {{width: 46, marginRight: '25px', border: 'white', color: 'white' }}
                                 inputProps={{ inputMode: 'numeric' }}
                                 hiddenLabel
                                 margin='none'

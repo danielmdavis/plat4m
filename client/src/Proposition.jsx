@@ -156,7 +156,11 @@ export default function Proposition(props) {
           {closedAddendaMapped}    
           <div className={`prop-hider ${status}`} style={{ marginTop: '-50px', flexDirection: 'row' }}>
               <ButtonGroup
-              style={{ margin: '5px' }}
+              style={{ 
+                margin: '5px',
+                border: 'none',
+                background: 'rgba(150,150,150,0)'
+              }}
               orientation="vertical"
               variant="contained"
               color="secondary"
@@ -167,7 +171,11 @@ export default function Proposition(props) {
               </ButtonGroup>
 
               <ButtonGroup
-              style={{ margin: '5px' }}
+              style={{ 
+                margin: '5px',
+                border: 'none',
+                background: 'rgba(150,150,150,0)'
+              }}
               orientation="vertical"
               variant="contained"
               color="primary"

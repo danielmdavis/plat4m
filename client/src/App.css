@@ -11,12 +11,12 @@
 }
 
 html {
-  background-color: rgb(192, 220, 255);
+  background-color: rgb(34, 16, 54);
 }
 
 .App {
   text-align: center;
-  background-color: rgb(192, 220, 255);
+  background-color: rgb(34, 16, 54);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,18 +44,22 @@ html {
   width: 100%;
   /* min-height: 250px; */
   z-index: 2 !important;
-  background-image: linear-gradient(114deg, #ffffff 20%, #fafafa 20%, #fafafa 50%, #ffffff 50%, #ffffff 70%, #fafafa 70%, #fafafa 100%);
-  background-size: 109.46px 245.86px;
+  background-image: linear-gradient(110deg, #141414 21.43%, #000000 21.43%, #000000 50%, #141414 50%, #141414 71.43%, #000000 71.43%, #000000 100%);
+  background-size: 74.49px 204.67px;
 }
 .title-header {
   font-family: 'Raleway', sans-serif !important;
   font-weight: 700 !important;
   font-size: 58px !important;
   margin: 10px;
+  color: white !important;
+  
 }
 .subtitle {
   font-family: 'Parisienne' !important;
   font-size: 28px;
+  color: white !important;
+  
 }
 .header-col {
   margin: 0px 18px;
@@ -65,18 +69,22 @@ html {
   font-family: 'Raleway', sans-serif !important;
   font-size: 10px !important;
   margin: 10px 0px 5px 0px;
+  color: white !important;
+  
 }
 .low-t {
   z-index: 0 !important;
 }
-/* .switches {
-
-} */
+.switches {
+  color: white !important;
+}
 
 .poster {
   width: 48% !important;
-  background-image: linear-gradient(114deg, #ffffff 20%, #fafafa 20%, #fafafa 50%, #ffffff 50%, #ffffff 70%, #fafafa 70%, #fafafa 100%) !important;
-  background-size: 109.46px 245.86px !important;
+  background-image: linear-gradient(110deg, #141414 21.43%, #000000 21.43%, #000000 50%, #141414 50%, #141414 71.43%, #000000 71.43%, #000000 100%);
+  background-size: 74.49px 204.67px;
+  color: white !important;
+  font-family: 'Raleway', sans-serif !important;
 }
 
 .proposition {
@@ -98,13 +106,15 @@ html {
 }
 
 .open {
-  background-color: rgb(255, 255, 255) !important;
   min-height: 120px;
   padding-top: 10px;
   padding-bottom: 0px;
+  background: rgb(90,90,90);
+  background-image: linear-gradient(90deg, rgb(34, 16, 54) 0%, rgba(150,150,150,1) 12%, rgba(150,150,150,1) 88%, rgb(34, 16, 54) 100%) !important; 
+  border: solid 2px rgba(150,150,150,1);
 }
 .passed {
-  background-color: white !important;
+  background-color: rgba(190, 190, 190, 0) !important;
   border: none !important;
 }
 .failed {
@@ -114,7 +124,10 @@ html {
 .passed .prop-hider, .failed .prop-hider {
   display: none;
 }
-
+.open .prop-hider {
+  border: none;
+  background: rgba(150,150,150,0) !important; 
+}
 .passed-addendum { 
   margin: 3.5px 8px !important;
 
@@ -139,7 +152,7 @@ html {
   width: 53%
 }
 .passed-addendum .addendum-inner {
-  background-color: white !important;
+  background-color: rgba(255, 255, 255, 0) !important;
   border: none;
   min-height: 31px !important;
   font-family: 'Lora' !important;

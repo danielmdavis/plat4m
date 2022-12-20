@@ -8,7 +8,7 @@ export default function Guide(props) {
 
     return (
         <div className='low-z' style={{ textAlign: 'left', padding: '8px', width: '61.5%', marginTop: '-20px' }}>
-        <Accordion style={{ backgroundColor: 'rgb(246, 246, 246)' }}>
+        <Accordion style={{ backgroundColor: 'rgb(190, 190, 190)' }}>
             <AccordionSummary>
             <span className='header-col' style={{ fontFamily: 'Raleway, sans-serif' }}>Users Guide <span style={{ color: 'rgb(175, 175, 175)', fontSize: '15px' }}>▼</span></span>
             </AccordionSummary>

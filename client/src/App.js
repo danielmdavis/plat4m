@@ -142,7 +142,7 @@ function App() {
         open={showValues}
         onClick={handleShowValues}
       >
-        <Card style={{ overflow: 'scroll', width: '700px', height: '600px', alignItems: 'center'}}>
+        <Card style={{ overflow: 'scroll', width: '700px', height: '600px', alignItems: 'center', backgroundColor: 'rgb(190, 190, 190)' }}>
           <div className='values'>
             <h2 style={{ fontFamily: 'Lora' }}>What we believe</h2>
             {passedProposMapped}

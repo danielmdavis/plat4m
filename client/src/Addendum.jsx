@@ -93,7 +93,11 @@ export default function Addendum(props) {
           </Button>
         </span>
       </div>
-      <Card className='addendum-inner' variant={statusVariant} style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'rgb(246, 246, 246)' }}>
+      <Card className='addendum-inner' variant={statusVariant} 
+        style={{ 
+          backgroundColor: 'rgb(190, 190, 190)',
+          border: props.predicate ? 'solid 1.7px rgb(246,0,87)' : 'none'
+        }}>
         {props.claim}
       </Card>
       <div style={{ flexDirection: 'column' }}>
