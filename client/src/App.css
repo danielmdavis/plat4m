@@ -104,8 +104,8 @@ html {
   padding-bottom: 0px;
 }
 .passed {
-  background-color: var(--offw) !important;
-  border: solid 1.7px var(--blue);
+  background-color: white !important;
+  border: none !important;
 }
 .failed {
   background-color: var(--offw) !important;
@@ -113,7 +113,6 @@ html {
 }
 .passed .prop-hider, .failed .prop-hider {
   display: none;
-
 }
 
 .passed-addendum { 

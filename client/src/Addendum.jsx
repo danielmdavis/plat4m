@@ -69,11 +69,7 @@ export default function Addendum(props) {
     status = 'open-addendum'
   }
   let statusVariant
-  if (props.ups > props.majority || props.downs > props.majority) {
-    statusVariant = 'outlined'
-  } else {
-    statusVariant = 'contained'
-  }
+  statusVariant = (props.ups > props.majority || props.downs > props.majority) ? 'outlined' : 'contained'
 
   return (
     <div className={`addendum ${status}`}>

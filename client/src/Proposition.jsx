@@ -8,11 +8,6 @@ import NewAddendum from './NewAddendum';
 
 export default function Proposition(props) {
 
-  // useEffect(() => {
-  //   props.getAll()
-  // }, [handleClickYes, handleClickNo, handleClickYesAnd, handleClickNoBut])
-
-
   let [addenEntry, setAddenEntry] = useState()
 
   const incrementYes = (id) => {
@@ -60,7 +55,7 @@ export default function Proposition(props) {
       setAddenEntry(
         <NewAddendum 
         handleCancel={handleCancel} 
-        addenda={addenda}
+        addenda={props.addenda}
         propId={props.id}
         />
       )
@@ -71,19 +66,18 @@ export default function Proposition(props) {
         <NewAddendum 
           predicate='yes' 
           handleCancel={handleCancel} 
-          addenda={addenda}
+          addenda={props.addenda}
           propId={props.id}
         />
       )
     }
 
-    let addenda = props.addenda
     let openAddenda = []
     let openAddendaMapped = []
     let closedAddenda = []
     let closedAddendaMapped = []
 
-    addenda.forEach((addendum) => {
+    props.addenda.forEach((addendum) => {
       if ( (addendum != undefined) && ((addendum.ups >= props.majority) || (addendum.downs >= props.majority)) ) {
         closedAddenda.push(addendum)
       } else if (addendum != undefined) {
@@ -132,26 +126,26 @@ export default function Proposition(props) {
       )})
     }
 
+  // three way style assignment
   let status
   if (props.ups > props.majority) {
-      status = 'passed'
+    status = 'passed'
   } else if (props.downs > props.majority) {
-      status = 'failed'
+    status = 'failed'
   } else {
-      status = 'open'
+    status = 'open'
   }
-
-  let closedVisibility = 'closed-visible'
+  // show hide closed propos
+  let closedVisibility
   if (!props.showClosed) {
-    if (status !== 'open') {
-      closedVisibility = 'closed-hidden'
-    }
-  } else {
-    closedVisibility = 'closed-visible'
-  }
+    closedVisibility = status === 'failed' ? 'closed-hidden' : 'closed-visible'
+  } else { closedVisibility = 'closed-visible' }
+  // mui specific assignment
+  let statusVariant
+  statusVariant = (props.ups > props.majority) ? 'outlined' : 'contained'
   
   return (
-      <Card className={`proposition ${status} ${closedVisibility}`}>
+      <Card variant={statusVariant} className={`proposition ${status} ${closedVisibility}`}>
           <VotesAndTitle
               claim={props.claim}
               ups={props.ups}
