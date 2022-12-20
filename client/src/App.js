@@ -13,8 +13,12 @@ function App() {
   let [data, setGet] = useState([])
   let [quorum, setQuorum] = useState(9)
   let [inputText, setInputText] = useState('')
-  let [showClosed, setShowClosed] = useState(false)
-  let [showValues, setShowValues] = useState(false)
+  let [showValues, setShowValues] = useState(false) // passed
+  let [showClosed, setShowClosed] = useState(false) // failed
+
+  useEffect(() => {
+    getAll()
+  }, [])
 
   const getAll = () => {
     fetch('http://localhost:3001/', {
@@ -42,10 +46,6 @@ function App() {
     setGet(data)
   }
 
-  useEffect(() => {
-    getAll()
-  }, [])
-
   function handleSubmit() {
     if (inputText) {
       const post = {
@@ -66,10 +66,10 @@ function App() {
   function handleShowClosed() { setShowClosed(!showClosed) }
   function handleShowValues() { setShowValues(!showValues) }
 
+  // three way propo sorter
   let openPropos = []
   let failedPropos = []
   let passedPropos = []
-
   data.forEach((propo) => {
     if ( propo.ups >= (quorum / 2) ) {
       passedPropos.push(propo)
@@ -132,11 +132,10 @@ function App() {
   return (
     <div className="App"> 
       <span style={{ marginTop: '-25px' }}></span>
-      <HeaderCard handleShowClosed={handleShowClosed} setQuorum={setQuorum} style={{ zIndex: '2' }} />
+      <HeaderCard handleShowClosed={handleShowClosed} handleShowValues={handleShowValues} setQuorum={setQuorum} style={{ zIndex: '2' }} />
       <Guide />
       <br />
 
-      <Button onClick={handleShowValues}>Show backdrop</Button>
       <Backdrop
         style={{ position: 'absolute' }}
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -151,9 +150,7 @@ function App() {
         </Card>
       </Backdrop>
 
-
       {openProposMapped} 
-      <span>foo</span>
       {failedProposMapped}
       
       <Card className='proposition poster' style={{ minHeight: '200px', width: '45%', padding: '20px' }}>

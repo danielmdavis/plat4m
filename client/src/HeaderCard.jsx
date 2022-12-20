@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';  
-import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel, TextField } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import { Switch, FormControlLabel, TextField } from '@material-ui/core';
 
 
 
@@ -14,6 +15,8 @@ export default function HeaderCard(props) {
                     <span className='subtitle'>“ The Platform for Platforms”</span>
                     <br /><br />
                     <div className='switches'>
+                        <Button onClick={props.handleShowValues}>Our Values So Far</Button>
+                    <br /><br />
                         <FormControlLabel labelPlacement='start' label='Show closed' onClick={props.handleShowClosed} control={<Switch size='small' />}  />
                         <FormControlLabel labelPlacement='start' label='Quorum:&nbsp;' onChange={(e) => {props.setQuorum(e.target.value)}}
                             control={
