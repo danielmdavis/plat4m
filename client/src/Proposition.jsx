@@ -10,6 +10,14 @@ export default function Proposition(props) {
 
   let [addenEntry, setAddenEntry] = useState()
 
+  function stateUpdater(id, dir) {
+    props.allData.forEach((item) => { 
+      if (item.id === id) { 
+        item[dir] = item[dir] + 1 
+    } })
+    props.updater([...props.allData])
+  }
+
   const incrementYes = (id) => {
     fetch(`http://localhost:3001/${id}`, {
       method: 'POST',
@@ -21,12 +29,7 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "up" }),
       json: true
     })
-    // state updater - functionalize
-    props.allData.forEach((item) => { if (item.id === id) { 
-      item.ups = item.ups + 1 
-    } })
-    const newData = [...props.allData]
-    props.updater(newData)
+    stateUpdater(id, 'ups')
   }
   const incrementNo = (id) => {
     fetch(`http://localhost:3001/${id}`, {
@@ -39,92 +42,86 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "down" }),
       json: true
     })
-    // state updater - functionalize
-    props.allData.forEach((item) => { if (item.id === id) { 
-      item.downs = item.downs + 1 
-    } })
-    const newData = [...props.allData]
-    props.updater(newData)
+    stateUpdater(id, 'downs')
   }
 
   function handleCancel() { setAddenEntry() }
   function handleClickYes() { incrementYes(props.id) }
   function handleClickNo() { incrementNo(props.id) }
-
-    function handleClickYesAnd() {
-      setAddenEntry(
-        <NewAddendum 
+  function handleClickYesAnd() {
+    setAddenEntry(
+      <NewAddendum 
+      handleCancel={handleCancel} 
+      addenda={props.addenda}
+      propId={props.id}
+      />
+    )
+    incrementYes(props.id)
+  }
+  function handleClickNoBut() {
+    setAddenEntry(
+      <NewAddendum 
+        predicate='yes' 
         handleCancel={handleCancel} 
         addenda={props.addenda}
         propId={props.id}
-        />
-      )
-      incrementYes(props.id)
+      />
+    )
+  }
+
+  let openAddenda = []
+  let openAddendaMapped = []
+  let closedAddenda = []
+  let closedAddendaMapped = []
+  // unlike propos, addenda must be divvied before mapping
+  props.addenda.forEach((addendum) => {
+    if ( (addendum != undefined) && ((addendum.ups >= props.majority) || (addendum.downs >= props.majority)) ) {
+      closedAddenda.push(addendum)
+    } else if (addendum != undefined) {
+      openAddenda.push(addendum)
     }
-    function handleClickNoBut() {
-      setAddenEntry(
-        <NewAddendum 
-          predicate='yes' 
-          handleCancel={handleCancel} 
-          addenda={props.addenda}
+  })
+
+  if (openAddenda) {
+    openAddendaMapped = openAddenda.map((addendum) => {
+      return(
+        <Addendum
+          key={addendum.key}
+          id={addendum.id}
           propId={props.id}
+          claim={addendum.text}
+          predicate={addendum.predicate}
+          ups={addendum.ups}
+          downs={addendum.downs}
+          majority={props.majority}
+          incrementYes={incrementYes}
+          incrementNo={incrementNo}
+          updater={props.updater}
+          allData={props.allData}
         />
-      )
-    }
+    )})
+  }
 
-    let openAddenda = []
-    let openAddendaMapped = []
-    let closedAddenda = []
-    let closedAddendaMapped = []
-    // unlike propos, addenda must be divvied before mapping
-    props.addenda.forEach((addendum) => {
-      if ( (addendum != undefined) && ((addendum.ups >= props.majority) || (addendum.downs >= props.majority)) ) {
-        closedAddenda.push(addendum)
-      } else if (addendum != undefined) {
-        openAddenda.push(addendum)
-      }
-    })
-
-    if (openAddenda) {
-      openAddendaMapped = openAddenda.map((addendum) => {
-        return(
-          <Addendum
-            key={addendum.key}
-            id={addendum.id}
-            propId={props.id}
-            claim={addendum.text}
-            predicate={addendum.predicate}
-            ups={addendum.ups}
-            downs={addendum.downs}
-            majority={props.majority}
-            incrementYes={incrementYes}
-            incrementNo={incrementNo}
-            updater={props.updater}
-            allData={props.allData}
-          />
-      )})
-    }
-
-    if (closedAddenda) {
-      closedAddendaMapped = closedAddenda.map((addendum) => {
-        return(
-          <Addendum
-            key={addendum.key}
-            id={addendum.id}
-            propId={props.id}
-            claim={addendum.text}
-            predicate={addendum.predicate}
-            ups={addendum.ups}
-            downs={addendum.downs}
-            majority={props.majority}
-            showClosed={props.showClosed}
-            incrementYes={incrementYes}
-            incrementNo={incrementNo}
-            updater={props.updater}
-            allData={props.allData}
-          />
-      )})
-    }
+  if (closedAddenda) {
+    closedAddendaMapped = closedAddenda.map((addendum) => {
+      return(
+        <Addendum
+          key={addendum.key}
+          id={addendum.id}
+          propId={props.id}
+          claim={addendum.text}
+          predicate={addendum.predicate}
+          ups={addendum.ups}
+          downs={addendum.downs}
+          majority={props.majority}
+          showClosed={props.showClosed}
+          incrementYes={incrementYes}
+          incrementNo={incrementNo}
+          updater={props.updater}
+          allData={props.allData}
+        />
+    )})
+  }
 
   // three way style assignment
   let status
@@ -145,40 +142,40 @@ export default function Proposition(props) {
   statusVariant = (props.ups > props.majority) ? 'outlined' : 'contained'
   
   return (
-      <Card variant={statusVariant} className={`proposition ${status} ${closedVisibility}`}>
-          <VotesAndTitle
-              claim={props.claim}
-              ups={props.ups}
-              downs={props.downs}
-              />
-          <span style={{ height: '70px' }} ></span>
-          
-          {closedAddendaMapped}    
-          <div className={`prop-hider ${status}`} style={{ marginTop: '-50px', flexDirection: 'row' }}>
-              <ButtonGroup
-              style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)' }}
-              orientation="vertical"
-              variant="contained"
-              color="secondary"
-              aria-label="vertical button group"
-              >
-                  <Button onClick={handleClickNo}>No</Button>
-                  <Button onClick={handleClickNoBut}>No But</Button>
-              </ButtonGroup>
+    <Card variant={statusVariant} className={`proposition ${status} ${closedVisibility}`}>
+      <VotesAndTitle
+          claim={props.claim}
+          ups={props.ups}
+          downs={props.downs}
+          />
+      <span style={{ height: '70px' }} ></span>
+      
+      {closedAddendaMapped}    
+      <div className={`prop-hider ${status}`} style={{ marginTop: '-50px', flexDirection: 'row' }}>
+        <ButtonGroup
+          style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)' }}
+          orientation="vertical"
+          variant="contained"
+          color="secondary"
+          aria-label="vertical button group"
+        >
+          <Button onClick={handleClickNo}>No</Button>
+          <Button onClick={handleClickNoBut}>No But</Button>
+        </ButtonGroup>
 
-              <ButtonGroup
-              style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)' }}
-              orientation="vertical"
-              variant="contained"
-              color="primary"
-              aria-label="vertical primary button group"
-              >
-                  <Button onClick={handleClickYes}>Yes</Button>
-                  <Button onClick={handleClickYesAnd}>Yes And</Button>
-              </ButtonGroup>
-          </div>
-          {openAddendaMapped}
-          {addenEntry}
-      </Card>
+        <ButtonGroup
+          style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)' }}
+          orientation="vertical"
+          variant="contained"
+          color="primary"
+          aria-label="vertical primary button group"
+        >
+          <Button onClick={handleClickYes}>Yes</Button>
+          <Button onClick={handleClickYesAnd}>Yes And</Button>
+        </ButtonGroup>
+      </div>
+      {openAddendaMapped}
+      {addenEntry}
+    </Card>
   )
 }

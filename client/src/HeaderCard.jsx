@@ -3,10 +3,7 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { Switch, FormControlLabel, TextField } from '@material-ui/core';
 
-
-
 export default function HeaderCard(props) {
-
     return (
         <Card className='app-title'>
             <span style={{ height: '30px' }} />
@@ -29,11 +26,11 @@ export default function HeaderCard(props) {
                                 variant="outlined"
                                 size="small"
                                 />
-                            } 
+                            }
                             />
                     </div>
                     <span className='byline'>Plat4m was created in 2022 by github.com/danielmdavis</span>
-                    <span style={{ height: '14px' }} />
+                    <span style={{ height: '3px' }} />
         </Card>
     )
 }

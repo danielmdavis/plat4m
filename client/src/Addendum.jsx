@@ -4,6 +4,18 @@ import Card from '@material-ui/core/Card';
 
 export default function Addendum(props) {
 
+  function stateUpdater(id, id2, dir) {
+    props.allData.forEach((item) => { 
+      if (item.id === id) { 
+        item.addenda.forEach((addendum) => {
+          if (addendum.id === id2) {
+            addendum[dir] = addendum[dir] + 1
+          }
+        })
+    } })
+    props.updater([...props.allData])
+  }
+
   const incrementYes = (id, id2) => {
     fetch(`http://localhost:3001/${id}/${id2}`, {
       method: 'POST',
@@ -15,15 +27,7 @@ export default function Addendum(props) {
       body: JSON.stringify({ 'vote': 'up' }),
       json: true
     })
-
-    // state updater
-    props.allData.forEach((item) => { if (item.id === id) { 
-      item.addenda.forEach((addendum) => {
-        addendum.ups = addendum.ups + 1
-      })
-    } })
-    const newData = [...props.allData]
-    props.updater(newData)
+    stateUpdater(id, id2, 'ups')
   }
   const incrementNo = (id, id2) => {
     fetch(`http://localhost:3001/${id}/${id2}`, {
@@ -36,15 +40,7 @@ export default function Addendum(props) {
       body: JSON.stringify({ 'vote': 'down' }),
       json: true
     })
-
-    // state updater
-    props.allData.forEach((item) => { if (item.id === id) { 
-      item.addenda.forEach((addendum) => {
-        addendum.downs = addendum.downs + 1
-      })
-    } })
-    const newData = [...props.allData]
-    props.updater(newData)
+    stateUpdater(id, id2, 'downs')
   }
 
   function handleClickYes() { 

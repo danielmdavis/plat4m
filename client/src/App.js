@@ -95,7 +95,7 @@ function App() {
         showClosed={showClosed}
         updater={setGet}
         allData={data}
-        />
+      />
     )})
   const failedProposMapped = failedPropos.map((propo) => {
     return(
@@ -111,7 +111,7 @@ function App() {
         showClosed={showClosed}
         updater={setGet}
         allData={data}
-        />
+      />
     )})
   const passedProposMapped = passedPropos.map((propo) => {
     return(
@@ -127,7 +127,7 @@ function App() {
         showClosed={showClosed}
         updater={setGet}
         allData={data}
-        />
+      />
     )})
 
   return (

@@ -10,7 +10,7 @@ export default function Guide(props) {
         <div className='low-z' style={{ textAlign: 'left', padding: '8px', width: '61.5%', marginTop: '-20px' }}>
         <Accordion style={{ backgroundColor: 'rgb(190, 190, 190)' }}>
             <AccordionSummary>
-            <span className='header-col' style={{ fontFamily: 'Raleway, sans-serif' }}>Users Guide <span style={{ color: 'rgb(175, 175, 175)', fontSize: '15px' }}>▼</span></span>
+            <span className='header-col' style={{ fontFamily: 'Raleway, sans-serif' }}>Users Guide <span style={{ color: 'rgb(150, 150, 150)', fontSize: '15px' }}>▼</span></span>
             </AccordionSummary>
             <AccordionDetails style={{ fontFamily: 'Lora, serif', fontSize: '16px' }}>
                 <span className='header-col'>Plat4m is a tool built for communities of thought such as 
