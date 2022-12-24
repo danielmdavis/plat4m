@@ -15,7 +15,7 @@ export default function VotesAndTitle(props) {
       minHeight: '50px'}}>
       <span style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
         <Button
-          style={{ fontSize: '20px'}}
+          style={{ fontSize: '20px', border: 'solid 1.7px' }}
           variant="outlined"
           color="secondary"
           >
@@ -34,7 +34,7 @@ export default function VotesAndTitle(props) {
       </div>
       <span style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
         <Button
-          style={{ fontSize: '20px'}}
+          style={{ fontSize: '20px', border: 'solid 1.7px' }}
           variant="outlined"
           color="primary"
           >

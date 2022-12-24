@@ -153,25 +153,25 @@ export default function Proposition(props) {
       {closedAddendaMapped}    
       <div className={`prop-hider ${status}`} style={{ marginTop: '-50px', flexDirection: 'row' }}>
         <ButtonGroup
-          style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)' }}
+          style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)', border: 'solid 1.7px rgb(246,0,87)' }}
           orientation="vertical"
-          variant="contained"
+          variant="outlined"
           color="secondary"
           aria-label="vertical button group"
         >
-          <Button onClick={handleClickNo}>No</Button>
-          <Button onClick={handleClickNoBut}>No But</Button>
+          <Button style={{ color: 'white' }} onClick={handleClickNo}>No</Button>
+          <Button style={{ color: 'white' }} onClick={handleClickNoBut}>No But</Button>
         </ButtonGroup>
 
         <ButtonGroup
-          style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)' }}
+          style={{ margin: '5px', border: 'solid 1.7px rgb(64,80,181)' }}
           orientation="vertical"
-          variant="contained"
+          variant="outlined"
           color="primary"
           aria-label="vertical primary button group"
         >
-          <Button onClick={handleClickYes}>Yes</Button>
-          <Button onClick={handleClickYesAnd}>Yes And</Button>
+          <Button style={{ color: 'white' }} onClick={handleClickYes}>Yes</Button>
+          <Button style={{ color: 'white' }} onClick={handleClickYesAnd}>Yes And</Button>
         </ButtonGroup>
       </div>
       {openAddendaMapped}

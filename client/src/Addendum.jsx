@@ -81,7 +81,7 @@ export default function Addendum(props) {
         <br />
         <span style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
           <Button className='add-button'
-            style={{ fontSize: '16px', maxHeight: '36.5px', marginTop: '2px' }}
+            style={{ fontSize: '16px', border: 'solid 1.7px', maxHeight: '36.5px', marginTop: '2px' }}
             variant="outlined"
             color="secondary"
           >
@@ -108,7 +108,7 @@ export default function Addendum(props) {
         <br />
         <span style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
           <Button className='add-button'
-            style={{ fontSize: '16px', maxHeight: '36.5px', marginTop: '2px' }}
+            style={{ fontSize: '16px', border: 'solid 1.7px',  maxHeight: '36.5px', marginTop: '2px' }}
             variant="outlined"
             color="primary"
           >

@@ -15,8 +15,8 @@ export default function Guide(props) {
             <AccordionDetails style={{ fontFamily: 'Lora, serif', fontSize: '16px' }}>
                 <span className='header-col'>Plat4m is a tool built for communities of thought such as 
                     political parties and advocacy groups to democratically develop
-                    their formal program. Scroll to the bottom to propose a point of shared
-                    belief or purpose. <span className='blue'>YES</span> and <span className='red'>NO</span> votes indicate
+                    their formal program. Scroll to the bottom and propose a point of shared
+                    belief or purpose. Vote <span className='blue'>YES</span> or <span className='red'>NO</span> to indicate
                     unqualitied support or rejection of a measure respectively.</span>
                 <span className='header-col'>Modify a proposition with an addendum. These too are subject to vote. 
                     Because support for a motion may or may not be predicated upon adoption of a 

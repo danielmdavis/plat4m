@@ -143,7 +143,7 @@ function App() {
         open={showValues}
         onClick={handleShowValues}
       >
-        <Card style={{ overflow: 'scroll', width: '700px', height: '600px', alignItems: 'center', backgroundColor: 'rgb(190, 190, 190)' }}>
+        <Card style={{ overflow: 'scroll', width: '700px', height: '600px', alignItems: 'center', backgroundColor: 'rgb(40, 40, 40)' }}>
           <div className='values'>
             <h2 style={{ fontFamily: 'Raleway' }}>What we believe</h2>
             <br /><br />
