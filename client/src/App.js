@@ -156,7 +156,7 @@ function App() {
       {failedProposMapped}
       
       <Card className='proposition poster' style={{ minHeight: '200px', width: '45%', padding: '20px' }}>
-        <span style={{ }}>What value should we embrace? </span>
+        <span style={{ }}>What value should we embrace?</span>
         <TextField 
           style={{ backgroundColor: 'rgb(245, 245, 245)', margin: '20px', width: '50%' }} variant="outlined"
           multiline='true' minRows='4' 
