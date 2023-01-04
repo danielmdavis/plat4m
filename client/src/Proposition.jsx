@@ -101,7 +101,6 @@ export default function Proposition(props) {
         />
     )})
   }
-
   if (closedAddenda) {
     closedAddendaMapped = closedAddenda.map((addendum) => {
       return(
@@ -144,10 +143,10 @@ export default function Proposition(props) {
   return (
     <Card variant={statusVariant} className={`proposition ${status} ${closedVisibility}`}>
       <VotesAndTitle
-          claim={props.claim}
-          ups={props.ups}
-          downs={props.downs}
-          />
+        claim={props.claim}
+        ups={props.ups}
+        downs={props.downs}
+      />
       <span style={{ height: '70px' }} ></span>
       
       {closedAddendaMapped}    

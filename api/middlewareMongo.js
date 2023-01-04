@@ -20,7 +20,7 @@ async function getter() {
     return data
 }
 
-async function oneGetter(id) {
+async function onePropoGetter(id) {
     await client.connect()
     const db = client.db('db')
     let data = await db.collection('propositions').findOne({ 'id': id })
@@ -36,7 +36,7 @@ async function oneAddendumGetter(id, id2) {
     return addendum
 }
 
-async function oneUpvoter(id) {
+async function onePropoUpvoter(id) {
     await client.connect()
     const db = client.db('db')
     await db.collection('propositions').updateOne(
@@ -44,7 +44,7 @@ async function oneUpvoter(id) {
         { $inc: {  'ups': 1 } }
     )
 }
-async function oneDownvoter(id) {
+async function onePropoDownvoter(id) {
     await client.connect()
     const db = client.db('db')
     await db.collection('propositions').updateOne(
@@ -76,7 +76,7 @@ async function oneAddendumDownvoter(id, id2) {
      )
 }
 
-async function propPoster(payload) {
+async function propoPoster(payload) {
     await client.connect()
     const db = client.db('db')
     db.collection('propositions').insertOne(payload)
@@ -94,11 +94,11 @@ async function addendumPoster(id, payload) {
 }
 
 exports.getter = getter
-exports.oneGetter = oneGetter 
+exports.onePropoGetter = onePropoGetter 
 exports.oneAddendumGetter = oneAddendumGetter 
-exports.oneUpvoter = oneUpvoter 
-exports.oneDownvoter = oneDownvoter 
+exports.onePropoUpvoter = onePropoUpvoter 
+exports.onePropoDownvoter = onePropoDownvoter 
 exports.oneAddendumUpvoter = oneAddendumUpvoter 
 exports.oneAddendumDownvoter = oneAddendumDownvoter 
-exports.propPoster = propPoster
+exports.propoPoster = propoPoster
 exports.addendumPoster = addendumPoster

@@ -6,7 +6,6 @@ const app = express();
 
 const middleware = require('./middlewareMongo');
 const data = require('./data');
-const router = require('./router');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -21,24 +20,24 @@ const getData = async function (req, res) {
     return res.send(payload)
 }
 const getOne = async function (req, res) {
-    const prop = await middleware.oneGetter(parseInt(req.params.id))
+    const prop = await middleware.onePropoGetter(parseInt(req.params.id))
     return res.send(prop) 
 }
 
 app.use(express.json())
-
-// simple YES NO votes, then addendum post
+// parses YES || NO propo vote, else, addendum post
+// (this arrangement isn't reason for mongo issues, as all three successfully hit middleware)
 app.post('/:id', async function(req, res) {
     if (req.body.vote === 'up') {
-        res.send(await middleware.oneUpvoter(parseInt(req.params.id)))
+        res.send(await middleware.onePropoUpvoter(parseInt(req.params.id)))
     } else if (req.body.vote === 'down') {
-        res.send(await middleware.oneDownvoter(parseInt(req.params.id)))
+        res.send(await middleware.onePropoDownvoter(parseInt(req.params.id)))
     } else {  
         res.send(await middleware.addendumPoster(req.params.id, req.body))
     }
     res.end()
   })
-
+// parses YES || NO addendum vote
 app.post('/:id/:id2', async function(req, res) {
     if (req.body.vote === 'up') {
         res.send(await middleware.oneAddendumUpvoter(parseInt(req.params.id), parseInt(req.params.id2)))
@@ -47,26 +46,15 @@ app.post('/:id/:id2', async function(req, res) {
     }
     res.end()
   })
-
 app.use('/:id/:id2', async function (req, res) {
     const addendum = await middleware.oneAddendumGetter(parseInt(req.params.id), parseInt(req.params.id2))
     return res.send(addendum)
 })
-
-
-
-
 app.use('/:id', getOne)
-
-
-// app.use('/', router)
-
 app.post('/', function(req, res) {
-    middleware.propPoster(req.body)
+    middleware.propoPoster(req.body)
     res.end()
-    // getData()
   })
-
 app.use('/', getData)
 
 app.listen(3001, () => { })

@@ -16,23 +16,6 @@ app.use(function(req, res, next) {
   })
 app.use(cors())
 
-
-
-// const getAllProps = async function () {
-//   const clientResult = await middleware.getAllProps()
-//   console.log(clientResult.rows)
-// }
-
-// const getOneProp = async function (id) {
-//   const clientResult = await middleware.getOneProp(id)
-//   console.log(clientResult.rows)
-// }
-
-// const getAddenda = async function () {
-//   const clientResult = await middleware.getAddenda()
-//   console.log(clientResult.rows)
-// }
-
 const getOnePropWithChildren = async function (id) {
   const clientResult = await middleware.getOnePropWithChildren(id)
   const data = await Object.assign(clientResult[0].rows, { 'addenda': clientResult[1].rows })
@@ -57,5 +40,6 @@ const getData = async function () {
     const data = await assembleAll()
     return data
 }
-
 getOnePropWithChildren(1)
+
+// not implemented in mvp

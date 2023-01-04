@@ -7,7 +7,7 @@ export default function HeaderCard(props) {
     return (
         <Card className='app-title'>
             <span style={{ height: '30px' }} />
-            <span className='title-header'>plat4m <span style={{ color: 'rgb(246,0,87)' }}> [v2] </span> </span> 
+            <span className='title-header'>plat4m</span> 
                     <br />             
                     <span className='subtitle'>“ The Platform for Platforms”</span>
                     <br /><br />

@@ -52,7 +52,7 @@ export default function Addendum(props) {
     if (props.predicate && props.downs > props.majority - 1) { props.incrementNo(props.propId) }
   }
 
-  let status // three style assignment
+  let status // three-way style assignment for vote status
   if (props.ups > props.majority) {
     status = 'passed-addendum'
   } else if (props.downs > props.majority) {

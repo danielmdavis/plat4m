@@ -29,7 +29,7 @@ function App() {
       })
   }
 
-  const postNew = (post) => {
+  const postNewPropo = (post) => {
     fetch('http://localhost:3001/', {
       method: 'POST',
       mode: 'cors',
@@ -53,7 +53,7 @@ function App() {
         "downs": 0,
         "addenda": []
       }
-      postNew(post)
+      postNewPropo(post)
 
       setInputText('')
       window.scrollTo(0,document.body.scrollHeight)
@@ -67,7 +67,7 @@ function App() {
   // to lock screen during focus, but it stays on
   // if (showValues) { window.onscroll = () => { window.scroll(0, 0); } }
 
-  // three way propo sorter
+  // three-way propo parser
   let openPropos = []
   let failedPropos = []
   let passedPropos = []
@@ -145,7 +145,7 @@ function App() {
       >
         <Card style={{ overflow: 'scroll', width: '700px', height: '600px', alignItems: 'center', backgroundColor: 'rgb(40, 40, 40)' }}>
           <div className='values'>
-            <h2 style={{ fontFamily: 'Raleway' }}>What we believe</h2>
+            <h2 style={{ fontFamily: 'Raleway', color: 'rgb(246, 246, 246)' }}>What we believe</h2>
             <br /><br />
             {passedProposMapped}
           </div>
