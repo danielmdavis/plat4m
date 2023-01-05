@@ -85,12 +85,13 @@ async function propoPoster(payload) {
 async function addendumPoster(id, payload) {
     await client.connect()
     const db = client.db('db')
-    console.log(id)
+    console.log(parseInt(id))
     console.log(payload)
-    await db.collection('propositions').updateOne(
-        { 'id': id }, 
+    const foo = await db.collection('propositions').updateOne(
+        { 'id': parseInt(id) }, 
         { $push: { 'addenda': payload } }
     )
+    console.log(foo)
 }
 
 exports.getter = getter
