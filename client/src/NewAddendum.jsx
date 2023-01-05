@@ -7,13 +7,19 @@ export default function NewAddendum(props) {
 
   let [inputText, setInputText] = useState('')
 
-  // function handleClick() {
-  //   props.handleSubmit(props.propId, inputText)
-  //   props.handleRerender()
-  // }
+  const stateUpdater = (post) => {
+    props.allData.forEach((item) => { 
+      if (item.id === props.propoId) { 
+        console.log(item.id)
+        console.log(post.id)
+        console.log(item.addenda)
+        item.addenda.push(post)
+    } })
+    props.updater([...props.allData])
+  }
 
   const postNew = (post) => {
-    fetch(`http://localhost:3001/${props.propId}`, {
+    fetch(`http://localhost:3001/${props.propoId}`, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -23,10 +29,10 @@ export default function NewAddendum(props) {
       body: JSON.stringify(post),
       json: true
     })
+    stateUpdater(post)
   }
 
-  function handleSubmit() {
-    console.log(props.predicate)
+  const handleSubmit = () => {
     let predication
     if (props.predicate === 'yes') {
       predication = true

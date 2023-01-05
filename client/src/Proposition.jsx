@@ -10,7 +10,7 @@ export default function Proposition(props) {
 
   let [addenEntry, setAddenEntry] = useState()
 
-  function stateUpdater(id, dir) {
+  const stateUpdater = (id, dir) => {
     props.allData.forEach((item) => { 
       if (item.id === id) { 
         item[dir] = item[dir] + 1 
@@ -51,9 +51,11 @@ export default function Proposition(props) {
   function handleClickYesAnd() {
     setAddenEntry(
       <NewAddendum 
-      handleCancel={handleCancel} 
+      handleCancel={handleCancel}
       addenda={props.addenda}
-      propId={props.id}
+      propoId={props.id}
+      updater={props.updater}
+      allData={props.allData}
       />
     )
     incrementYes(props.id)
@@ -62,9 +64,11 @@ export default function Proposition(props) {
     setAddenEntry(
       <NewAddendum 
         predicate='yes' 
-        handleCancel={handleCancel} 
+        handleCancel={handleCancel}
         addenda={props.addenda}
-        propId={props.id}
+        propoId={props.id}
+        updater={props.updater}
+        allData={props.allData}
       />
     )
   }

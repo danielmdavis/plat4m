@@ -54,8 +54,6 @@ async function onePropoDownvoter(id) {
 }
 
 async function oneAddendumUpvoter(id, id2) {
-    console.log(id)
-    console.log(id2)
     await client.connect()
     const db = client.db('db')
     await db.collection('propositions').updateOne(
@@ -65,8 +63,6 @@ async function oneAddendumUpvoter(id, id2) {
      )
 }
 async function oneAddendumDownvoter(id, id2) {
-    console.log(id)
-    console.log(id2)
     await client.connect()
     const db = client.db('db')
     await db.collection('propositions').updateOne(
@@ -85,13 +81,10 @@ async function propoPoster(payload) {
 async function addendumPoster(id, payload) {
     await client.connect()
     const db = client.db('db')
-    console.log(parseInt(id))
-    console.log(payload)
     const foo = await db.collection('propositions').updateOne(
         { 'id': parseInt(id) }, 
         { $push: { 'addenda': payload } }
     )
-    console.log(foo)
 }
 
 exports.getter = getter

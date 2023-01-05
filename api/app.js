@@ -26,7 +26,6 @@ const getOne = async function (req, res) {
 
 app.use(express.json())
 // parses YES || NO propo vote, else, addendum post
-// (this arrangement isn't reason for mongo issues, as all three successfully hit middleware)
 app.post('/:id', async function(req, res) {
     if (req.body.vote === 'up') {
         res.send(await middleware.onePropoUpvoter(parseInt(req.params.id)))
