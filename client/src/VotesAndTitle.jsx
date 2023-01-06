@@ -28,7 +28,9 @@ export default function VotesAndTitle(props) {
         width: '55%',
         minHeight: '45px',
         fontSize: '28px'
-        }}>
+        }}
+        className='claim'
+        >
         {props.claim}
 
       </div>
