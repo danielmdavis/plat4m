@@ -33,19 +33,13 @@ export default function NewAddendum(props) {
   }
 
   const handleSubmit = () => {
-    let predication
-    if (props.predicate === 'yes') {
-      predication = true
-    } else {
-      predication = false
-    }
     if (inputText) {
       const post = {
         'id': props.addenda.length + 1,
         'text': inputText,
         'ups': 1,
         'downs': 0,
-        'predicate': predication
+        'predicate': props.predicate
       }
       postNew(post)  
     }
@@ -64,7 +58,7 @@ export default function NewAddendum(props) {
         ✕
       </Button>
       <TextField
-        multiline='true' minRows='2'
+        multiline={true} minRows='2'
         onChange={(e) => {setInputText(e.target.value)}} 
         value={inputText}
         className='new-addendum-box'

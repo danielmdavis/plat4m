@@ -51,6 +51,7 @@ export default function Proposition(props) {
   function handleClickYesAnd() {
     setAddenEntry(
       <NewAddendum 
+      predicate={false}
       handleCancel={handleCancel}
       addenda={props.addenda}
       propoId={props.id}
@@ -63,7 +64,7 @@ export default function Proposition(props) {
   function handleClickNoBut() {
     setAddenEntry(
       <NewAddendum 
-        predicate='yes' 
+        predicate={true}
         handleCancel={handleCancel}
         addenda={props.addenda}
         propoId={props.id}
@@ -90,7 +91,7 @@ export default function Proposition(props) {
     openAddendaMapped = openAddenda.map((addendum) => {
       return(
         <Addendum
-          key={addendum.key}
+          key={props.id + 'o' + addendum.id}
           id={addendum.id}
           propId={props.id}
           claim={addendum.text}
@@ -109,7 +110,7 @@ export default function Proposition(props) {
     closedAddendaMapped = closedAddenda.map((addendum) => {
       return(
         <Addendum
-          key={addendum.key}
+          key={props.id + 'c' + addendum.id}
           id={addendum.id}
           propId={props.id}
           claim={addendum.text}

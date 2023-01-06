@@ -159,7 +159,7 @@ function App() {
         <span style={{ }}>What value should we embrace?</span>
         <TextField 
           style={{ backgroundColor: 'rgb(245, 245, 245)', margin: '20px', width: '50%' }} variant="outlined"
-          multiline='true' minRows='4' 
+          multiline={true} minRows='4' 
           onChange={(e) => {setInputText(e.target.value)}} value={inputText}  />
         <Button onClick={handleSubmit} variant="contained" color="primary" > Submit </ Button>
       </Card>
