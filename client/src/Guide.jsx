@@ -5,6 +5,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel
 
 
 export default function Guide(props) {
+    // mui accordion element containing static text user guide.
 
     return (
         <div className='low-z' style={{ textAlign: 'left', padding: '8px', width: '61.5%', marginTop: '-20px' }}>

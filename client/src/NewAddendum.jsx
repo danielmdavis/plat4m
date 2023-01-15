@@ -4,22 +4,22 @@ import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 
 export default function NewAddendum(props) {
+  // text entry box rendered within Proposition components on YES AND, NO BUT votes.
+  // displays text box, cancel or submit buttons. closes on submit.
+  // API call for post one addendum is handled here.
 
-  let [inputText, setInputText] = useState('')
+  let [inputText, setInputText] = useState('') // tracks text of new addendum entry
 
-  const stateUpdater = (post) => {
-    props.allData.forEach((item) => { 
+  const stateUpdater = post => { // updates children in state for display without API call
+    props.allData.forEach(item => { // data intensive - simplify
       if (item.id === props.propoId) { 
-        console.log(item.id)
-        console.log(post.id)
-        console.log(item.addenda)
         item.addenda.push(post)
     } })
     props.updater([...props.allData])
   }
 
-  const postNew = (post) => {
-    fetch(`http://localhost:3001/${props.propoId}`, {
+  const postNew = post => {
+    fetch(`http://localhost:3001/${props.propoId}`, { // post child to backend
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -32,7 +32,7 @@ export default function NewAddendum(props) {
     stateUpdater(post)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = () => { // completes and JSONifies new child, calls poster
     if (inputText) {
       const post = {
         'id': props.addenda.length + 1,
@@ -49,12 +49,11 @@ export default function NewAddendum(props) {
 
   return (
     <div className='new-addendum'>
+      {/* read horizontally as button-card-button */}
       <Button
-        style={{}}
         variant="contained"
         color="secondary"
-        onClick={props.handleCancel}
-      >
+        onClick={props.handleCancel}>
         ✕
       </Button>
       <TextField
@@ -64,14 +63,11 @@ export default function NewAddendum(props) {
         className='new-addendum-box'
         style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'rgb(246, 246, 246)' }}
         variant='outlined'
-        label='Propose an Addendum'
-      />
+        label='Propose an Addendum'/>
       <Button
-        style={{}}
         variant="contained"
         color="primary"
-        onClick={handleSubmit}
-      >
+        onClick={handleSubmit}>
         ✓
       </Button>
     </div>

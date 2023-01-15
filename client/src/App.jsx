@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import './App.css';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
@@ -9,27 +9,30 @@ import Proposition from './Proposition';
 import Guide from './Guide';
 
 function App() {
+  // top level react container. gets JSON data and maps to propo elements.
+  // has one footer propo poster and three header elements: title bar, accordion, and popover. 
+  // API calls for get all and post one propo handled here.
 
-  let [data, setGet] = useState([])
-  let [quorum, setQuorum] = useState(9)
-  let [inputText, setInputText] = useState('')
+  let [data, setGet] = useState([]) // JSON of API data to display
+  let [quorum, setQuorum] = useState(9) // size of voter pool
+  let [inputText, setInputText] = useState('') // tracks text of new propo entry
   let [showValues, setShowValues] = useState(false) // show passed
   let [showClosed, setShowClosed] = useState(false) // show failed
 
-  useEffect(() => { getAll() }, [])
+  useLayoutEffect(() => { getAll() }, []) // gets all on DidMount
 
   const getAll = () => {
-    fetch('http://localhost:3001/', {
+    fetch('http://localhost:3001/', { // calls express api
       mode: 'cors',
       headers: { 'Access-Control-Allow-Origin': '*' }
     })
       .then(req => req.json())
-      .then(resp => {
-        setGet(resp)
+      .then(res => {
+        setGet(res) //res to state
       })
   }
 
-  const postNewPropo = (post) => {
+  const postNewPropo = post => { //posts record to backend
     fetch('http://localhost:3001/', {
       method: 'POST',
       mode: 'cors',
@@ -40,11 +43,11 @@ function App() {
       body: JSON.stringify(post),
       json: true
     })
-    data.push(post)
-    setGet(data)
+    data.push(post) // updates local JSON to reflect new post without API call
+    setGet(data) 
   }
 
-  function handleSubmit() {
+  function handleSubmit() { // completes and JSONifies new record, calls poster
     if (inputText) {
       const post = {
         "id": Math.max(...data.map(i => i.id)) + 1,
@@ -56,22 +59,24 @@ function App() {
       postNewPropo(post)
 
       setInputText('')
-      window.scrollTo(0,document.body.scrollHeight)
-      setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
+      // WIP
+      // window.scrollTo(0,document.body.scrollHeight)
+      // setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
     }
   }
 
   function handleShowClosed() { setShowClosed(!showClosed) }
   function handleShowValues() { setShowValues(!showValues) }
 
+  // WIP
   // to lock screen during focus, but it stays on
   // if (showValues) { window.onscroll = () => { window.scroll(0, 0); } }
 
-  // three-way propo parser
+  // parses top level JSON objects into the three presentationally significant types- pass/fail/open
   let openPropos = []
   let failedPropos = []
   let passedPropos = []
-  data.forEach((propo) => {
+  data.forEach(propo => {
     if ( propo.ups >= (quorum / 2) ) {
       passedPropos.push(propo)
     } else if (propo.downs >= (quorum / 2)) {
@@ -81,7 +86,8 @@ function App() {
     }
   })
 
-  const openProposMapped = openPropos.map((propo) => {
+  // maps each to react
+  const openProposMapped = openPropos.map(propo => {
     return(
       <Proposition
         key={propo.id}
@@ -97,7 +103,7 @@ function App() {
         allData={data}
       />
     )})
-  const failedProposMapped = failedPropos.map((propo) => {
+  const failedProposMapped = failedPropos.map(propo => {
     return(
       <Proposition
         key={propo.id}
@@ -113,7 +119,7 @@ function App() {
         allData={data}
       />
     )})
-  const passedProposMapped = passedPropos.map((propo) => {
+  const passedProposMapped = passedPropos.map(propo => {
     return(
       <Proposition
         key={propo.id}
@@ -136,13 +142,11 @@ function App() {
       <HeaderCard handleShowClosed={handleShowClosed} handleShowValues={handleShowValues} setQuorum={setQuorum} style={{ zIndex: '2' }} />
       <Guide />
       <br />
-
       <Backdrop
         style={{ position: 'absolute' }}
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={showValues}
-        onClick={handleShowValues}
-      >
+        onClick={handleShowValues}>
         <Card style={{ overflow: 'scroll', width: '700px', height: '600px', alignItems: 'center', backgroundColor: 'rgb(40, 40, 40)' }}>
           <div className='values'>
             <h2 style={{ fontFamily: 'Raleway', color: 'rgb(246, 246, 246)' }}>What we believe</h2>
@@ -152,9 +156,11 @@ function App() {
         </Card>
       </Backdrop>
 
+      {/* body */}
       {openProposMapped} 
       {failedProposMapped}
-      
+
+      {/* new propo entry */}
       <Card className='proposition poster' style={{ minHeight: '200px', width: '45%', padding: '20px' }}>
         <span style={{ }}>What value should we embrace?</span>
         <TextField 

@@ -7,18 +7,22 @@ import Addendum from './Addendum';
 import NewAddendum from './NewAddendum';
 
 export default function Proposition(props) {
+  // highest level iterative child component of App, rendering the top level JSON data. 
+  // displays proposition text, vote counters, and vote buttons. 
+  // also contains iterative child component Addendum, which essentially reproduces this structure.
+  // API calls for propo votes are handled here.
 
-  let [addenEntry, setAddenEntry] = useState()
+  let [addenaEntry, setAddenaEntry] = useState() // stores text entry for new addendum until post
 
-  const stateUpdater = (id, dir) => {
-    props.allData.forEach((item) => { 
+  const stateUpdater = (id, dir) => { // updates vote total in state for display without API call
+    props.allData.forEach((item) => { // data intensive - simplify
       if (item.id === id) { 
         item[dir] = item[dir] + 1 
     } })
-    props.updater([...props.allData])
+    props.updater([...props.allData]) // passes new vote total up to parent state using callback sent down as props
   }
 
-  const incrementYes = (id) => {
+  const incrementYes = id => { // posts vote to API RESTfully
     fetch(`http://localhost:3001/${id}`, {
       method: 'POST',
       mode: 'cors',
@@ -29,9 +33,9 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "up" }),
       json: true
     })
-    stateUpdater(id, 'ups')
+    stateUpdater(id, 'ups') // also sends to parent
   }
-  const incrementNo = (id) => {
+  const incrementNo = id => { // posts vote to API RESTfully
     fetch(`http://localhost:3001/${id}`, {
       method: 'POST',
       mode: 'cors',
@@ -42,14 +46,14 @@ export default function Proposition(props) {
       body: JSON.stringify({ "vote": "down" }),
       json: true
     })
-    stateUpdater(id, 'downs')
+    stateUpdater(id, 'downs') // also sends to parent
   }
 
-  function handleCancel() { setAddenEntry() }
+  function handleCancel() { setAddenaEntry() }
   function handleClickYes() { incrementYes(props.id) }
   function handleClickNo() { incrementNo(props.id) }
-  function handleClickYesAnd() {
-    setAddenEntry(
+  function handleClickYesAnd() { // opens new addendum entry box
+    setAddenaEntry(
       <NewAddendum 
       predicate={false}
       handleCancel={handleCancel}
@@ -61,8 +65,8 @@ export default function Proposition(props) {
     )
     incrementYes(props.id)
   }
-  function handleClickNoBut() {
-    setAddenEntry(
+  function handleClickNoBut() { // opens new addendum entry box
+    setAddenaEntry(
       <NewAddendum 
         predicate={true}
         handleCancel={handleCancel}
@@ -78,7 +82,7 @@ export default function Proposition(props) {
   let openAddendaMapped = []
   let closedAddenda = []
   let closedAddendaMapped = []
-  // unlike propos, addenda must be divvied before mapping
+// parses addenda level JSON objects into open/closed
   props.addenda.forEach((addendum) => {
     if ( (addendum != undefined) && ((addendum.ups >= props.majority) || (addendum.downs >= props.majority)) ) {
       closedAddenda.push(addendum)
@@ -87,8 +91,9 @@ export default function Proposition(props) {
     }
   })
 
+  // maps each to react
   if (openAddenda) {
-    openAddendaMapped = openAddenda.map((addendum) => {
+    openAddendaMapped = openAddenda.map(addendum => {
       return(
         <Addendum
           key={props.id + 'o' + addendum.id}
@@ -107,7 +112,7 @@ export default function Proposition(props) {
     )})
   }
   if (closedAddenda) {
-    closedAddendaMapped = closedAddenda.map((addendum) => {
+    closedAddendaMapped = closedAddenda.map(addendum => {
       return(
         <Addendum
           key={props.id + 'c' + addendum.id}
@@ -127,7 +132,7 @@ export default function Proposition(props) {
     )})
   }
 
-  // three way style assignment
+  // three way style assignment - pass/fail/open
   let status
   if (props.ups > props.majority) {
     status = 'passed'
@@ -154,6 +159,7 @@ export default function Proposition(props) {
       />
       <span style={{ height: '70px' }} ></span>
       
+      {/* closed are rendered as a bulleted list with title, seperate from voting elements */}
       {closedAddendaMapped}    
       <div className={`prop-hider ${status}`} style={{ marginTop: '-50px', flexDirection: 'row' }}>
         <ButtonGroup
@@ -178,8 +184,9 @@ export default function Proposition(props) {
           <Button style={{ color: 'white' }} onClick={handleClickYesAnd}>Yes And</Button>
         </ButtonGroup>
       </div>
+      {/* list of pending addenda votes, and entry box if open */}
       {openAddendaMapped}
-      {addenEntry}
+      {addenaEntry}
     </Card>
   )
 }

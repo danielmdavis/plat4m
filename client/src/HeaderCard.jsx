@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button';
 import { Switch, FormControlLabel, TextField } from '@material-ui/core';
 
 export default function HeaderCard(props) {
+    // title and imagery, also contains show failed toggle and show results pop-up. 
+
     return (
         <Card className='app-title'>
             <span style={{ height: '30px' }} />
