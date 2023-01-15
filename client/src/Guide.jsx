@@ -13,7 +13,7 @@ export default function Guide(props) {
             <span className='header-col' style={{ fontFamily: 'Raleway, sans-serif' }}>Users Guide <span style={{ color: 'rgb(150, 150, 150)', fontSize: '15px' }}>▼</span></span>
             </AccordionSummary>
             <AccordionDetails style={{ fontFamily: 'Lora, serif', fontSize: '16px' }}>
-                <span className='header-col'>Plat4m is a tool built for communities of thought such as 
+                <span className='header-col'>plat4m is a tool built for communities of thought such as 
                     political parties and advocacy groups to democratically develop
                     their formal program. Scroll to the bottom and propose a point of shared
                     purpose or belief. Vote <span className='blue'>YES</span> or <span className='red'>NO</span> to indicate

@@ -29,7 +29,7 @@ export default function HeaderCard(props) {
                             }
                             />
                     </div>
-                    <span className='byline'>Plat4m was created in 2022 by github.com/danielmdavis</span>
+                    <span className='byline'>plat4m was created in 2022 by github.com/danielmdavis</span>
                     <span style={{ height: '3px' }} />
         </Card>
     )

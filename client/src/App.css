@@ -8,14 +8,15 @@
  --offw2: rgb(225, 225, 225);
  --red: rgb(246,0,87);
  --blue: rgb(64,80,181);
+ --purple: rgb(31, 15, 50);
 }
 
 html {
-  background-color: rgb(31, 15, 50);
+  background-color: var(--purple);
 }
 .App {
   text-align: center;
-  background-color: rgb(31, 15, 50);
+  background-color: var(--purple);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +36,7 @@ html {
   width: 100%;
   z-index: 2 !important;
   background: rgb(46,46,46);
-  background: linear-gradient(0deg, rgba(46,46,46,1) 0%, rgba(0,0,0,1) 50%);
+  background: linear-gradient(0deg, rgba(46,46,46) 0%, rgba(0,0,0,1) 50%);
 }
 .title-header {
   font-family: 'Raleway', sans-serif !important;
@@ -52,6 +53,8 @@ html {
 .header-col {
   margin: 0px 18px;
   text-align: justify !important;
+  word-wrap: break-word;
+  hyphens: auto !important;
 }
 .byline {
   font-family: 'Raleway', sans-serif !important;
@@ -75,7 +78,7 @@ html {
 }
 /* end header & accessories */
 
-.proposition { 
+.proposition { /* propo variants */
   font-family: 'Lora';
   color: rgb(190, 190, 190) !important;
   display: flex;
@@ -85,7 +88,6 @@ html {
   margin: 10px;
   padding: 10px;
   width: 60%;
-  /* min-height: 250px; */
   font-size: 28px;
   animation: fadein .666s;
 }
@@ -97,7 +99,6 @@ html {
   min-height: 120px;
   padding-top: 10px;
   padding-bottom: 0px;
-  /* background: rgb(90,90,90); */
   background-image: linear-gradient(90deg, rgba(34, 16, 54) 2.5%, rgb(35, 35, 35) 9%, rgb(35, 35, 35) 91%, rgb(34, 16, 54) 97.5%) !important; 
   border: solid 2px rgb(50, 50, 50);
 }
@@ -108,8 +109,7 @@ html {
   width: 100%;
 }
 .failed {
-  background-color: rgb(35, 35, 35) !important;
-  border: solid 2px var(--red);
+  background-color: rgb(50, 50, 50) !important;
 }
 .failed .claim {
   text-decoration: line-through;
@@ -123,7 +123,7 @@ html {
 }
 /* end propo variants */
 
-.addendum {
+.addendum { /* addendum variants */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -156,8 +156,7 @@ html {
   background-color: rgb(54, 54, 54) !important;
 }
 .failed-addendum .addendum-inner {
-  background-color: rgba(255, 255, 255, 0) !important;
-  border: solid 1.7px var(--red) !important; 
+  background-color: rgb(54, 54, 54) !important;
   min-height: 31px !important;
   font-family: 'Lora' !important;
   display: list-item;
@@ -187,27 +186,15 @@ html {
 }
 /* end addendum variants */
 
-/* poster = new propo entry */
-.poster {
+.poster { /* poster = new propo entry */
   width: 48% !important;
   background: rgb(33, 33, 33) !important;
   color: white !important;
   font-family: 'Raleway', sans-serif !important;
 }
-/* .proposal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.proposal-box {
-  background-color: rgb(82, 82, 82) !important;
-  font-family: 'Roboto', sans-serif !important; 
-  margin: 20px;
-} */
 
-/* new-addendum = new addendum entry */
-.new-addendum {
+
+.new-addendum { /* new-addendum = new addendum entry */
   animation: fadein .666s !important;
   display: flex;
   flex-direction: row;
