@@ -155,33 +155,30 @@ export default function Proposition(props) {
       <VotesAndTitle
         claim={props.claim}
         ups={props.ups}
-        downs={props.downs}
-      />
-      <span style={{ height: '70px' }} ></span>
+        downs={props.downs} />
+      <span className='buffer-70'></span>
       
       {/* closed are rendered as a bulleted list with title, seperate from voting elements */}
       {closedAddendaMapped}    
-      <div className={`prop-hider ${status}`} style={{ marginTop: '-50px', flexDirection: 'row' }}>
+      <div className={`propo-buttongroup-outer propo-hider ${status}`}>
         <ButtonGroup
-          style={{ margin: '5px', border: 'none', background: 'rgba(150,150,150,0)', border: 'solid 1.7px rgb(246,0,87)' }}
-          orientation="vertical"
-          variant="outlined"
-          color="secondary"
-          aria-label="vertical button group"
-        >
-          <Button style={{ color: 'white' }} onClick={handleClickNo}>No</Button>
-          <Button style={{ color: 'white' }} onClick={handleClickNoBut}>No But</Button>
+          className='propo-buttongroup-inner-red'
+          orientation='vertical'
+          variant='outlined'
+          color='secondary'
+          aria-label='vertical button group'>
+          <Button className='propo-button' onClick={handleClickNo}>No</Button>
+          <Button className='propo-button' onClick={handleClickNoBut}>No But</Button>
         </ButtonGroup>
 
         <ButtonGroup
-          style={{ margin: '5px', border: 'solid 1.7px rgb(64,80,181)' }}
-          orientation="vertical"
-          variant="outlined"
-          color="primary"
-          aria-label="vertical primary button group"
-        >
-          <Button style={{ color: 'white' }} onClick={handleClickYes}>Yes</Button>
-          <Button style={{ color: 'white' }} onClick={handleClickYesAnd}>Yes And</Button>
+          className='propo-buttongroup-inner-blue'
+          orientation='vertical'
+          variant='outlined'
+          color='primary'
+          aria-label='vertical primary button group'>
+          <Button className='propo-button' onClick={handleClickYes}>Yes</Button>
+          <Button className='propo-button' onClick={handleClickYesAnd}>Yes And</Button>
         </ButtonGroup>
       </div>
       {/* list of pending addenda votes, and entry box if open */}

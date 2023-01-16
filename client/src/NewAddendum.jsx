@@ -46,13 +46,12 @@ export default function NewAddendum(props) {
     props.handleCancel()
   }
 
-
   return (
-    <div className='new-addendum'>
+    <div className='new-addendum-entry'>
       {/* read horizontally as button-card-button */}
       <Button
-        variant="contained"
-        color="secondary"
+        variant='contained'
+        color='secondary'
         onClick={props.handleCancel}>
         ✕
       </Button>
@@ -60,13 +59,13 @@ export default function NewAddendum(props) {
         multiline={true} minRows='2'
         onChange={(e) => {setInputText(e.target.value)}} 
         value={inputText}
-        className='new-addendum-box'
-        style={{ backgroundColor: props.predicate ? '#F5C4D5' : 'rgb(246, 246, 246)' }}
+        className='new-addendum-textbox'
+        style={{ backgroundColor: props.predicate ? 'rgb(245, 196, 213)' : 'rgb(246, 246, 246)' }}
         variant='outlined'
         label='Propose an Addendum'/>
       <Button
-        variant="contained"
-        color="primary"
+        variant='contained'
+        color='primary'
         onClick={handleSubmit}>
         ✓
       </Button>

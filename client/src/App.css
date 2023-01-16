@@ -24,6 +24,9 @@ html {
   font-size: 20px;
 }
 
+.app-header-outer {
+  z-index: 2;
+}
 .app-title {
   font-family: 'Lora';
   font-size: 20px;
@@ -50,12 +53,7 @@ html {
   font-size: 28px;
   color: white !important;
 }
-.header-col {
-  margin: 0px 18px;
-  text-align: justify !important;
-  word-wrap: break-word;
-  hyphens: auto !important;
-}
+
 .byline {
   font-family: 'Raleway', sans-serif !important;
   font-size: 10px !important;
@@ -63,10 +61,63 @@ html {
   color: white !important;
 }
 .low-t {
-  z-index: 0 !important;
+  
 }
 .switches {
   color: white !important;
+}
+.quorum-entry {
+  width: 46px;
+  margin-right: 25px;
+  border: white !important;
+  color: white !important;
+}
+.results-backdrop {
+  position: absolute;
+}
+.results-button {
+  color: white !important;
+  border: solid 2px white !important;
+}
+.results-outer {
+  overflow: scroll;
+  width: 900px;
+  height: 700px;
+  align-items: center;
+  background-color: rgb(40, 40, 40) !important;
+}
+.results-header {
+ font-family: 'Raleway';
+ color: rgb(246, 246, 246);
+ margin-top: 50px;
+}
+.guide-outer {
+  z-index: 0 !important;
+  text-align: left;
+  padding: 8px;
+  width: 61.5%;
+  margin-top: -20px;
+}
+.guide-background {
+  background-color: rgb(190, 190, 190);
+}
+.guide-inner {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+}
+
+.guide-header {
+  font-family: 'Raleway', sans-serif;
+}
+.guide-header-doodad {
+  color: rgb(150, 150, 150);
+  font-size: 15px;
+}
+.guide {
+  margin: 0px 18px;
+  text-align: justify !important;
+  word-wrap: break-word;
+  hyphens: auto !important;
 }
 .blue {
   color: var(--blue);
@@ -111,17 +162,62 @@ html {
 .failed {
   background-color: rgb(50, 50, 50) !important;
 }
-.failed .claim {
+.failed .votes-and-title-inner {
   text-decoration: line-through;
 }
-.passed .prop-hider, .failed .prop-hider {
+.passed .propo-hider, .failed .propo-hider {
   display: none;
 }
-.open .prop-hider {
+.open .propo-hider {
   border: none;
   background: rgba(150,150,150,0) !important; 
 }
+.propo-buttongroup-outer {
+  margin-top: -50px;
+  flex-direction: row;
+}
+.propo-buttongroup-inner-red {
+  margin: 5px;
+  border: none;
+  background: rgba(0,0,0,0);
+  border: solid 2px rgb(246,0,87);
+}
+.propo-buttongroup-inner-blue {
+  margin: 5px;
+  border: none;
+  background: rgba(0,0,0,0);
+  border: solid 2px rgb(64,80,181);
+}
+.propo-button {
+  color: white;
+}
+.votes-and-title-outer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 8px;
+  width: 100%;
+  min-height: 50px;
+}
+.votes-and-title-inner {
+  margin: 0px 5px;
+  padding: 0px 10px;
+  width: 55%;
+  min-height: 45px;
+  font-size: 28px;
+}
+.votes-and-title-counter-wrapper {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.votes-and-title-counter {
+  font-size: 20px !important;
+  border: solid 2px !important;
+}
+
 /* end propo variants */
+
 
 .addendum { /* addendum variants */
   display: flex;
@@ -142,6 +238,7 @@ html {
   font-family: 'Roboto', sans-serif !important;
   color:rgb(220, 220, 220) !important;
   font-size: 16px;  
+  background-color: rgb(190, 190, 190);
 }
 .passed-addendum { 
   margin: 3.5px 8px !important;
@@ -178,22 +275,40 @@ html {
   margin: -50px 0px !important;
   width: 53%
 }
+.button-wrapper {
+  flex-direction: column;
+}
+.addendum-button {
+  font-size: 16px;
+  border: solid 2px !important;
+  max-height: 36.5px;
+  margin-top: 2px;
+  margin-top: -6px;
+}
 .passed-addendum .add-button, .failed-addendum .add-button {
   display: none !important;
 }
 .closed-hidden {
   display: none !important;
 }
+
 /* end addendum variants */
 
-.poster { /* poster = new propo entry */
+.new-propo-entry {
   width: 48% !important;
+  padding: 20px;
+  min-height: 200px;
   background: rgb(33, 33, 33) !important;
   color: white !important;
   font-family: 'Raleway', sans-serif !important;
 }
+.new-propo-textbox {
+  background-color: rgb(245, 245, 245);
+  margin: 20px;
+  width: 50%;
+}
 
-.new-addendum { /* new-addendum = new addendum entry */
+.new-addendum-entry {
   animation: fadein .666s !important;
   display: flex;
   flex-direction: row;
@@ -203,11 +318,24 @@ html {
   width: 105%;
   min-height: 50px;
 }
-.new-addendum-box {
+.new-addendum-textbox {
   margin: 0px 5px !important;
   width: 54.7%;
   min-height: 45px;
   text-align: left;
   font-size: 16px;
   animation: fadein .666s;
+}
+
+.buffer-30 {
+  height: 30px;
+}
+.buffer-3 {
+  height: 3px;
+}
+.buffer-minus25 {
+  margin-top: -25px;
+}
+.buffer-70 {
+ height: 70px;
 }

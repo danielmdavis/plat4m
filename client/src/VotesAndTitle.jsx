@@ -1,48 +1,30 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
 
 export default function VotesAndTitle(props) {
+  // titling element for propos, displaying text and vote counters
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'flex-start',
-      margin: '8px',
-      width: '100%',
-      minHeight: '50px'}}>
-      <span style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
+    <div className='votes-and-title-outer'>
+      <span className='votes-and-title-counter-wrapper'>
         <Button
-          style={{ fontSize: '20px', border: 'solid 1.7px' }}
-          variant="outlined"
-          color="secondary"
-          >
+          className='votes-and-title-counter'
+          variant='outlined'
+          color='secondary'>
           {props.downs}
         </Button>
       </span>
-      <div style={{
-        margin: '0px 5px',
-        padding: '0px 10px',
-        width: '55%',
-        minHeight: '45px',
-        fontSize: '28px'
-        }}
-        className='claim'
-        >
+      <div className='votes-and-title-inner'>
         {props.claim}
-
       </div>
-      <span style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
+      <span className='votes-and-title-counter-wrapper'>
         <Button
-          style={{ fontSize: '20px', border: 'solid 1.7px' }}
-          variant="outlined"
-          color="primary"
-          >
+          className='votes-and-title-counter'
+          variant='outlined'
+          color='primary'>
           {props.ups}
         </Button>
       </span>
     </div>
-  );
+  )
 }

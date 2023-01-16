@@ -137,34 +137,40 @@ function App() {
     )})
 
   return (
-    <div className="App"> 
-      <span style={{ marginTop: '-25px' }}></span>
-      <HeaderCard handleShowClosed={handleShowClosed} handleShowValues={handleShowValues} setQuorum={setQuorum} style={{ zIndex: '2' }} />
+    <div className='App'> 
+      <span className='buffer-minus25'></span>
+      {/* header things: title element with various children, users guide, 'our story so far' results popout */}
+      <HeaderCard 
+        handleShowClosed={handleShowClosed} 
+        handleShowValues={handleShowValues} 
+        setQuorum={setQuorum} 
+        className='app-header-outer' />
       <Guide />
       <br />
       <Backdrop
-        style={{ position: 'absolute' }}
+        className='results-backdrop'
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={showValues}
         onClick={handleShowValues}>
-        <Card style={{ overflow: 'scroll', width: '700px', height: '600px', alignItems: 'center', backgroundColor: 'rgb(40, 40, 40)' }}>
-          <div className='values'>
-            <h2 style={{ fontFamily: 'Raleway', color: 'rgb(246, 246, 246)' }}>What we believe</h2>
+        <Card className='results-outer'>
+          <div className='results-inner'>
+            <h2 className='results-header'>What we believe</h2>
             <br /><br />
             {passedProposMapped}
           </div>
         </Card>
       </Backdrop>
+      {/* end header things */}
 
       {/* body */}
       {openProposMapped} 
       {failedProposMapped}
 
       {/* new propo entry */}
-      <Card className='proposition poster' style={{ minHeight: '200px', width: '45%', padding: '20px' }}>
-        <span style={{ }}>What value should we embrace?</span>
+      <Card className='proposition new-propo-entry'>
+        <span>What value should we embrace?</span>
         <TextField 
-          style={{ backgroundColor: 'rgb(245, 245, 245)', margin: '20px', width: '50%' }} variant="outlined"
+          className='new-propo-textbox' variant='outlined'
           multiline={true} minRows='4' 
           onChange={(e) => {setInputText(e.target.value)}} value={inputText}  />
         <Button onClick={handleSubmit} variant="contained" color="primary" > Submit </ Button>
