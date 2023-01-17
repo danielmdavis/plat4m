@@ -96,7 +96,7 @@ export default function Proposition(props) {
     openAddendaMapped = openAddenda.map(addendum => {
       return(
         <Addendum
-          key={props.id + 'o' + addendum.id}
+          key={props.id + addendum.id}
           id={addendum.id}
           propId={props.id}
           claim={addendum.text}
@@ -115,7 +115,7 @@ export default function Proposition(props) {
     closedAddendaMapped = closedAddenda.map(addendum => {
       return(
         <Addendum
-          key={props.id + 'c' + addendum.id}
+          key={props.id + addendum.id}
           id={addendum.id}
           propId={props.id}
           claim={addendum.text}
