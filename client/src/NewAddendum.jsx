@@ -17,7 +17,6 @@ export default function NewAddendum(props) {
     } })
     props.updater([...props.allData])
   }
-
   const postNew = post => {
     fetch(`http://localhost:3001/${props.propoId}`, { // post child to backend
       method: 'POST',
