@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Card from '../client/node_modules/@material-ui/core/Card';
-import Button from '../client/node_modules/@material-ui/core/Button';
-import ButtonGroup from '../client/node_modules/@material-ui/core/ButtonGroup';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import VotesAndTitle from './VotesAndTitle';
 import Addendum from './Addendum';
 import NewAddendum from './NewAddendum';

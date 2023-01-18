@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Card from '../client/node_modules/@material-ui/core/Card';  
-import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel, TextField } from '../client/node_modules/@material-ui/core';
+import Card from '@material-ui/core/Card';  
+import { Accordion, AccordionSummary, AccordionDetails, Switch, FormControlLabel, TextField } from '@material-ui/core';
 
 
 

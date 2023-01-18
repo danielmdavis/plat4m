@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Card from '../client/node_modules/@material-ui/core/Card';  
-import Button from '../client/node_modules/@material-ui/core/Button';
-import { Switch, FormControlLabel, TextField } from '../client/node_modules/@material-ui/core';
+import Card from '@material-ui/core/Card';  
+import Button from '@material-ui/core/Button';
+import { Switch, FormControlLabel, TextField } from '@material-ui/core';
 
 export default function HeaderCard(props) {
     // title and header imagery, also contains show failed toggle and show results pop-up. 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../client/node_modules/@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 
 export default function VotesAndTitle(props) {
   // titling element for propos, displaying text and vote counters

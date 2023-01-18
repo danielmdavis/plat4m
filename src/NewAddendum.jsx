@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Button from '../client/node_modules/@material-ui/core/Button';
-import Card from '../client/node_modules/@material-ui/core/Card';
-import TextField from '../client/node_modules/@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import TextField from '@material-ui/core/TextField';
 
 export default function NewAddendum(props) {
   // text entry box rendered within Proposition components on YES AND, NO BUT votes.
