@@ -23,7 +23,7 @@ export default function Proposition(props) {
   }
 
   const incrementYes = id => { // posts vote to API RESTfully
-    fetch(`http://localhost:3001/${id}`, {
+    fetch(`https://api.d21r97cyg7sguz.amplifyapp.com/${id}`, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -36,7 +36,7 @@ export default function Proposition(props) {
     stateUpdater(id, 'ups') // also sends to parent
   }
   const incrementNo = id => { // posts vote to API RESTfully
-    fetch(`http://localhost:3001/${id}`, {
+    fetch(`https://api.d21r97cyg7sguz.amplifyapp.com/${id}`, {
       method: 'POST',
       mode: 'cors',
       headers: {
