@@ -290,12 +290,11 @@ html {
 .closed-hidden {
   display: none !important;
 }
-
 /* end addendum variants */
 
 .new-propo-entry {
   width: 48% !important;
-  padding: 20px;
+  padding: 20px !important;
   min-height: 200px;
   background: rgb(33, 33, 33) !important;
   color: white !important;

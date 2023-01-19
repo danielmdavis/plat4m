@@ -22,7 +22,7 @@ function App() {
   useLayoutEffect(() => { getAll() }, []) // gets all on DidMount
 
   const getAll = () => {
-    fetch('http://localhost:3001/', { // calls express api
+    fetch('https://deploy.d21r97cyg7sguz.amplifyapp.com/', { // calls express api
       mode: 'cors',
       headers: { 'Access-Control-Allow-Origin': '*' }
     })
@@ -33,7 +33,7 @@ function App() {
   }
 
   const postNewPropo = post => { //posts record to backend
-    fetch('http://localhost:3001/', {
+    fetch('https://deploy.d21r97cyg7sguz.amplifyapp.com/', {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -70,6 +70,7 @@ function App() {
 
   // WIP
   // to lock screen during focus, but it stays on
+
   // if (showValues) { window.onscroll = () => { window.scroll(0, 0); } }
 
   // parses top level JSON objects into the three presentationally significant types- pass/fail/open
@@ -168,11 +169,11 @@ function App() {
 
       {/* new propo entry */}
       <Card className='proposition new-propo-entry'>
-        <span>What value should we embrace?</span>
+        <span>What value should we embrace?</span> <br />
         <TextField 
           className='new-propo-textbox' variant='outlined'
           multiline={true} minRows='4' 
-          onChange={(e) => {setInputText(e.target.value)}} value={inputText}  />
+          onChange={(e) => {setInputText(e.target.value)}} value={inputText}  /> <br />
         <Button onClick={handleSubmit} variant="contained" color="primary" > Submit </ Button>
       </Card>
     </div>
