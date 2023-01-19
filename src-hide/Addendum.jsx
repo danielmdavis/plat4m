@@ -17,7 +17,7 @@ export default function Addendum(props) {
   }
 
   const incrementYes = (id, id2) => {
-    fetch(`http://localhost:3001/${id}/${id2}`, {
+    fetch(`https://api.d21r97cyg7sguz.amplifyapp.com/${id}/${id2}`, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -30,7 +30,7 @@ export default function Addendum(props) {
     stateUpdater(id, id2, 'ups')
   }
   const incrementNo = (id, id2) => {
-    fetch(`http://localhost:3001/${id}/${id2}`, {
+    fetch(`https://api.d21r97cyg7sguz.amplifyapp.com/${id}/${id2}`, {
       method: 'POST',
       mode: 'cors',
       headers: {

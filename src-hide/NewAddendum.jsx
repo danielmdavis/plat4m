@@ -18,7 +18,7 @@ export default function NewAddendum(props) {
     props.updater([...props.allData])
   }
   const postNew = post => {
-    fetch(`http://localhost:3001/${props.propoId}`, { // post child to backend
+    fetch(`https://api.d21r97cyg7sguz.amplifyapp.com/${props.propoId}`, { // post child to backend
       method: 'POST',
       mode: 'cors',
       headers: {
