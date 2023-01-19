@@ -59,9 +59,9 @@ function App() {
       postNewPropo(post)
 
       setInputText('')
-      // WIP
-      // window.scrollTo(0,document.body.scrollHeight)
-      // setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
+
+      window.scrollTo(0,document.body.scrollHeight)
+      setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
     }
   }
 
@@ -70,7 +70,12 @@ function App() {
 
   // WIP
   // to lock screen during focus, but it stays on
-  // if (showValues) { window.onscroll = () => { window.scroll(0, 0); } }
+  if (showValues) { 
+    window.onscroll = () => { window.scroll(0, 0) } 
+    
+  } else if (!showValues) {
+    window.onscroll = () => { window.scroll() } 
+  }
 
   // parses top level JSON objects into the three presentationally significant types- pass/fail/open
   let openPropos = []
@@ -139,7 +144,7 @@ function App() {
   return (
     <div className='App'> 
       <span className='buffer-minus25'></span>
-      {/* header things: title element with various children, users guide, 'our story so far' results popout */}
+      {/* header things: title element with various children, users guide, value statement results popout */}
       <HeaderCard 
         handleShowClosed={handleShowClosed} 
         handleShowValues={handleShowValues} 
@@ -169,10 +174,12 @@ function App() {
       {/* new propo entry */}
       <Card className='proposition new-propo-entry'>
         <span>What value should we embrace?</span>
+        <br />
         <TextField 
           className='new-propo-textbox' variant='outlined'
           multiline={true} minRows='4' 
           onChange={(e) => {setInputText(e.target.value)}} value={inputText}  />
+        <br />  
         <Button onClick={handleSubmit} variant="contained" color="primary" > Submit </ Button>
       </Card>
     </div>

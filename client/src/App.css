@@ -73,14 +73,14 @@ html {
   color: white !important;
 }
 .results-backdrop {
-  position: absolute;
+  position: absolute !important;
 }
 .results-button {
   color: white !important;
   border: solid 2px white !important;
 }
 .results-outer {
-  overflow: scroll;
+  overflow: scroll !important;
   width: 900px;
   height: 700px;
   align-items: center;
