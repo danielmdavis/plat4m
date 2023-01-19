@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/": {
+      "name": "/",
+      "lambdaFunction": "plat4m",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
