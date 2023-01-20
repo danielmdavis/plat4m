@@ -59,18 +59,17 @@ function App() {
       postNewPropo(post)
 
       setInputText('')
-      // WIP
-      // window.scrollTo(0,document.body.scrollHeight)
-      // setTimeout(() => { window.scrollTo(0,document.body.scrollHeight) }, 0.01)
     }
   }
 
   function handleShowClosed() { setShowClosed(!showClosed) }
   function handleShowValues() { setShowValues(!showValues) }
 
-  // WIP
-  // to lock screen during focus, but it stays on
-  // if (showValues) { window.onscroll = () => { window.scroll(0, 0); } }
+  if (showValues) { 
+    window.onscroll = () => { window.scroll(0, 0) }
+  } else if (!showValues) {
+    window.onscroll = () => { window.scroll() }
+  }
 
   // parses top level JSON objects into the three presentationally significant types- pass/fail/open
   let openPropos = []
