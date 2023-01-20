@@ -3,7 +3,7 @@
 
 Plat4m is a tool built for communities of thought such as political parties and advocacy groups to draft their formal program democratically. Submit your ideas to be voted on and ammended by your peers. 
 
-![plat4m in the wild](./ui.png)
+![plat4m in the wild](./ui.gif)
 
 # How to use
 
