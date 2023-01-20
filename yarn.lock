@@ -4876,6 +4876,11 @@ depd@~1.1.2:
   resolved "https://registry.npmjs.org/depd/-/depd-1.1.2.tgz"
   integrity sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==
 
+deserialize@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/deserialize/-/deserialize-0.0.1.tgz"
+  integrity sha512-gUwpWn9119QhZy87y1RgwgTh2ku893kwZe0jhTlSYBfP3DlB5cbu5mn7mfdCVg6BAZUG17qlupZT3G9+B+THGg==
+
 destroy@1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/destroy/-/destroy-1.2.0.tgz"
