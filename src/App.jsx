@@ -22,7 +22,7 @@ function App() {
   useLayoutEffect(() => { getAll() }, []) // gets all on DidMount
 
   const getAll = () => {
-    fetch('https://api.d21r97cyg7sguz.amplifyapp.com/', { // calls express api
+    fetch('http://localhost:3001/', { // calls express api
       mode: 'cors',
       headers: { 'Access-Control-Allow-Origin': '*' }
     })
@@ -33,7 +33,7 @@ function App() {
   }
 
   const postNewPropo = post => { //posts record to backend
-    fetch('https://api.d21r97cyg7sguz.amplifyapp.com/', {
+    fetch('http://localhost:3001/', {
       method: 'POST',
       mode: 'cors',
       headers: {
